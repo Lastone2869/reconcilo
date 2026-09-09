@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface": "#f8faf8", "tertiary-fixed-dim": "#ddb8fd", "outline": "#737970", "on-tertiary-fixed": "#290a45", "error": "#ba1a1a", "on-tertiary-container": "#6d4d8a", "on-primary-fixed-variant": "#2c4e2d", "secondary": "#785561", "outline-variant": "#c2c8be", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#002105", "on-secondary-fixed": "#2d131e", "on-secondary": "#ffffff", "inverse-surface": "#2e3130", "surface-dim": "#d8dad9", "on-surface-variant": "#424840", "surface-container-highest": "#e1e3e1", "surface-container-low": "#f2f4f2", "tertiary": "#70518e", "on-tertiary-fixed-variant": "#573974", "background": "#f8faf8", "primary-fixed": "#c5edbf", "inverse-on-surface": "#eff1ef", "on-primary": "#ffffff", "on-background": "#191c1b", "primary-container": "#b6deb1", "on-secondary-container": "#7a5764", "surface-container": "#eceeec", "on-primary-container": "#40633f", "secondary-container": "#ffd1e0", "surface-container-high": "#e6e9e7", "on-error": "#ffffff", "on-error-container": "#93000a", "error-container": "#ffdad6", "secondary-fixed-dim": "#e7bbc9", "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#5e3d4a", "surface-variant": "#e1e3e1", "tertiary-container": "#e6c8ff", "primary-fixed-dim": "#a9d1a5", "secondary-fixed": "#ffd9e5", "inverse-primary": "#a9d1a5", "surface-bright": "#f8faf8", "on-surface": "#191c1b", "surface-tint": "#446743", "tertiary-fixed": "#f0dbff", "primary": "#446743" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": {}, "fontFamily": { "headline": [ "Plus Jakarta Sans" ], "display": [ "Plus Jakarta Sans" ], "body": [ "Inter" ], "label": [ "Inter" ] }, "fontSize": {} } } }</script></head><body class="bg-surface font-body text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_16px_rgba(24,34,29,0.04)]"><div class="h-16 px-6 flex items-center gap-3 bg-surface-container-lowest"><img alt="reconcilo logo.jpg" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VITw5XD29raJwz9Qz7fxiW79oWR_zSTbXOlzL_a2sK913TSG4CK2ntrm1Q2qHQPhtigYu0oznz-7zT6SxglNalc2imPcrBER7pYTaDvYIWkKrTR5oizb1yPHmNfvNBPu5sFGYqVbAy1eX6OpUF-z1p_Foo2xqj_MBtefI02G_I6kcHH1PlS-Nj4wd6jlzAEdbLbi-Hlt3-6G1Nax5grvUk9AV6KPC3FQWsxjb8CtMcbBzZ3Xa87iTP8ljWekpCz3fwaM76125DbbQ"/><div class="flex flex-col"><span class="text-base font-headline font-bold text-on-surface tracking-tight leading-tight">Reconcilo</span><span class="text-[11px] font-label font-medium text-outline uppercase tracking-wider">HQ &amp; Mesh Ops</span></div></div><div class="px-4 py-2"><div class="px-3 py-2 bg-surface-container-low rounded-xl flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="text-xs font-medium text-on-surface">Mesh Node HQ-01</span></div><span class="text-[10px] font-semibold bg-surface-container-lowest px-2 py-0.5 rounded-full text-on-surface-variant shadow-[0_1px_3px_rgba(0,0,0,0.02)]">Local DB Ready</span></div></div><nav class="flex-1 px-3 py-3 space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-xl"><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="hq-overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>HQ Overview</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="store-nodes-and-connectivity" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span>Store Nodes &amp; Connectivity</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="global-inventory" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Global Inventory</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all justify-between" data-path="conflicts-and-review" href="#"> <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">rule</span><span>Conflicts &amp; Review</span></div><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold">14</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="sync-logs-and-dlq" href="#"><span class="material-symbols-outlined text-[20px]">sync_saved_locally</span><span>Sync Logs &amp; DLQ</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="reports-center" href="#"><span class="material-symbols-outlined text-[20px]">insights</span><span>Reports Center</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span>Settings</span></a></nav><div class="p-4 space-y-3 bg-surface-container-lowest"><div class="p-3.5 bg-surface-container-low rounded-xl flex flex-col gap-2"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5 text-xs font-headline font-semibold text-on-surface"><span class="material-symbols-outlined text-primary text-[18px]">qr_code_scanner</span><span>Scanner PWA</span></div><span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-primary-fixed text-on-primary-fixed-variant">v4.8</span></div><p class="text-[11px] text-on-surface-variant leading-relaxed">Offline barcode &amp; pallet scanner client deployed across 48 hand terminals.</p><div class="flex items-center justify-between pt-1"><span class="text-[11px] font-medium text-primary">Launch Terminal</span><span class="material-symbols-outlined text-primary text-[16px]">open_in_new</span></div></div><div class="pt-2 flex items-center justify-between px-1 text-xs text-on-surface-variant"><a class="flex items-center gap-1.5 hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[18px]">help</span><span>Support</span></a><a class="flex items-center gap-1.5 hover:text-error transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Logout</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(24,34,29,0.03)] z-40 px-8 flex items-center justify-between gap-6"><div class="flex-1 max-w-xl"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px] pointer-events-none">search</span><input class="w-full h-10 pl-10 pr-4 bg-surface-container-low text-sm text-on-surface rounded-xl placeholder:text-outline focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all" placeholder="Search store nodes, SKU, batch, ERP transaction..." type="text"/></div></div><div class="flex items-center gap-3.5"><div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="text-xs font-medium text-on-surface">P2P Mesh Online</span><span class="text-outline text-xs">•</span><span class="text-xs font-medium text-on-surface-variant">18ms Latency</span></div><div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-tertiary-container"><span class="material-symbols-outlined text-[16px] text-on-tertiary-container animate-spin">sync</span><span class="text-xs font-semibold text-on-tertiary-container">12 Queue Delta</span></div><button class="flex items-center gap-2 h-9 px-3.5 bg-primary hover:bg-on-primary-fixed-variant text-on-primary text-xs font-semibold rounded-xl transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] active:scale-[0.98]" type="button"><span class="material-symbols-outlined text-[18px]">cached</span><span>Trigger Global Sync</span></button><div class="flex items-center gap-3 pl-2"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-fixed" src="https://lh3.googleusercontent.com/aida/AEtjO1VPpFknqhcpvbpvTw4nnKwTDas5rlRWA5896AYNNOlGveMz2VzCpPAlX6eq14uKJCt8LIJlUN_ckvjmy3O2Hfdz73h8JcgrEp3ONIYBSKdXWn66_kMYws0nUYub_IxVedtk30oFf3_KIu17oSc4upKKnvfsSsiARA073X-Bj7aoM8rN-k9SigNQxZXd2U0mZXAB9QnWvvhf0M2uPwJ6XQbfh4isggk7ElBQV7qW6Hgm6WRZss1Y4Yb7rXg_"/><div class="hidden 2xl:flex flex-col text-left"><span class="text-xs font-semibold text-on-surface leading-tight">Sarah Jenkins</span><span class="text-[11px] text-outline leading-tight">HQ Inventory Director</span></div></div></div></header><main class="w-full pt-16 px-8 py-6 bg-surface min-h-screen"><div class="flex flex-col w-full space-y-8 pb-16">
+<!-- Top Breadcrumb, Title & Global Action Bar -->
+<div class="flex flex-col gap-5">
+<!-- Breadcrumb & P2P Mesh Meta Row -->
+<div class="flex flex-wrap items-center justify-between gap-3 text-xs">
+<div class="flex items-center gap-2 text-on-surface-variant font-medium">
+<span class="hover:text-primary transition-colors cursor-pointer">Global Inventory</span>
+<span class="text-outline text-[11px]">/</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Multi-Store Stock Transfers</span>
+<span class="text-outline text-[11px]">/</span>
+<span class="font-semibold text-on-surface font-headline tracking-wide">Transfer #TO-8812</span>
+</div>
+<!-- Live Sync & Crypto State Pills -->
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-tertiary-container text-on-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+          In-Transit (Courier Van #11B)
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-mono font-medium bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">verified_user</span>
+          CRDT: Ed25519 Signed
+        </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined text-[14px]">hub</span>
+          P2P Mesh Verified
+        </span>
+</div>
+</div>
+<!-- Header Content & Dynamic Manifest Trigger Actions -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-2">
+<div class="space-y-1.5 max-w-3xl">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl lg:text-3xl font-bold font-headline text-on-surface tracking-tight">
+            Stock Transfer &amp; Cross-Dock Dispatch Manifest
+          </h1>
+<span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-on-surface-variant font-mono">
+            #TO-8812-BLD
+          </span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+          Tracking physical dispatch, transit custody telemetry, and destination floor receiving across store mesh nodes.
+        </p>
+</div>
+<!-- Action Buttons Cluster -->
+<div class="flex flex-wrap items-center gap-2.5 shrink-0">
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-all shadow-sm active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px] text-outline">picture_as_pdf</span>
+          Print Carrier Waybill (PDF)
+        </button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-all shadow-sm active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">fingerprint</span>
+          Verify Dispatch Merkle Proof
+        </button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-primary hover:bg-on-primary-fixed-variant text-on-primary shadow-sm transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[18px]">barcode_scanner</span>
+          Initiate Store #09 Intake &amp; Scan
+        </button>
+</div>
+</div>
+</div>
+<!-- Executive Metric Cards (4 Cards Grid) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1: Total En-Route Units -->
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between pb-3">
+<span class="text-xs font-semibold uppercase tracking-wider text-outline font-label">Total En-Route Units</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-primary-container text-on-primary-container">
+          3 Bins Sealed
+        </span>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-on-surface tracking-tight font-variant-numeric:tabular-nums">450</span>
+<span class="text-xs font-medium text-outline">Units / 3 SKUs</span>
+</div>
+<div class="mt-2 flex items-center justify-between text-xs pt-2">
+<span class="text-on-surface-variant font-medium">Consignment Valuation</span>
+<span class="font-bold text-on-surface font-mono">₹4,12,000</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-low h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+<!-- Card 2: Estimated Arrival (ETA) -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between pb-3">
+<span class="text-xs font-semibold uppercase tracking-wider text-outline font-label">Estimated Arrival (ETA)</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-tertiary-container text-on-tertiary-container">
+          In 1h 45m
+        </span>
+</div>
+<div>
+<div class="text-2xl font-bold font-headline text-on-surface tracking-tight">Today, 18:30 IST</div>
+<div class="mt-1 flex items-center gap-1.5 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary">local_shipping</span>
+<span>Rajesh K. (Van #11B)</span>
+</div>
+</div>
+<div class="mt-3 flex items-center gap-1.5 text-[11px] font-medium text-primary bg-surface-container-low px-2.5 py-1.5 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>On Schedule • GPS Ping 4m ago</span>
+</div>
+</div>
+<!-- Card 3: Transit Discrepancy Risk -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between pb-3">
+<span class="text-xs font-semibold uppercase tracking-wider text-outline font-label">Transit Discrepancy Risk</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-primary-fixed text-on-primary-fixed-variant">
+          0.00 Drift
+        </span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-2xl font-bold font-headline text-on-surface tracking-tight">0 Nominal Drift</span>
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</div>
+<div class="mt-1 text-xs text-on-surface-variant">
+          Automated weighbridge gross match verified
+        </div>
+</div>
+<div class="mt-3 flex items-center justify-between text-[11px] bg-surface-container-low px-2.5 py-1.5 rounded-lg">
+<span class="text-outline">Hub Weighbridge Tare</span>
+<span class="font-mono font-semibold text-on-surface">184.2 kg (Verified)</span>
+</div>
+</div>
+<!-- Card 4: Destination Node Readiness -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div class="flex items-center justify-between pb-3">
+<span class="text-xs font-semibold uppercase tracking-wider text-outline font-label">Destination Node Readiness</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-secondary-container text-on-secondary-container">
+          Store #09 Armed
+        </span>
+</div>
+<div>
+<div class="text-lg font-bold font-headline text-on-surface truncate">Store #09 Mumbai Central</div>
+<div class="mt-1 flex items-center gap-1.5 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-tertiary">warehouse</span>
+<span>Dock Bay 02 Reserved</span>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between text-[11px] bg-surface-container-low px-2.5 py-1.5 rounded-lg">
+<span class="flex items-center gap-1 text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary">qr_code_scanner</span>
+          Zebra TC52x Handheld
+        </span>
+<span class="font-semibold text-primary">Intake Armed</span>
+</div>
+</div>
+</div>
+<!-- Transfer Route & Custody Chain (Milestone Pipeline Flow) -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6">
+<div>
+<h2 class="text-base font-bold font-headline text-on-surface">Transfer Route &amp; Custody Chain</h2>
+<p class="text-xs text-on-surface-variant">Cryptographic custody handoff across distributed warehouse mesh nodes</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-[11px] font-mono text-outline">Trip Distance: 38.4 km</span>
+<span class="text-outline text-xs">•</span>
+<span class="text-[11px] font-mono text-outline">Telemetry: MQTT IoT Stream</span>
+</div>
+</div>
+<!-- Stepper Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+<!-- Step 1: Dispatched -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between pb-3">
+<span class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</span>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-primary font-mono">14:10 IST</span>
+</div>
+<div>
+<div class="text-xs font-bold font-headline text-on-surface">DC-14 Bhiwandi Central Hub</div>
+<div class="text-[11px] font-medium text-primary mt-0.5">Dispatched &amp; Manifested</div>
+<div class="text-[11px] text-on-surface-variant mt-2 space-y-0.5 font-mono">
+<div>Auditor: Tyler R. (Signoff)</div>
+<div class="truncate text-outline" title="Merkle Hash: 0x8f4c391b2e88a09f">Merkle: 0x8f4c...91b2</div>
+<div class="text-on-surface font-semibold">Weight: 184.2 kg</div>
+</div>
+</div>
+</div>
+<!-- Step 2: In-Transit (Active) -->
+<div class="p-4 rounded-xl bg-tertiary-container/30 ring-2 ring-tertiary/20 flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between pb-3">
+<span class="w-7 h-7 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center text-xs font-bold animate-pulse">
+<span class="material-symbols-outlined text-[16px]">navigation</span>
+</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-on-tertiary-container bg-tertiary-container px-2 py-0.5 rounded-full font-mono">
+            Active Now
+          </span>
+</div>
+<div>
+<div class="text-xs font-bold font-headline text-on-surface">Transit Custody Fleet</div>
+<div class="text-[11px] font-medium text-tertiary mt-0.5">BlueDart Logistics / Van #11B</div>
+<div class="text-[11px] text-on-surface-variant mt-2 space-y-0.5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">near_me</span>
+<span>Western Express Hwy (Goregaon)</span>
+</div>
+<div class="flex items-center justify-between font-mono text-[10px] text-outline pt-1">
+<span>Speed: 42 km/h</span>
+<span>Cargo Temp: 21°C</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: Dock Receiving (Awaiting) -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between pb-3">
+<span class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-xs font-bold">
+            3
+          </span>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-outline font-mono">Est 18:30</span>
+</div>
+<div>
+<div class="text-xs font-bold font-headline text-on-surface">Store #09 Receiving Dock</div>
+<div class="text-[11px] font-medium text-on-surface-variant mt-0.5">Bay Reserved (Awaiting Handshake)</div>
+<div class="text-[11px] text-outline mt-2 space-y-0.5">
+<div>Assigned: Receiving Bay 02</div>
+<div>Supervisor: Priya Varma</div>
+<div class="text-secondary font-medium">NFC Vehicle Scan Pending</div>
+</div>
+</div>
+</div>
+<!-- Step 4: Floor Binning -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div class="flex items-center justify-between pb-3">
+<span class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-xs font-bold">
+            4
+          </span>
+<span class="text-[10px] font-semibold uppercase tracking-wider text-outline font-mono">Stage 4</span>
+</div>
+<div>
+<div class="text-xs font-bold font-headline text-on-surface">Floor Bin Allocation</div>
+<div class="text-[11px] font-medium text-outline mt-0.5">Pending Blind Recount</div>
+<div class="text-[11px] text-outline mt-2 space-y-0.5">
+<div>Target: Zone 4B &amp; Aisle 02</div>
+<div>Auto-Commit: SQLite WAL mesh</div>
+<div>Variance Protocol: Dual Multisig</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Manifest Items & Discrepancy Verification Table -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col">
+<!-- Table Header Controls -->
+<div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface-container-lowest">
+<div>
+<h3 class="text-base font-bold font-headline text-on-surface">Manifested Items &amp; Discrepancy Verification</h3>
+<p class="text-xs text-on-surface-variant">Detailed line-item cargo audit, tare weights, and destination zone pre-allocations</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span>Filter Status</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>CSV Export</span>
+</button>
+</div>
+</div>
+<!-- Responsive Table Wrapper -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant font-label">
+<th class="py-3 px-5">SKU &amp; Product Name</th>
+<th class="py-3 px-4">Category &amp; Packaging</th>
+<th class="py-3 px-4 text-right">Dispatched Qty</th>
+<th class="py-3 px-4 text-right">Dispatch Weight</th>
+<th class="py-3 px-4">Destination Bin</th>
+<th class="py-3 px-4">Verification Status</th>
+<th class="py-3 px-5 text-center">Action</th>
+</tr>
+</thead>
+<tbody class="text-xs text-on-surface divide-y-0">
+<!-- Row 1: SKU-9942 (Expedited / Deficit Alert) -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-4 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline">Ergonomic Desk Sensor</span>
+<span class="text-[11px] font-mono text-outline">SKU-9942-IOT</span>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Master Carton</span>
+<span class="text-[11px] text-outline">10 boxes of 15 units</span>
+</div>
+</td>
+<td class="py-4 px-4 text-right font-mono font-semibold text-on-surface text-sm font-variant-numeric:tabular-nums">
+              150 Units
+            </td>
+<td class="py-4 px-4 text-right font-mono text-on-surface-variant font-variant-numeric:tabular-nums">
+              57.0 kg
+            </td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[11px] font-mono font-medium bg-surface-container-high text-on-surface">
+                Zone 4B • Bay 02
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                Priority: -8 Unit Store Deficit
+              </span>
+</td>
+<td class="py-4 px-5 text-center">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium text-primary hover:bg-primary-container/30 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">barcode_scanner</span>
+<span>Pre-Scan</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: SKU-7719 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-4 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline">Industrial Barcode Scanner</span>
+<span class="text-[11px] font-mono text-outline">SKU-7719-HND</span>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Foam Insulated Cases</span>
+<span class="text-[11px] text-outline">Custom Pelican Racks</span>
+</div>
+</td>
+<td class="py-4 px-4 text-right font-mono font-semibold text-on-surface text-sm font-variant-numeric:tabular-nums">
+              50 Units
+            </td>
+<td class="py-4 px-4 text-right font-mono text-on-surface-variant font-variant-numeric:tabular-nums">
+              42.5 kg
+            </td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[11px] font-mono font-medium bg-surface-container-high text-on-surface">
+                Backroom • Aisle 01
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined text-[14px]">check</span>
+                Pre-Approved by Amit K.
+              </span>
+</td>
+<td class="py-4 px-5 text-center">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium text-outline hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Details</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: SKU-4410 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-4 px-5">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface font-headline">Thermal Pallet Wrap (Heavy Duty)</span>
+<span class="text-[11px] font-mono text-outline">SKU-4410-MAT</span>
+</div>
+</td>
+<td class="py-4 px-4 text-on-surface-variant">
+<div class="flex flex-col">
+<span class="font-medium text-on-surface">Pallet #PL-04</span>
+<span class="text-[11px] text-outline">Strapped Core Rolls</span>
+</div>
+</td>
+<td class="py-4 px-4 text-right font-mono font-semibold text-on-surface text-sm font-variant-numeric:tabular-nums">
+              250 Rolls
+            </td>
+<td class="py-4 px-4 text-right font-mono text-on-surface-variant font-variant-numeric:tabular-nums">
+              84.7 kg
+            </td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2 py-1 rounded-md text-[11px] font-mono font-medium bg-surface-container-high text-on-surface">
+                Cold Storage • Unit C
+              </span>
+</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-surface-container-high text-on-surface-variant">
+                Standard Restock
+              </span>
+</td>
+<td class="py-4 px-5 text-center">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium text-outline hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">info</span>
+<span>Details</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Totals Summary Row -->
+<div class="bg-surface-container-low p-4 px-5 flex flex-wrap items-center justify-between gap-4 text-xs font-medium">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span>Showing 3 Manifest Lines</span>
+<span class="text-outline">•</span>
+<span>Cross-Dock Batch ID: <code class="font-mono text-on-surface">BATCH-2024-08A</code></span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="text-outline">Summed Cargo Weight:</span>
+<span class="font-mono font-bold text-on-surface">184.20 kg</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-outline">Total Units Manifested:</span>
+<span class="font-mono font-bold text-primary text-sm">450 Units</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dual Column Layout: Handover Security Credentials & Dock Intake Checklist -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Driver & Security Credentials (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4">
+<div>
+<h3 class="text-base font-bold font-headline text-on-surface">Driver &amp; Transit Security Credentials</h3>
+<p class="text-xs text-on-surface-variant">Hardware cryptographic tags and tamper-evident custody handoff tokens</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-primary-container text-on-primary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            Hardware Seal Verified
+          </span>
+</div>
+<!-- Driver Profile & Seal Specs Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+<!-- Driver Detail Box -->
+<div class="p-4 rounded-xl bg-surface-container-low flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">badge</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-xs text-outline font-label uppercase">Dedicated Carrier Fleet</span>
+<span class="text-sm font-bold font-headline text-on-surface truncate">Rajesh Kumar</span>
+<span class="text-xs font-mono text-on-surface-variant mt-0.5">ID: BD-9941 • Van #11B</span>
+<div class="flex items-center gap-1.5 mt-2 text-xs font-medium text-primary">
+<span class="material-symbols-outlined text-[15px]">call</span>
+<span>+91 98201 44821</span>
+</div>
+</div>
+</div>
+<!-- NFC Tamper Seal Box -->
+<div class="p-4 rounded-xl bg-surface-container-low flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl text-on-primary-fixed-variant">nfc</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-xs text-outline font-label uppercase">Hardware NFC Lock</span>
+<span class="text-sm font-bold font-headline text-on-surface truncate">Tag #E-77402</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="text-xs font-semibold text-primary">Status: Unbroken / Nominal</span>
+</div>
+<span class="text-[11px] text-outline mt-1 font-mono">Frequency: 13.56 MHz ISO 14443</span>
+</div>
+</div>
+</div>
+<!-- Cryptographic Waybill Hash String -->
+<div class="mt-4 p-3.5 bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between text-xs text-outline pb-1 font-label">
+<span>Cryptographic Waybill Merkle Root (SHA-256)</span>
+<span class="text-primary font-semibold">Mesh Consensus 100%</span>
+</div>
+<div class="flex items-center justify-between gap-2">
+<code class="font-mono text-xs text-on-surface truncate">
+              e8f092b7c4301d4a67129f1092eacbf48991a0b3f81e31ac991a01b22e4
+            </code>
+<button class="shrink-0 p-1 rounded hover:bg-surface-container text-outline hover:text-on-surface" title="Copy Hash" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Offline Contingency Notice & QR Barcode Handoff -->
+<div class="mt-4 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-container-low/50 p-3.5 rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[20px]">qr_code_2</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Offline Scanner QR Handoff</span>
+<span class="text-[11px] text-on-surface-variant">Generates ephemeral signed manifest for offline bay tablets</span>
+</div>
+</div>
+<button class="shrink-0 px-3 py-1.5 rounded-lg text-xs font-semibold bg-surface-container-lowest text-on-surface hover:bg-surface-container-high transition-colors shadow-sm" type="button">
+          Display Bay QR
+        </button>
+</div>
+</div>
+<!-- Right Column: Destination Dock Intake Checklist / Protocol (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">fact_check</span>
+<h3 class="text-base font-bold font-headline text-on-surface">Destination Intake Protocol</h3>
+</div>
+<span class="text-[11px] font-mono font-semibold text-outline">SOP v4.2</span>
+</div>
+<p class="text-xs text-on-surface-variant pb-4">
+          Strict sequence enforced by the offline Zebra scanner PWA before stock balances update:
+        </p>
+<!-- 4 Step Protocol List -->
+<div class="space-y-3">
+<!-- Step 1 -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-primary-container text-on-primary-container text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+              1
+            </span>
+<div class="flex flex-col text-xs">
+<span class="font-semibold text-on-surface">Scan Vehicle NFC Seal Tag</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">Tap device against trailer lock before bay roll-up is triggered.</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-primary-container text-on-primary-container text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+              2
+            </span>
+<div class="flex flex-col text-xs">
+<span class="font-semibold text-on-surface">Blind Scan Master Carton Barcodes</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">Operator must count physical units without previewing expected balance.</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-primary-container text-on-primary-container text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+              3
+            </span>
+<div class="flex flex-col text-xs">
+<span class="font-semibold text-on-surface">Zero-Variance SQLite Commit</span>
+<span class="text-[11px] text-on-surface-variant mt-0.5">If 450 units match manifest, automatically merge CRDT into local store WAL.</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="p-3 rounded-xl bg-secondary-container/40 flex items-start gap-3">
+<span class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+              4
+            </span>
+<div class="flex flex-col text-xs">
+<span class="font-semibold text-on-surface">Multisig Discrepancy Gate</span>
+<span class="text-[11px] text-on-secondary-container font-medium mt-0.5">If delta &gt; 2 units, requires Store Lead &amp; Hub Auditor dual sign-off.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Action Status Footer -->
+<div class="mt-6 pt-4 flex items-center justify-between text-xs bg-surface-container-low p-3 rounded-xl">
+<span class="text-on-surface-variant">Assigned Auditor: <strong class="text-on-surface">Priya Varma (Dock #02)</strong></span>
+<button class="text-primary font-bold hover:underline flex items-center gap-1" type="button">
+<span>Arm Bay Scanner</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

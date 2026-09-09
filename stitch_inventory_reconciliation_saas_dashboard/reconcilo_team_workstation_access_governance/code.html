@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "background": "#f8faf8", "on-primary-container": "#40633f", "surface-container": "#eceeec", "secondary": "#785561", "tertiary": "#70518e", "surface-container-lowest": "#ffffff", "on-secondary-fixed-variant": "#5e3d4a", "surface-container-highest": "#e1e3e1", "on-secondary-fixed": "#2d131e", "primary-fixed": "#c5edbf", "outline": "#737970", "inverse-primary": "#a9d1a5", "on-tertiary-fixed": "#290a45", "primary-container": "#b6deb1", "inverse-on-surface": "#eff1ef", "secondary-container": "#ffd1e0", "tertiary-fixed-dim": "#ddb8fd", "error": "#ba1a1a", "on-background": "#191c1b", "surface-bright": "#f8faf8", "on-secondary-container": "#7a5764", "secondary-fixed": "#ffd9e5", "on-tertiary": "#ffffff", "tertiary-fixed": "#f0dbff", "on-tertiary-fixed-variant": "#573974", "on-surface-variant": "#424840", "on-error": "#ffffff", "surface-container-high": "#e6e9e7", "error-container": "#ffdad6", "on-error-container": "#93000a", "surface-variant": "#e1e3e1", "surface-tint": "#446743", "primary": "#446743", "surface-dim": "#d8dad9", "on-primary": "#ffffff", "on-tertiary-container": "#6d4d8a", "primary-fixed-dim": "#a9d1a5", "inverse-surface": "#2e3130", "tertiary-container": "#e6c8ff", "on-primary-fixed": "#002105", "secondary-fixed-dim": "#e7bbc9", "surface": "#f8faf8", "on-primary-fixed-variant": "#2c4e2d", "surface-container-low": "#f2f4f2", "outline-variant": "#c2c8be", "on-secondary": "#ffffff", "on-surface": "#191c1b" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": {}, "fontFamily": { "headline": [ "Plus Jakarta Sans" ], "display": [ "Plus Jakarta Sans" ], "body": [ "Inter" ], "label": [ "Inter" ] }, "fontSize": {} } } }</script></head><body class="bg-background font-body text-on-surface min-h-screen"><header class="fixed top-0 left-0 right-0 h-16 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(24,34,29,0.04)] z-50 flex items-center justify-between px-6"><div class="flex items-center gap-6"><div class="flex items-center gap-3 w-64 pr-4"><img alt="reconcilo logo.jpg" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VITw5XD29raJwz9Qz7fxiW79oWR_zSTbXOlzL_a2sK913TSG4CK2ntrm1Q2qHQPhtigYu0oznz-7zT6SxglNalc2imPcrBER7pYTaDvYIWkKrTR5oizb1yPHmNfvNBPu5sFGYqVbAy1eX6OpUF-z1p_Foo2xqj_MBtefI02G_I6kcHH1PlS-Nj4wd6jlzAEdbLbi-Hlt3-6G1Nax5grvUk9AV6KPC3FQWsxjb8CtMcbBzZ3Xa87iTP8ljWekpCz3fwaM76125DbbQ"/><span class="font-headline font-bold text-lg tracking-tight text-on-surface">Reconcilo<span class="text-xs font-semibold ml-1.5 px-2 py-0.5 rounded-full bg-primary-container text-on-primary-container">HQ</span></span></div><div class="relative w-80 lg:w-96"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span><input class="w-full h-10 pl-9 pr-14 rounded-xl bg-surface-container-low border-0 text-sm placeholder-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary-container text-on-surface" placeholder="Search entities, SKUs, nodes, telemetry..." type="text"/><kbd class="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 text-[11px] font-semibold text-on-surface-variant bg-surface-container rounded">⌘K</kbd></div></div><div class="flex items-center gap-4"><div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-container/40 text-on-primary-container text-xs font-medium"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span>P2P Mesh Online • 18ms Latency</span></div><div class="flex items-center gap-2"><button class="h-9 px-3 rounded-xl bg-surface-container-low hover:bg-surface-container-high hover:text-on-surface text-on-surface text-xs font-semibold flex items-center gap-1.5 transition-colors" type="button"><span class="material-symbols-outlined text-sm">sync</span>Force Sync</button><button class="h-9 px-3 rounded-xl bg-tertiary-container hover:bg-tertiary-fixed text-on-tertiary-container text-xs font-semibold flex items-center gap-1.5 transition-colors" type="button"><span class="material-symbols-outlined text-sm">add_box</span>New Inbound</button><button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary-container"></span></button></div><div class="h-6 w-px bg-surface-container-high"></div><div class="flex items-center gap-3"><div class="text-right hidden sm:block"><div class="text-xs font-bold leading-tight text-on-surface">HQ Governance</div><div class="text-[11px] text-on-surface-variant leading-tight">Global Administrator</div></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/50" src="https://lh3.googleusercontent.com/aida/AEtjO1VPpFknqhcpvbpvTw4nnKwTDas5rlRWA5896AYNNOlGveMz2VzCpPAlX6eq14uKJCt8LIJlUN_ckvjmy3O2Hfdz73h8JcgrEp3ONIYBSKdXWn66_kMYws0nUYub_IxVedtk30oFf3_KIu17oSc4upKKnvfsSsiARA073X-Bj7aoM8rN-k9SigNQxZXd2U0mZXAB9QnWvvhf0M2uPwJ6XQbfh4isggk7ElBQV7qW6Hgm6WRZss1Y4Yb7rXg_"/></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(24,34,29,0.02)] z-40 flex flex-col py-4 overflow-y-auto"><div class="px-4 mb-2"><span class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/70">Mission Control</span></div><nav class="space-y-1 px-3 mb-6" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="hq-overview" href="#"><span class="material-symbols-outlined text-lg">dashboard</span>HQ Overview</a><a class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="store-nodes-and-connectivity" href="#"><span class="material-symbols-outlined text-lg">hub</span>Store Nodes &amp; Connectivity</a><a class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="global-inventory" href="#"><span class="material-symbols-outlined text-lg">inventory_2</span>Global Inventory</a></nav><div class="px-4 mb-2"><span class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/70">Audit &amp; Reconciliation</span></div><nav class="space-y-1 px-3 mb-6" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="conflicts-and-review" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-lg">rule</span>Conflicts &amp; Review</div><span class="px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-secondary-container text-on-secondary-container">14</span></a><a class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="suspicious-activity" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-lg">warning</span>Suspicious Activity</div><span class="px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-error-container text-on-error-container">3</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="sync-logs-and-dlq" href="#"><span class="material-symbols-outlined text-lg">receipt_long</span>Sync Logs &amp; DLQ</a><a class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="reports-center" href="#"><span class="material-symbols-outlined text-lg">analytics</span>Reports Center</a></nav><div class="px-4 mb-2"><span class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant/70">Enterprise &amp; Setup</span></div><nav class="space-y-1 px-3 mb-4" data-active-classes="bg-primary-container text-on-primary-container font-semibold"><a aria-current="page" class="flex items-center gap-3 px-3 py-2 rounded-xl transition-all bg-primary-container text-on-primary-container font-semibold" data-path="team-and-access" href="#"><span class="material-symbols-outlined text-lg">badge</span>Team &amp; Access</a><a class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="supplier-portal" href="#"><span class="material-symbols-outlined text-lg">local_shipping</span>Supplier Portal</a><a class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="settings-and-thresholds" href="#"><span class="material-symbols-outlined text-lg">tune</span>Settings &amp; Thresholds</a></nav><div class="mt-auto px-4 pt-4 border-t border-surface-container-high/60"><div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2"><div class="flex items-center justify-between"><span class="text-[11px] font-semibold text-on-surface">Cluster Sync State</span><span class="h-2 w-2 rounded-full bg-primary"></span></div><p class="text-[11px] text-on-surface-variant">48 Edge store nodes active across 12 zones.</p></div></div></aside><div class="pl-64"><main class="relative pt-16 bg-background min-h-screen w-full px-8 pb-12"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow Overlay (strictly contained) -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-32 right-12 w-96 h-96 rounded-full bg-gradient-to-br from-primary-container/20 via-tertiary-container/15 to-transparent blur-3xl pointer-events-none"></div>
+<div class="absolute top-48 left-1/3 w-80 h-80 rounded-full bg-gradient-to-tr from-secondary-container/20 via-primary-container/10 to-transparent blur-3xl pointer-events-none"></div>
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8">
+<div class="space-y-2 max-w-3xl">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide uppercase bg-surface-container text-on-surface-variant">Section 7.4 · Item 15</span>
+<span class="h-1.5 w-1.5 rounded-full bg-outline-variant"></span>
+<span class="text-xs font-medium text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">verified_user</span>
+            Zero-Trust Local Consensus
+          </span>
+</div>
+<h1 class="text-3xl lg:text-4xl font-headline font-bold text-on-surface tracking-tight">Team &amp; Workstation Access Governance</h1>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+          Manage regional operator credentials, cryptographic terminal bindings, role permissions, and manager PIN overrides across 18 store branches.
+        </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="h-10 px-4 rounded-xl bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-all duration-200 text-xs font-semibold flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+          Export Audit Manifest
+        </button>
+<button class="h-10 px-4 rounded-xl bg-primary text-on-primary hover:opacity-90 active:scale-[0.98] transition-all duration-150 text-xs font-semibold flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-base">person_add</span>
+          + Provision New Operator
+        </button>
+</div>
+</div>
+<!-- Top KPI Metrics Grid (4 Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Total Operators</span>
+<div class="text-3xl font-headline font-bold text-on-surface tracking-tight tabular-nums">64 <span class="text-sm font-normal text-on-surface-variant">Active</span></div>
+</div>
+<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary-container text-on-primary-container flex items-center gap-1">
+<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+            100% Verified
+          </span>
+</div>
+<div class="mt-4 pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-2.5 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>48 Scanners · 12 Managers</span>
+<span class="font-semibold text-on-surface">4 HQ Admins</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Assigned Terminals</span>
+<div class="text-3xl font-headline font-bold text-on-surface tracking-tight tabular-nums">48 <span class="text-sm font-normal text-on-surface-variant">Nodes</span></div>
+</div>
+<div class="p-2 rounded-xl bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-xl">token</span>
+</div>
+</div>
+<div class="mt-4 pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-2.5 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary">lock</span>
+            TPM 2.0 Anchored
+          </span>
+<span class="font-semibold text-on-surface">0 Floating Keys</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Pending Key Rotations</span>
+<div class="text-3xl font-headline font-bold text-on-surface tracking-tight tabular-nums">3 <span class="text-sm font-normal text-on-surface-variant">Required</span></div>
+</div>
+<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-tertiary-container text-on-tertiary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+            14d Offline Cycle
+          </span>
+</div>
+<div class="mt-4 pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-2.5 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Leases Nearing Expiry</span>
+<span class="font-semibold text-tertiary">2 Stores Affected</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">Manager Overrides (24h)</span>
+<div class="text-3xl font-headline font-bold text-on-surface tracking-tight tabular-nums">9 <span class="text-sm font-normal text-on-surface-variant">Events</span></div>
+</div>
+<span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">shield_lock</span>
+            PIN Verified
+          </span>
+</div>
+<div class="mt-4 pt-3 bg-surface-container-low/50 -mx-5 -mb-5 px-5 py-2.5 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Discrepancy &amp; DLQ Writes</span>
+<span class="font-semibold text-secondary">Zero Breaches</span>
+</div>
+</div>
+</div>
+<!-- Main Workspace Layout: 12-column grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Left / Main Directory (8 cols on XL) -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- Filter & Search Toolbar Container -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-3">
+<div class="flex flex-col sm:flex-row gap-3 items-center justify-between">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full h-11 pl-11 pr-4 rounded-xl bg-surface-container-low border-0 text-xs font-medium text-on-surface placeholder-on-surface-variant focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search staff name, employee ID, terminal MAC or store branch..." type="text"/>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-auto shrink-0">
+<button class="h-11 px-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-semibold flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-base">filter_list</span>
+                Filters
+              </button>
+<button class="h-11 px-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-semibold flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-base">sort</span>
+                Sort
+              </button>
+</div>
+</div>
+<!-- Filter Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+<button class="px-3 py-1.5 rounded-full bg-on-surface text-surface font-semibold shrink-0">All Users (64)</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium shrink-0 transition-colors">Store Managers (12)</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium shrink-0 transition-colors">POS &amp; Floor Auditors (48)</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium shrink-0 transition-colors">HQ Administrators (4)</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium shrink-0 transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">lock</span>
+              Hardware Binding Locked
+            </button>
+</div>
+</div>
+<!-- Master Operators Directory Table Card -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<div class="p-4 flex items-center justify-between bg-surface-container-low/40">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-xl">folder_shared</span>
+<div>
+<h3 class="font-headline text-sm font-bold text-on-surface">Master Operators Directory</h3>
+<p class="text-[11px] text-on-surface-variant">Cryptographic credentials mapped to store hardware and physical MAC boundaries</p>
+</div>
+</div>
+<span class="text-[11px] font-semibold text-on-surface-variant">Live P2P Leases Active</span>
+</div>
+<!-- Table with strict layout & no arbitrary borders -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-[11px] font-semibold uppercase tracking-wider text-on-surface-variant">
+<th class="py-3 px-4">Operator &amp; ID</th>
+<th class="py-3 px-4">Assigned Store Node</th>
+<th class="py-3 px-4">Role &amp; Privileges</th>
+<th class="py-3 px-4">Bound Terminal &amp; Lease</th>
+<th class="py-3 px-4 text-center">Crypto Auth Status</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body">
+<!-- Row 1: Sarah Jenkins -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/50 text-on-primary-container font-bold flex items-center justify-center shrink-0">
+                        SJ
+                      </div>
+<div class="min-w-0">
+<div class="font-semibold text-on-surface leading-snug">Sarah Jenkins</div>
+<div class="text-[11px] text-on-surface-variant tabular-nums font-mono">EMP-8841</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">WH-West Operations</div>
+<div class="text-[11px] text-on-surface-variant">Cluster Zone #04 · San Jose</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-secondary-container/50 text-on-secondary-container">
+                      Store Operations Mgr
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">desktop_windows</span>
+<span class="font-semibold text-on-surface">Terminal A-04</span>
+</div>
+<div class="text-[11px] text-primary flex items-center gap-1 tabular-nums mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                      12d lease left
+                    </div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined text-xs">key</span>
+                      FIDO2 / YubiKey
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Quick Audit">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Options">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Elena Rostova -->
+<tr class="bg-surface-container-lowest hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/50 text-on-tertiary-container font-bold flex items-center justify-center shrink-0">
+                        ER
+                      </div>
+<div class="min-w-0">
+<div class="font-semibold text-on-surface leading-snug">Elena Rostova</div>
+<div class="text-[11px] text-on-surface-variant tabular-nums font-mono">EMP-9022</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Mumbai Central Flagship</div>
+<div class="text-[11px] text-on-surface-variant">Store Node #09 · Terminal Mesh</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container text-on-surface-variant">
+                      POS &amp; Floor Auditor
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">document_scanner</span>
+<span class="font-semibold text-on-surface">Handheld Scanner B2</span>
+</div>
+<div class="text-[11px] text-on-surface-variant flex items-center gap-1 tabular-nums mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant inline-block"></span>
+                      4d lease left
+                    </div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-surface-container-high text-on-surface">
+<span class="material-symbols-outlined text-xs text-primary">security</span>
+                      SHA-256 Passcode
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Quick Audit">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Options">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Devin Patel (Alert Expired Lease) -->
+<tr class="bg-secondary-container/10 hover:bg-secondary-container/20 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container font-bold flex items-center justify-center shrink-0">
+                        DP
+                      </div>
+<div class="min-w-0">
+<div class="font-semibold text-on-surface leading-snug">Devin Patel</div>
+<div class="text-[11px] text-on-surface-variant tabular-nums font-mono">EMP-7719</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Bangalore Tech Park Hub</div>
+<div class="text-[11px] text-on-surface-variant">Store Node #02 · Subnet Alpha</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container text-on-surface-variant">
+                      POS &amp; Inventory Auditor
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-secondary">desktop_windows</span>
+<span class="font-semibold text-on-surface">Terminal B-01</span>
+</div>
+<div class="text-[11px] font-semibold text-secondary flex items-center gap-1 tabular-nums mt-0.5">
+<span class="material-symbols-outlined text-xs">warning</span>
+                      14d Expired Lease
+                    </div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-xs">sync_problem</span>
+                      Lease Expiry Alert
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="px-2.5 py-1 rounded-lg bg-secondary-container text-on-secondary-container hover:opacity-90 font-medium text-[11px] transition-all" title="Renew Lease">
+                        Renew
+                      </button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Options">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Marcus Cole -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/40 text-on-primary-container font-bold flex items-center justify-center shrink-0">
+                        MC
+                      </div>
+<div class="min-w-0">
+<div class="font-semibold text-on-surface leading-snug">Marcus Cole</div>
+<div class="text-[11px] text-on-surface-variant tabular-nums font-mono">EMP-6401</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Chennai Harbor Facility</div>
+<div class="text-[11px] text-on-surface-variant">Logistics Bay 12 · Edge Local</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container text-on-surface-variant">
+                      Floor Auditor
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-on-surface-variant">barcode_scanner</span>
+<span class="font-semibold text-on-surface">Scanner Gun #04</span>
+</div>
+<div class="text-[11px] text-on-surface-variant flex items-center gap-1 tabular-nums mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+                      6d lease left
+                    </div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-surface-container-high text-on-surface">
+<span class="material-symbols-outlined text-xs text-primary">fingerprint</span>
+                      Biometric Tap
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Quick Audit">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Options">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: Dr. Anil Varma -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container font-bold flex items-center justify-center shrink-0">
+                        AV
+                      </div>
+<div class="min-w-0">
+<div class="font-semibold text-on-surface leading-snug">Dr. Anil Varma</div>
+<div class="text-[11px] text-on-surface-variant tabular-nums font-mono">EMP-1102</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">HQ Global Ops</div>
+<div class="text-[11px] text-on-surface-variant">Worldwide Root Infrastructure</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-tertiary-container text-on-tertiary-container">
+                      HQ Inventory Admin
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-tertiary">hub</span>
+<span class="font-semibold text-on-surface">Global Console</span>
+</div>
+<div class="text-[11px] text-tertiary font-medium tabular-nums mt-0.5">
+                      Unrestricted
+                    </div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] font-semibold bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined text-xs">memory</span>
+                      Hardware TPM Key
+                    </span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Quick Audit">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" title="Options">
+<span class="material-symbols-outlined text-lg">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Bar -->
+<div class="p-4 bg-surface-container-low/30 flex items-center justify-between text-xs text-on-surface-variant">
+<span class="tabular-nums">Showing <span class="font-semibold text-on-surface">5</span> of <span class="font-semibold text-on-surface">64</span> operators across 18 nodes</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-medium disabled:opacity-40 transition-colors" disabled="">
+                Previous
+              </button>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded-lg bg-primary-container text-on-primary-container font-semibold flex items-center justify-center">1</button>
+<button class="w-7 h-7 rounded-lg hover:bg-surface-container-low text-on-surface-variant font-medium flex items-center justify-center transition-colors">2</button>
+<button class="w-7 h-7 rounded-lg hover:bg-surface-container-low text-on-surface-variant font-medium flex items-center justify-center transition-colors">3</button>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-medium transition-colors">
+                Next
+              </button>
+</div>
+</div>
+</div>
+<!-- Inline Visual Audit Snapshot (SVG Activity Graph) -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5">
+<h4 class="font-headline text-sm font-bold text-on-surface">Workstation Lease Rotations &amp; Overrides (Last 14 Days)</h4>
+<p class="text-[11px] text-on-surface-variant">Daily velocity of TPM handshake renewals vs. authorized supervisor sign-offs</p>
+</div>
+<div class="flex items-center gap-4 text-xs">
+<span class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span> Handshake Leases
+              </span>
+<span class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span> Manager PIN Overrides
+              </span>
+</div>
+</div>
+<!-- Pure Inline SVG Telemetry Sparkline -->
+<div class="w-full h-24 pt-2">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 700 80">
+<defs>
+<lineargradient id="primaryArea" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#446743" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#446743" stop-opacity="0.0"></stop>
+</lineargradient>
+<lineargradient id="secondaryArea" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#785561" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#785561" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Lease line filled -->
+<path d="M0,60 Q50,45 100,55 T200,40 T300,25 T400,30 T500,20 T600,15 T700,22 L700,80 L0,80 Z" fill="url(#primaryArea)"></path>
+<path d="M0,60 Q50,45 100,55 T200,40 T300,25 T400,30 T500,20 T600,15 T700,22" fill="none" stroke="#446743" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Overrides line filled -->
+<path d="M0,72 Q60,68 120,70 T240,65 T360,50 T480,58 T600,45 T700,52 L700,80 L0,80 Z" fill="url(#secondaryArea)"></path>
+<path d="M0,72 Q60,68 120,70 T240,65 T360,50 T480,58 T600,45 T700,52" fill="none" stroke="#785561" stroke-dasharray="4 3" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex justify-between text-[10px] uppercase font-semibold text-on-surface-variant/70 tabular-nums">
+<span>May 10</span>
+<span>May 14</span>
+<span>May 18</span>
+<span>May 21</span>
+<span>Today (Live)</span>
+</div>
+</div>
+</div>
+<!-- Right Section: Role Governance & Cryptographic Overrides Drawer (4 cols on XL) -->
+<div class="xl:col-span-4 flex flex-col gap-6">
+<!-- 1. Role Permission Matrix Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between pb-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">admin_panel_settings</span>
+<h3 class="font-headline text-sm font-bold text-on-surface">Role Permission Matrix</h3>
+</div>
+<span class="text-[11px] font-semibold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">v4.2 Rulebook</span>
+</div>
+<p class="text-xs text-on-surface-variant">Hierarchical capability barriers enforced across store and warehouse local SQLite storage.</p>
+<div class="space-y-3 pt-1">
+<!-- Role 1 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low/60 space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">Store Staff / Auditor</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-surface-container-highest text-on-surface-variant">Edge Level</span>
+</div>
+<ul class="text-[11px] text-on-surface-variant space-y-1">
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+                  Local SQLite read/write operations
+                </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+                  ₹50,000 offline sales buffer limit
+                </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+                  Fast barcode sweep delta increments
+                </li>
+</ul>
+</div>
+<!-- Role 2 -->
+<div class="p-3.5 rounded-xl bg-secondary-container/20 space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-secondary-container">Store Operations Manager</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-secondary-container text-on-secondary-container">Regional Authority</span>
+</div>
+<ul class="text-[11px] text-on-surface-variant space-y-1">
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-secondary">check_circle</span>
+                  Physical variance ledger sign-offs
+                </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-secondary">check_circle</span>
+                  PIN override authorization for floor sweeps
+                </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-secondary">check_circle</span>
+                  DLQ quarantine inventory release trigger
+                </li>
+</ul>
+</div>
+<!-- Role 3 -->
+<div class="p-3.5 rounded-xl bg-tertiary-container/20 space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-on-tertiary-container">HQ Administrator</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-tertiary-container text-on-tertiary-container">Global Root</span>
+</div>
+<ul class="text-[11px] text-on-surface-variant space-y-1">
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-tertiary">check_circle</span>
+                  Multi-store cluster sync reconfiguration
+                </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-tertiary">check_circle</span>
+                  Heuristic dispute rule editor &amp; ML thresholds
+                </li>
+<li class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-tertiary">check_circle</span>
+                  Global SKU master taxonomy updates
+                </li>
+</ul>
+</div>
+</div>
+</div>
+<!-- 2. Manager Override Security PIN Management -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">pin</span>
+<h3 class="font-headline text-sm font-bold text-on-surface">Manager Override PIN Security</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-primary-container text-on-primary-container">
+              Enforced
+            </span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low/70 space-y-3">
+<div class="flex items-center justify-between text-xs">
+<span class="text-on-surface-variant font-medium">Master Override Hash:</span>
+<span class="font-mono text-[11px] font-bold text-on-surface tracking-wider bg-surface-container px-2 py-0.5 rounded">
+                •••• •••• •••• 9F2C
+              </span>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Last changed 14 days ago by:</span>
+<span class="font-semibold text-on-surface">Sarah Jenkins (SJ)</span>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Algorithm Integrity:</span>
+<span class="font-mono text-[10px] font-semibold text-primary bg-primary-container/40 px-2 py-0.5 rounded">SHA-256 Salted</span>
+</div>
+</div>
+<div class="pt-1">
+<button class="w-full h-10 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-semibold flex items-center justify-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-base text-secondary">lock_reset</span>
+              Rotate Supervisor Override Keys
+            </button>
+</div>
+</div>
+<!-- 3. Subnet Workstation Topology Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">device_hub</span>
+<div>
+<h3 class="font-headline text-sm font-bold text-on-surface">Subnet Workstation Topology</h3>
+<p class="text-[11px] text-on-surface-variant">Mumbai Central Hub · Local Cluster #09</p>
+</div>
+</div>
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+</div>
+<!-- Interactive Node Visualization -->
+<div class="p-4 rounded-xl bg-surface-container-low space-y-3">
+<div class="flex items-center justify-between pb-2 border-b border-surface-container-high/50">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-xs">router</span>
+</div>
+<div>
+<div class="text-xs font-bold text-on-surface">Local Edge Master Node</div>
+<div class="text-[10px] font-mono text-on-surface-variant">IP: 192.168.4.1 · P2P Consensus Active</div>
+</div>
+</div>
+<span class="text-[10px] font-bold text-primary">0ms Delta</span>
+</div>
+<!-- 4 Bound Terminals Connected to the Hub -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<div class="p-2.5 rounded-lg bg-surface-container-lowest flex items-center gap-2 shadow-2xs">
+<span class="material-symbols-outlined text-sm text-primary">point_of_sale</span>
+<div class="min-w-0 flex-1">
+<div class="text-[11px] font-bold text-on-surface truncate">POS Terminal 01</div>
+<div class="text-[10px] text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Verified
+                  </div>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest flex items-center gap-2 shadow-2xs">
+<span class="material-symbols-outlined text-sm text-primary">point_of_sale</span>
+<div class="min-w-0 flex-1">
+<div class="text-[11px] font-bold text-on-surface truncate">POS Terminal 02</div>
+<div class="text-[10px] text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Verified
+                  </div>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest flex items-center gap-2 shadow-2xs">
+<span class="material-symbols-outlined text-sm text-primary">barcode_scanner</span>
+<div class="min-w-0 flex-1">
+<div class="text-[11px] font-bold text-on-surface truncate">Scanner Bay B2</div>
+<div class="text-[10px] text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Verified
+                  </div>
+</div>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest flex items-center gap-2 shadow-2xs">
+<span class="material-symbols-outlined text-sm text-primary">tablet_mac</span>
+<div class="min-w-0 flex-1">
+<div class="text-[11px] font-bold text-on-surface truncate">Inventory Tab 04</div>
+<div class="text-[10px] text-primary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span> Verified
+                  </div>
+</div>
+</div>
+</div>
+<div class="pt-1 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Cryptographic consensus state:</span>
+<span class="font-semibold text-on-surface">4 / 4 Nodes Quorate</span>
+</div>
+</div>
+<!-- Store Security Notice Banner -->
+<div class="p-3 rounded-xl bg-primary-container/20 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-base shrink-0 mt-0.5">verified</span>
+<p class="text-[11px] text-on-primary-container leading-relaxed">
+              Branch physical MAC address filters enforce terminal containment within 15 meters of warehouse gateway beacons.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

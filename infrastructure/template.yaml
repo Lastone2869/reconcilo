@@ -1,0 +1,360 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Reconcilo - Offline-First Multi-Store Inventory Reconciliation System Architecture
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 256
+    Runtime: nodejs20.x
+    Environment:
+      Variables:
+        NODE_ENV: production
+        AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
+
+Resources:
+  # ------------------------------------------------------------
+  # 1. Amazon Cognito
+  # ------------------------------------------------------------
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: reconcilo-users
+      AutoVerifiedAttributes:
+        - email
+      UsernameAttributes:
+        - email
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+          RequireLowercase: true
+          RequireNumbers: true
+          RequireSymbols: false
+          RequireUppercase: true
+
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: reconcilo-web-app
+      UserPoolId: !Ref UserPool
+      GenerateSecret: false
+      ExplicitAuthFlows:
+        - ALLOW_USER_SRP_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+        - ALLOW_USER_PASSWORD_AUTH
+
+  UserPoolGroupStaff:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: STORE_STAFF
+      UserPoolId: !Ref UserPool
+
+  UserPoolGroupManager:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: STORE_MANAGER
+      UserPoolId: !Ref UserPool
+
+  UserPoolGroupAdmin:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: ADMIN
+      UserPoolId: !Ref UserPool
+
+  UserPoolGroupSupplier:
+    Type: AWS::Cognito::UserPoolGroup
+    Properties:
+      GroupName: SUPPLIER
+      UserPoolId: !Ref UserPool
+
+  # ------------------------------------------------------------
+  # 2. DynamoDB Tables (architecture.md §16.1)
+  # ------------------------------------------------------------
+  StoresTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Stores
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: store_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: store_id
+          KeyType: HASH
+
+  UsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Users
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: user_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: user_id
+          KeyType: HASH
+
+  ProductsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Products
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: product_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: product_id
+          KeyType: HASH
+
+  InventoryTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Inventory
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: store_id
+          AttributeType: S
+        - AttributeName: product_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: store_id
+          KeyType: HASH
+        - AttributeName: product_id
+          KeyType: RANGE
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
+  TransactionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Transactions
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: transaction_id
+          AttributeType: S
+        - AttributeName: store_id
+          AttributeType: S
+        - AttributeName: created_at
+          AttributeType: S
+      KeySchema:
+        - AttributeName: transaction_id
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: store_id-created_at-index
+          KeySchema:
+            - AttributeName: store_id
+              KeyType: HASH
+            - AttributeName: created_at
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+
+  SyncBatchesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: SyncBatches
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: batch_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: batch_id
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
+  ConflictsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Conflicts
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: conflict_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: conflict_id
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
+  SuspiciousActivityTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: SuspiciousActivity
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: alert_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: alert_id
+          KeyType: HASH
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+
+  NotificationsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Notifications
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: notification_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: notification_id
+          KeyType: HASH
+
+  AuditRecordsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: AuditRecords
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: audit_id
+          AttributeType: S
+        - AttributeName: created_at
+          AttributeType: S
+      KeySchema:
+        - AttributeName: audit_id
+          KeyType: HASH
+        - AttributeName: created_at
+          KeyType: RANGE
+
+  # ------------------------------------------------------------
+  # 3. S3 Bucket
+  # ------------------------------------------------------------
+  SyncBatchesBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'reconcilo-sync-batches-${AWS::AccountId}'
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders: ['*']
+            AllowedMethods: [GET, PUT, POST, DELETE]
+            AllowedOrigins: ['*']
+
+  # ------------------------------------------------------------
+  # 4. SQS FIFO Queues
+  # ------------------------------------------------------------
+  ProcessingDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: reconcilo-processing-dlq.fifo
+      FifoQueue: true
+
+  ProcessingQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: reconcilo-processing-queue.fifo
+      FifoQueue: true
+      RedrivePolicy:
+        deadLetterTargetArn: !GetAtt ProcessingDLQ.Arn
+        maxReceiveCount: 3
+
+  # ------------------------------------------------------------
+  # 5. SNS Topics
+  # ------------------------------------------------------------
+  OperationalAlertsTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: reconcilo-operational-alerts
+
+  # ------------------------------------------------------------
+  # 6. Lambda Functions (Backend Entry Points)
+  # ------------------------------------------------------------
+  IngestionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-ingestion
+      CodeUri: ../backend/
+      Handler: dist/handlers/ingestion.handler.handler
+      Environment:
+        Variables:
+          SQS_QUEUE_URL: !Ref ProcessingQueue
+
+  ProcessingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-processing
+      CodeUri: ../backend/
+      Handler: dist/handlers/processing.handler.handler
+
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-auth
+      CodeUri: ../backend/
+      Handler: dist/handlers/auth.handler.handler
+
+  InventoryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-inventory
+      CodeUri: ../backend/
+      Handler: dist/handlers/inventory.handler.handler
+
+  TransactionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-transactions
+      CodeUri: ../backend/
+      Handler: dist/handlers/transaction.handler.handler
+
+  SyncBatchFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-sync-batch
+      CodeUri: ../backend/
+      Handler: dist/handlers/sync-batch.handler.handler
+
+  DashboardFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-dashboard
+      CodeUri: ../backend/
+      Handler: dist/handlers/dashboard.handler.handler
+
+  ConflictFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-conflicts
+      CodeUri: ../backend/
+      Handler: dist/handlers/conflict.handler.handler
+
+  SuspiciousFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-suspicious
+      CodeUri: ../backend/
+      Handler: dist/handlers/suspicious-activity.handler.handler
+
+  AdminFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-admin
+      CodeUri: ../backend/
+      Handler: dist/handlers/admin.handler.handler
+
+  StreamConsumerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-stream-consumer
+      CodeUri: ../backend/
+      Handler: dist/handlers/stream-consumer.handler.handler
+
+  WebSocketFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-websocket
+      CodeUri: ../backend/
+      Handler: dist/handlers/websocket.handler.handler
+
+Outputs:
+  UserPoolId:
+    Value: !Ref UserPool
+  UserPoolClientId:
+    Value: !Ref UserPoolClient
+  S3BucketName:
+    Value: !Ref SyncBatchesBucket
+  SQSQueueUrl:
+    Value: !Ref ProcessingQueue

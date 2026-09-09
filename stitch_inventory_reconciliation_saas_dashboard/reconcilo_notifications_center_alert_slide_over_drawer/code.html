@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface": "#f8faf8", "tertiary-fixed-dim": "#ddb8fd", "outline": "#737970", "on-tertiary-fixed": "#290a45", "error": "#ba1a1a", "on-tertiary-container": "#6d4d8a", "on-primary-fixed-variant": "#2c4e2d", "secondary": "#785561", "outline-variant": "#c2c8be", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#002105", "on-secondary-fixed": "#2d131e", "on-secondary": "#ffffff", "inverse-surface": "#2e3130", "surface-dim": "#d8dad9", "on-surface-variant": "#424840", "surface-container-highest": "#e1e3e1", "surface-container-low": "#f2f4f2", "tertiary": "#70518e", "on-tertiary-fixed-variant": "#573974", "background": "#f8faf8", "primary-fixed": "#c5edbf", "inverse-on-surface": "#eff1ef", "on-primary": "#ffffff", "on-background": "#191c1b", "primary-container": "#b6deb1", "on-secondary-container": "#7a5764", "surface-container": "#eceeec", "on-primary-container": "#40633f", "secondary-container": "#ffd1e0", "surface-container-high": "#e6e9e7", "on-error": "#ffffff", "on-error-container": "#93000a", "error-container": "#ffdad6", "secondary-fixed-dim": "#e7bbc9", "on-tertiary": "#ffffff", "on-secondary-fixed-variant": "#5e3d4a", "surface-variant": "#e1e3e1", "tertiary-container": "#e6c8ff", "primary-fixed-dim": "#a9d1a5", "secondary-fixed": "#ffd9e5", "inverse-primary": "#a9d1a5", "surface-bright": "#f8faf8", "on-surface": "#191c1b", "surface-tint": "#446743", "tertiary-fixed": "#f0dbff", "primary": "#446743" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": {}, "fontFamily": { "headline": [ "Plus Jakarta Sans" ], "display": [ "Plus Jakarta Sans" ], "body": [ "Inter" ], "label": [ "Inter" ] }, "fontSize": {} } } }</script></head><body class="bg-surface font-body text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_16px_rgba(24,34,29,0.04)]"><div class="h-16 px-6 flex items-center gap-3 bg-surface-container-lowest"><img alt="reconcilo logo.jpg" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VITw5XD29raJwz9Qz7fxiW79oWR_zSTbXOlzL_a2sK913TSG4CK2ntrm1Q2qHQPhtigYu0oznz-7zT6SxglNalc2imPcrBER7pYTaDvYIWkKrTR5oizb1yPHmNfvNBPu5sFGYqVbAy1eX6OpUF-z1p_Foo2xqj_MBtefI02G_I6kcHH1PlS-Nj4wd6jlzAEdbLbi-Hlt3-6G1Nax5grvUk9AV6KPC3FQWsxjb8CtMcbBzZ3Xa87iTP8ljWekpCz3fwaM76125DbbQ"/><div class="flex flex-col"><span class="text-base font-headline font-bold text-on-surface tracking-tight leading-tight">Reconcilo</span><span class="text-[11px] font-label font-medium text-outline uppercase tracking-wider">HQ &amp; Mesh Ops</span></div></div><div class="px-4 py-2"><div class="px-3 py-2 bg-surface-container-low rounded-xl flex items-center justify-between"><div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="text-xs font-medium text-on-surface">Mesh Node HQ-01</span></div><span class="text-[10px] font-semibold bg-surface-container-lowest px-2 py-0.5 rounded-full text-on-surface-variant shadow-[0_1px_3px_rgba(0,0,0,0.02)]">Local DB Ready</span></div></div><nav class="flex-1 px-3 py-3 space-y-1 overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-xl"><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="hq-overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span>HQ Overview</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="store-nodes-and-connectivity" href="#"><span class="material-symbols-outlined text-[20px]">hub</span><span>Store Nodes &amp; Connectivity</span></a><a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 transition-all bg-primary-container text-on-primary-container font-semibold rounded-xl" data-path="global-inventory" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span>Global Inventory</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all justify-between" data-path="conflicts-and-review" href="#"> <div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">rule</span><span>Conflicts &amp; Review</span></div><span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold">14</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="sync-logs-and-dlq" href="#"><span class="material-symbols-outlined text-[20px]">sync_saved_locally</span><span>Sync Logs &amp; DLQ</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="reports-center" href="#"><span class="material-symbols-outlined text-[20px]">insights</span><span>Reports Center</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span>Settings</span></a></nav><div class="p-4 space-y-3 bg-surface-container-lowest"><div class="p-3.5 bg-surface-container-low rounded-xl flex flex-col gap-2"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5 text-xs font-headline font-semibold text-on-surface"><span class="material-symbols-outlined text-primary text-[18px]">qr_code_scanner</span><span>Scanner PWA</span></div><span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-primary-fixed text-on-primary-fixed-variant">v4.8</span></div><p class="text-[11px] text-on-surface-variant leading-relaxed">Offline barcode &amp; pallet scanner client deployed across 48 hand terminals.</p><div class="flex items-center justify-between pt-1"><span class="text-[11px] font-medium text-primary">Launch Terminal</span><span class="material-symbols-outlined text-primary text-[16px]">open_in_new</span></div></div><div class="pt-2 flex items-center justify-between px-1 text-xs text-on-surface-variant"><a class="flex items-center gap-1.5 hover:text-on-surface transition-colors" data-path="settings" href="#"><span class="material-symbols-outlined text-[18px]">help</span><span>Support</span></a><a class="flex items-center gap-1.5 hover:text-error transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Logout</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(24,34,29,0.03)] z-40 px-8 flex items-center justify-between gap-6"><div class="flex-1 max-w-xl"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3.5 text-outline text-[20px] pointer-events-none">search</span><input class="w-full h-10 pl-10 pr-4 bg-surface-container-low text-sm text-on-surface rounded-xl placeholder:text-outline focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container focus:outline-none transition-all" placeholder="Search store nodes, SKU, batch, ERP transaction..." type="text"/></div></div><div class="flex items-center gap-3.5"><div class="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="text-xs font-medium text-on-surface">P2P Mesh Online</span><span class="text-outline text-xs">•</span><span class="text-xs font-medium text-on-surface-variant">18ms Latency</span></div><div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-tertiary-container"><span class="material-symbols-outlined text-[16px] text-on-tertiary-container animate-spin">sync</span><span class="text-xs font-semibold text-on-tertiary-container">12 Queue Delta</span></div><button class="flex items-center gap-2 h-9 px-3.5 bg-primary hover:bg-on-primary-fixed-variant text-on-primary text-xs font-semibold rounded-xl transition-all shadow-[0_1px_2px_rgba(0,0,0,0.05)] active:scale-[0.98]" type="button"><span class="material-symbols-outlined text-[18px]">cached</span><span>Trigger Global Sync</span></button><div class="flex items-center gap-3 pl-2"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-fixed" src="https://lh3.googleusercontent.com/aida/AEtjO1VPpFknqhcpvbpvTw4nnKwTDas5rlRWA5896AYNNOlGveMz2VzCpPAlX6eq14uKJCt8LIJlUN_ckvjmy3O2Hfdz73h8JcgrEp3ONIYBSKdXWn66_kMYws0nUYub_IxVedtk30oFf3_KIu17oSc4upKKnvfsSsiARA073X-Bj7aoM8rN-k9SigNQxZXd2U0mZXAB9QnWvvhf0M2uPwJ6XQbfh4isggk7ElBQV7qW6Hgm6WRZss1Y4Yb7rXg_"/><div class="hidden 2xl:flex flex-col text-left"><span class="text-xs font-semibold text-on-surface leading-tight">Sarah Jenkins</span><span class="text-[11px] text-outline leading-tight">HQ Inventory Director</span></div></div></div></header><main class="w-full pt-16 px-8 py-6 bg-surface min-h-screen"><div class="flex flex-col w-full relative">
+<!-- Backdrop subtle ambient glow for the dashboard -->
+<div class="relative w-full pb-16">
+<!-- Header Section -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-6">
+<div class="space-y-1">
+<div class="flex items-center gap-2.5">
+<h1 class="text-2xl font-bold font-headline tracking-tight text-on-surface">Notifications &amp; System Telemetry Alerts</h1>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container">3 Live</span>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-surface-container-high text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+            SNS Fanout Active
+          </span>
+</div>
+<p class="text-sm text-on-surface-variant max-w-3xl">
+          Real-time Amazon SNS broadcast stream, store node connectivity events, and algorithmic anomaly notifications across 18 retail branches.
+        </p>
+</div>
+<!-- Action Bar -->
+<div class="flex items-center gap-2.5 flex-wrap">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-xs font-semibold shadow-sm hover:bg-surface-container-low transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">done_all</span>
+<span>Mark All as Read</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-xs font-semibold shadow-sm hover:bg-surface-container-low transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary">hub</span>
+<span>SNS Subscription Settings</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-container-low text-on-surface-variant text-xs font-semibold hover:text-error hover:bg-error-container/40 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">clear_all</span>
+<span>Clear Resolved (24)</span>
+</button>
+</div>
+</div>
+<!-- 4 KPI Telemetry Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+<!-- Critical Alerts Card -->
+<div class="relative overflow-hidden bg-secondary-container/40 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-semibold font-label text-on-secondary-container uppercase tracking-wider">Critical Alerts</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-on-surface">3</span>
+<span class="text-xs font-medium text-on-secondary-container">Unacknowledged</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container shadow-sm">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-xs text-on-secondary-container font-medium">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Supervisor action required
+          </span>
+<span class="font-bold text-secondary">SLAs active</span>
+</div>
+</div>
+<!-- Store Node Warnings Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-semibold font-label text-on-surface-variant uppercase tracking-wider">Store Node Warnings</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-on-surface">7</span>
+<span class="text-xs font-medium text-on-surface-variant">Active Events</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">lan</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-xs text-on-surface-variant">
+<span class="truncate">Clock drift &amp; SQLite WAL locks</span>
+<span class="font-semibold text-primary">4 auto-resolved</span>
+</div>
+</div>
+<!-- SNS Broadcast Health -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-semibold font-label text-on-surface-variant uppercase tracking-wider">SNS Broadcast Health</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-on-surface">99.98%</span>
+<span class="text-xs font-semibold text-primary px-1.5 py-0.5 rounded-full bg-primary-fixed">Parity</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded-xl bg-primary-container/60 flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[20px]">cell_tower</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-xs text-on-surface-variant">
+<span>0 dropped • 42ms avg latency</span>
+<span class="text-on-surface font-mono text-[11px]">ap-south-1</span>
+</div>
+</div>
+<!-- Auto-Quarantined Batches -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-xs font-semibold font-label text-on-surface-variant uppercase tracking-wider">Auto-Quarantined</span>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-bold font-headline text-on-surface">4</span>
+<span class="text-xs font-medium text-tertiary font-semibold">Batches in DLQ</span>
+</div>
+</div>
+<div class="w-9 h-9 rounded-xl bg-tertiary-container/60 flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-xs text-on-surface-variant">
+<span>Sent to Dead Letter Queue</span>
+<span class="font-semibold text-tertiary">SecOps daemon</span>
+</div>
+</div>
+</div>
+<!-- Filter Pills & Search Ribbon -->
+<div class="bg-surface-container-lowest rounded-2xl p-3.5 mb-5 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+<!-- Tabs -->
+<div class="flex items-center gap-1.5 overflow-x-auto pb-1 lg:pb-0">
+<button class="px-3 py-1.5 rounded-xl text-xs font-bold bg-primary text-on-primary whitespace-nowrap shadow-sm" type="button">
+          All Notifications (48)
+        </button>
+<button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-surface-container-low text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors flex items-center gap-1.5" type="button">
+<span>Critical &amp; DLQ</span>
+<span class="px-1.5 py-0.2 rounded-full bg-secondary-container text-on-secondary-container font-bold text-[10px]">4</span>
+</button>
+<button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-surface-container-low text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors flex items-center gap-1.5" type="button">
+<span>Discrepancy &amp; Shrink</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface-variant font-bold text-[10px]">12</span>
+</button>
+<button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-surface-container-low text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors flex items-center gap-1.5" type="button">
+<span>P2P Node Sync</span>
+<span class="px-1.5 py-0.2 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-bold text-[10px]">18</span>
+</button>
+<button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-surface-container-low text-on-surface-variant hover:text-on-surface whitespace-nowrap transition-colors" type="button">
+          Compliance &amp; SES (14)
+        </button>
+</div>
+<!-- Search & Date Filter -->
+<div class="flex items-center gap-2">
+<div class="relative w-full sm:w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-outline text-[18px] pointer-events-none">search</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-xl bg-surface-container-low text-xs text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" placeholder="Search alert ID, store node, SKU, or ARN..." type="text" value=""/>
+</div>
+<button class="h-9 px-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-xs font-medium text-on-surface flex items-center gap-1.5 whitespace-nowrap transition-all" type="button">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+<span>Last 24 Hours</span>
+<span class="material-symbols-outlined text-[16px] text-outline">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Main Alert Stream List (High contrast, crisp cards) -->
+<div class="space-y-3">
+<!-- Row 1 (Target of Slide-over inspection, high priority) -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 cursor-pointer">
+<!-- Left color accent bar -->
+<div class="absolute left-0 top-3 bottom-3 w-1.5 bg-secondary rounded-r-full"></div>
+<div class="flex items-start gap-3.5 pl-2 flex-1">
+<div class="w-10 h-10 rounded-xl bg-secondary-container/70 flex items-center justify-center text-on-secondary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">device_thermostat</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-secondary-container text-on-secondary-container">#CRITICAL</span>
+<span class="font-mono text-xs font-bold text-on-surface">ALT-9041</span>
+<span class="text-xs text-outline">•</span>
+<span class="text-xs font-semibold text-on-surface">Store Node #MUM-101 (Mumbai Central Flagship)</span>
+<span class="text-xs text-outline">•</span>
+<span class="text-xs text-on-surface-variant font-mono">Terminal A-04</span>
+</div>
+<p class="text-sm font-semibold text-on-surface">
+              8x Optical Scanners marked as damaged at 02:45 AM — Discrepancy delta exceeds threshold (-₹18,200)
+            </p>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant flex-wrap pt-0.5">
+<span class="inline-flex items-center gap-1 font-mono text-[11px] bg-surface-container-low px-2 py-0.5 rounded-md text-on-surface">
+                SKU-1082-SCAN
+              </span>
+<span>Operator: <strong class="text-on-surface font-medium">Elena Rostova</strong></span>
+<span>Timestamp drift: +4h 12m</span>
+<span class="text-secondary font-semibold">SLA: 28 mins remaining</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 self-end md:self-center shrink-0">
+<div class="text-right">
+<span class="text-xs font-medium text-outline">14m ago</span>
+<div class="text-[11px] font-mono text-on-surface-variant">via SNS Fanout</div>
+</div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-surface-container-low text-primary hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Row 2 (P2P Mesh Partition warning) -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<!-- Left color accent bar -->
+<div class="absolute left-0 top-3 bottom-3 w-1.5 bg-tertiary rounded-r-full"></div>
+<div class="flex items-start gap-3.5 pl-2 flex-1">
+<div class="w-10 h-10 rounded-xl bg-tertiary-container/60 flex items-center justify-center text-on-tertiary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">wifi_tethering_error</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-tertiary-container text-on-tertiary-container">#OFFLINE_BUFFER</span>
+<span class="font-mono text-xs font-bold text-on-surface">ALT-9038</span>
+<span class="text-xs text-outline">•</span>
+<span class="text-xs font-semibold text-on-surface">Store Node #CHN-044 (Chennai Harbor Warehouse)</span>
+</div>
+<p class="text-sm font-medium text-on-surface">
+              Offline mesh operating in local SQLite buffer for 42m — 618 transactions held locally, peer quorum sustained.
+            </p>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant flex-wrap pt-0.5">
+<span class="font-mono text-[11px] bg-surface-container-low px-2 py-0.5 rounded-md text-on-surface">WAL Buffer 14.8MB</span>
+<span>Cellular failover active</span>
+<span class="text-primary font-medium">Auto-sync armed on reconnect</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 self-end md:self-center shrink-0">
+<div class="text-right">
+<span class="text-xs font-medium text-outline">32m ago</span>
+<div class="text-[11px] font-mono text-on-surface-variant">P2P Heartbeat</div>
+</div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Row 3 (Automated Parity Reconciliation OK) -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<!-- Left color accent bar -->
+<div class="absolute left-0 top-3 bottom-3 w-1.5 bg-primary rounded-r-full"></div>
+<div class="flex items-start gap-3.5 pl-2 flex-1">
+<div class="w-10 h-10 rounded-xl bg-primary-container/50 flex items-center justify-center text-on-primary-container shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">sync_saved_locally</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary-fixed text-on-primary-fixed-variant">#PARITY_OK</span>
+<span class="font-mono text-xs font-bold text-on-surface">ALT-9022</span>
+<span class="text-xs text-outline">•</span>
+<span class="text-xs font-semibold text-on-surface">Store Node #BLR-202 (Bangalore Tech Park Hub)</span>
+</div>
+<p class="text-sm font-medium text-on-surface">
+              Automated parity reconciliation complete — Reconciled 142 sales batches with Zoho ERP ledger with zero variance.
+            </p>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant flex-wrap pt-0.5">
+<span class="font-mono text-[11px] bg-surface-container-low px-2 py-0.5 rounded-md text-on-surface">Delta: ₹0.00</span>
+<span>14,290 units verified</span>
+<span class="text-primary font-medium">Signed by Hedera Consensus</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 self-end md:self-center shrink-0">
+<div class="text-right">
+<span class="text-xs font-medium text-outline">1h ago</span>
+<div class="text-[11px] font-mono text-on-surface-variant">Cron Engine</div>
+</div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</span>
+</div>
+</div>
+<!-- Row 4 (AWS SES / PDF Delivery broadcast) -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-4 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<!-- Left color accent bar -->
+<div class="absolute left-0 top-3 bottom-3 w-1.5 bg-outline-variant rounded-r-full"></div>
+<div class="flex items-start gap-3.5 pl-2 flex-1">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center text-on-surface-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">mark_email_read</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-surface-container-high text-on-surface-variant">#AUDIT_SES</span>
+<span class="font-mono text-xs font-bold text-on-surface">ALT-9015</span>
+<span class="text-xs text-outline">•</span>
+<span class="text-xs font-semibold text-on-surface">AWS SES Fanout Delivery</span>
+</div>
+<p class="text-sm font-medium text-on-surface">
+              Daily EOD Shrink &amp; Variance Audit PDF successfully dispatched to 12 SES executive recipients.
+            </p>
+<div class="flex items-center gap-3 text-xs text-on-surface-variant flex-wrap pt-0.5">
+<span class="font-mono text-[11px] bg-surface-container-low px-2 py-0.5 rounded-md text-on-surface">2.4MB PDF • 100% Delivery</span>
+<span>DKIM/SPF Verified</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 self-end md:self-center shrink-0">
+<div class="text-right">
+<span class="text-xs font-medium text-outline">2h ago</span>
+<div class="text-[11px] font-mono text-on-surface-variant">SES Digest</div>
+</div>
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-xl bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Frosted Glass Slide-Over Drawer (Right-aligned overlay taking ~460px width) -->
+<!-- Per design.md Section 5.1: High visual prominence, clean hierarchy, tactile buttons -->
+<aside class="fixed top-16 right-0 bottom-0 w-full sm:w-[460px] z-50 flex flex-col bg-surface-container-lowest/85 backdrop-blur-2xl shadow-[-12px_0_36px_rgba(24,34,29,0.08)] transition-transform duration-300 ease-in-out" id="alert-drawer">
+<!-- Drawer Top Controls & Meta -->
+<div class="px-6 py-4 bg-surface-container-lowest/95 backdrop-blur-md flex items-center justify-between shrink-0 shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">crisis_alert</span>
+<span class="text-sm font-headline font-bold text-on-surface">Alert Investigation</span>
+<span class="px-2 py-0.5 rounded-full font-mono text-xs font-bold bg-surface-container text-on-surface">#ALT-9041</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-low transition-colors" title="Minimize drawer" type="button">
+<span class="material-symbols-outlined text-[18px]">minimize</span>
+</button>
+<button class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/40 transition-colors" onclick="document.getElementById('alert-drawer').classList.toggle('translate-x-full')" title="Close drawer" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Drawer Body -->
+<div class="flex-1 overflow-y-auto px-6 py-5 space-y-5">
+<!-- Status Badge & Origin Stamp -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-secondary-container text-on-secondary-container">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            CRITICAL RECONCILIATION FAULT
+          </span>
+<span class="text-[11px] font-medium text-secondary font-mono bg-secondary-container/40 px-2 py-0.5 rounded-full">
+            SLA: 28m left
+          </span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+          Triggered <strong class="text-on-surface">14m ago</strong> via Amazon SNS. 
+          <span class="block text-[11px] font-mono text-outline truncate mt-0.5">arn:aws:sns:ap-south-1:094184:reconcilo-alerts-high</span>
+</p>
+</div>
+<!-- Event Origin Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-xs font-headline font-bold text-on-surface uppercase tracking-wider">Event Origin Node</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-primary-fixed text-on-primary-fixed-variant">Local Mesh OK</span>
+</div>
+<div class="space-y-2 text-xs">
+<div class="flex justify-between items-center py-1 bg-surface-container-low px-2.5 rounded-lg">
+<span class="text-on-surface-variant">Store Node:</span>
+<span class="font-semibold text-on-surface">#MUM-101 (Mumbai Central)</span>
+</div>
+<div class="flex justify-between items-center py-1 bg-surface-container-low px-2.5 rounded-lg">
+<span class="text-on-surface-variant">Physical Terminal:</span>
+<span class="font-mono font-semibold text-on-surface">Terminal A-04 (Handheld PWA)</span>
+</div>
+<div class="flex justify-between items-center py-1 bg-surface-container-low px-2.5 rounded-lg">
+<span class="text-on-surface-variant">Operator On-Duty:</span>
+<span class="font-medium text-on-surface">Elena Rostova <span class="text-outline font-mono">(ID #8841)</span></span>
+</div>
+<div class="flex justify-between items-center py-1 bg-surface-container-low px-2.5 rounded-lg">
+<span class="text-on-surface-variant">Local IP / MAC:</span>
+<span class="font-mono text-outline text-[11px]">192.168.1.144 (2C:54:91:88)</span>
+</div>
+</div>
+</div>
+<!-- Anomaly Summary & Variance Highlight -->
+<div class="bg-secondary-container/20 rounded-2xl p-4 shadow-sm space-y-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">rule</span>
+<span class="text-xs font-headline font-bold text-on-surface">Cryptographic Anomaly Detected</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+          Manual count override bypasses 5-unit safety ceiling. Scanned physical count <strong class="text-on-surface font-semibold">142</strong> vs ERP ledger <strong class="text-on-surface font-semibold">150</strong> (-8 units, discrepancy delta <span class="font-mono font-bold text-secondary">-₹18,200</span>).
+        </p>
+<div class="p-2.5 bg-surface-container-lowest rounded-xl flex items-center justify-between text-xs">
+<span class="text-on-surface-variant">Client clock skew:</span>
+<span class="font-mono font-semibold text-error">+4h 12m (IndexedDB skew)</span>
+</div>
+</div>
+<!-- Real-Time Node Telemetry Strip -->
+<div class="bg-surface-container-low rounded-2xl p-3 shadow-inner">
+<div class="text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Store Mesh Diagnostics</div>
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-lowest rounded-xl p-2 shadow-sm">
+<span class="block text-[10px] text-outline font-label uppercase">WAL Buffer</span>
+<span class="text-xs font-bold text-on-surface font-mono">14 pending</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-2 shadow-sm">
+<span class="block text-[10px] text-outline font-label uppercase">Mesh RTT</span>
+<span class="text-xs font-bold text-primary font-mono">18 ms</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-2 shadow-sm">
+<span class="block text-[10px] text-outline font-label uppercase">P2P Quorum</span>
+<span class="text-xs font-bold text-on-surface font-mono">4/4 nodes</span>
+</div>
+</div>
+</div>
+<!-- SNS Raw Payload JSON Inspector -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-headline font-semibold text-on-surface">Amazon SNS Payload Inspector</span>
+<button class="text-[11px] font-semibold text-primary hover:underline flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+            Copy JSON
+          </button>
+</div>
+<div class="p-3 bg-inverse-surface text-inverse-on-surface rounded-xl font-mono text-[11px] leading-relaxed overflow-x-auto shadow-inner">
+<div class="text-primary-fixed">{</div>
+<div class="pl-3 text-surface-container-highest">"topic": <span class="text-secondary-fixed">"reconcilo-discrepancy-v1"</span>,</div>
+<div class="pl-3 text-surface-container-highest">"event_id": <span class="text-tertiary-fixed-dim">"EVT-8841-A-MUM"</span>,</div>
+<div class="pl-3 text-surface-container-highest">"sku": <span class="text-primary-fixed-dim">"SKU-1082-SCAN"</span>,</div>
+<div class="pl-3 text-surface-container-highest">"action_required": <span class="text-secondary-fixed">true</span>,</div>
+<div class="pl-3 text-surface-container-highest">"variance_pct": <span class="text-error-container">-5.33</span>,</div>
+<div class="pl-3 text-surface-container-highest">"sha256": <span class="text-outline-variant">"7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1f"</span></div>
+<div class="text-primary-fixed">}</div>
+</div>
+</div>
+<!-- Escalation Level Card -->
+<div class="p-3.5 rounded-2xl bg-tertiary-container/30 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]">supervisor_account</span>
+</span>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface">Sarah Jenkins (Ops Lead)</span>
+<span class="text-[11px] text-on-surface-variant">Assigned for manual audit clearance</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-tertiary text-on-tertiary">Tier 1</span>
+</div>
+<!-- Subscribed Notification Broadcast Channels -->
+<div class="space-y-2 pt-1">
+<span class="text-[11px] font-label font-bold text-outline uppercase tracking-wider">Dispatched Channels</span>
+<div class="space-y-1.5 text-xs">
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+<span>Slack <strong class="font-mono text-on-surface-variant">#ops-critical-mumbai</strong></span>
+</div>
+<span class="text-[11px] text-primary font-semibold">Broadcasted</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+<span>SMS Alert to Shift Lead (+91 98***)</span>
+</div>
+<span class="text-[11px] text-primary font-semibold">Delivered</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+<span>AWS SES Executive Webhook</span>
+</div>
+<span class="text-[11px] text-primary font-semibold">200 OK</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Drawer Sticky Action Footer (Tactile button design) -->
+<div class="p-5 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_-4px_16px_rgba(0,0,0,0.03)] space-y-2.5 shrink-0">
+<button class="w-full h-11 rounded-xl bg-on-surface hover:bg-inverse-surface text-on-primary font-headline font-semibold text-xs flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] transition-all" type="button">
+<span>Acknowledge &amp; Open Conflict Ledger</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full h-10 rounded-xl bg-secondary-container text-on-secondary-container hover:bg-secondary-fixed-dim font-headline font-semibold text-xs flex items-center justify-center gap-2 active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">lock_clock</span>
+<span>Quarantine Terminal A-04 Cache</span>
+</button>
+<div class="text-center pt-1">
+<button class="text-xs text-outline hover:text-on-surface font-medium hover:underline transition-all" type="button">
+          Mute anomaly notifications for this terminal for 1 hour
+        </button>
+</div>
+</div>
+</aside>
+</div>
+<script>
+  // Simple micro-interaction for drawer toggle and dismissal
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const drawer = document.getElementById('alert-drawer');
+      if (drawer && !drawer.classList.contains('translate-x-full')) {
+        drawer.classList.add('translate-x-full');
+      }
+    }
+  });
+</script></main></div></body></html>

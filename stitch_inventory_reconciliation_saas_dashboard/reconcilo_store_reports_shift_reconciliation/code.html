@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "outline-variant": "#c2c8be",
+          "tertiary-fixed": "#f0dbff",
+          "surface-container-high": "#e6e9e7",
+          "secondary": "#785561",
+          "primary-fixed-dim": "#a9d1a5",
+          "surface-container-highest": "#e1e3e1",
+          "on-tertiary-container": "#6d4d8a",
+          "on-primary-fixed": "#002105",
+          "secondary-fixed": "#ffd9e5",
+          "tertiary": "#70518e",
+          "surface-container-low": "#f2f4f2",
+          "on-primary-container": "#40633f",
+          "background": "#f8faf8",
+          "on-secondary": "#ffffff",
+          "on-secondary-fixed-variant": "#5e3d4a",
+          "primary": "#446743",
+          "on-tertiary-fixed-variant": "#573974",
+          "primary-fixed": "#c5edbf",
+          "secondary-fixed-dim": "#e7bbc9",
+          "surface-dim": "#d8dad9",
+          "on-primary-fixed-variant": "#2c4e2d",
+          "surface-bright": "#f8faf8",
+          "error": "#ba1a1a",
+          "surface-container": "#eceeec",
+          "on-tertiary": "#ffffff",
+          "on-tertiary-fixed": "#290a45",
+          "on-background": "#191c1b",
+          "inverse-surface": "#2e3130",
+          "inverse-primary": "#a9d1a5",
+          "secondary-container": "#ffd1e0",
+          "primary-container": "#b6deb1",
+          "surface": "#f8faf8",
+          "on-surface": "#191c1b",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary-container": "#7a5764",
+          "outline": "#737970",
+          "on-secondary-fixed": "#2d131e",
+          "on-error": "#ffffff",
+          "tertiary-container": "#e6c8ff",
+          "tertiary-fixed-dim": "#ddb8fd",
+          "on-error-container": "#93000a",
+          "surface-variant": "#e1e3e1",
+          "on-surface-variant": "#424840",
+          "error-container": "#ffdad6",
+          "inverse-on-surface": "#eff1ef",
+          "on-primary": "#ffffff",
+          "surface-tint": "#446743"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {},
+        "fontFamily": {
+          "headline": [
+            "Plus Jakarta Sans"
+          ],
+          "display": [
+            "Plus Jakarta Sans"
+          ],
+          "body": [
+            "Inter"
+          ],
+          "label": [
+            "Inter"
+          ]
+        },
+        "fontSize": {}
+      },
+    },
+  }</script></head><body class="bg-surface font-body text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-40 flex flex-col justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="h-16 flex items-center px-6 gap-3 bg-surface-container-lowest/60"><img alt="reconcilo logo.jpg" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VITw5XD29raJwz9Qz7fxiW79oWR_zSTbXOlzL_a2sK913TSG4CK2ntrm1Q2qHQPhtigYu0oznz-7zT6SxglNalc2imPcrBER7pYTaDvYIWkKrTR5oizb1yPHmNfvNBPu5sFGYqVbAy1eX6OpUF-z1p_Foo2xqj_MBtefI02G_I6kcHH1PlS-Nj4wd6jlzAEdbLbi-Hlt3-6G1Nax5grvUk9AV6KPC3FQWsxjb8CtMcbBzZ3Xa87iTP8ljWekpCz3fwaM76125DbbQ"/><div class="flex flex-col"><span class="font-headline font-bold text-base tracking-tight text-on-surface leading-none">Reconcilo</span><span class="text-[11px] font-medium text-on-surface-variant tracking-wider uppercase leading-tight mt-0.5">Store Engine</span></div></div><div class="px-4 py-4"><div class="px-3 mb-2 text-[10px] font-semibold tracking-wider text-outline uppercase">Operations Suite</div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-xl"><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">space_dashboard</span><span>Dashboard</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="store-transactions" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span>Store Transactions</span></a><a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="conflicts-and-discrepancies" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">difference</span><span>Conflicts &amp; Discrepancies</span></div><span class="px-1.5 py-0.5 text-[10px] font-bold bg-secondary-container text-on-secondary-container rounded-full leading-none">3</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="suspicious-activity" href="#"><span class="material-symbols-outlined text-[20px]">crisis_alert</span><span>Suspicious Activity</span></a><a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 transition-colors bg-primary-container text-on-primary-container font-semibold rounded-xl" data-path="store-reports-and-shift-audit" href="#"><span class="material-symbols-outlined text-[20px]">summarize</span><span>Store Reports &amp; Shift Audit</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="local-terminal-access" href="#"><span class="material-symbols-outlined text-[20px]">point_of_sale</span><span>Local Terminal Access</span></a><a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="settings-and-rules" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span>Settings &amp; Rules</span></a></nav></div></div><div class="p-4"><div class="bg-surface-container-lowest rounded-xl p-3 shadow-[0_1px_3px_rgba(0,0,0,0.03)]"><div class="flex items-center justify-between mb-2"><span class="text-[11px] font-semibold text-on-surface-variant">Mesh Health</span><span class="text-[11px] font-bold text-primary">99.8%</span></div><div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary-container rounded-full w-[99%]"></div></div><div class="mt-2 flex items-center justify-between text-[10px] text-outline"><span>Node Peer Ping</span><span class="tabular-nums">12ms</span></div></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/85 backdrop-blur-xl z-30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-6 flex items-center justify-between gap-4"><div class="flex items-center gap-3 min-w-0"><div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface"><span class="material-symbols-outlined text-[18px] text-primary">storefront</span><span class="text-xs font-semibold tracking-tight whitespace-nowrap">Store #09 - Mumbai Central Hub</span></div><div class="flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-medium"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span>Mesh Synchronized</span></div></div><div class="flex items-center gap-3"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-outline text-[18px]">search</span><input class="w-72 h-10 pl-9 pr-4 text-xs bg-surface-container-low rounded-xl text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search shift records, SKU or cashier..." type="text"/></div><button class="flex items-center gap-2 h-10 px-4 bg-tertiary-container text-on-tertiary-container rounded-xl text-xs font-semibold hover:bg-tertiary-fixed-dim transition-colors"><span class="material-symbols-outlined text-[18px]">ios_share</span><span>Export Report</span></button><div class="h-6 w-[1px] bg-surface-container-high mx-1"></div><div class="flex items-center gap-3 pl-1"><div class="flex flex-col text-right"><span class="text-xs font-bold text-on-surface leading-tight">Sarah Jenkins</span><span class="text-[10px] font-medium text-on-surface-variant leading-none">Store General Manager</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/60" src="https://lh3.googleusercontent.com/aida/AEtjO1VPpFknqhcpvbpvTw4nnKwTDas5rlRWA5896AYNNOlGveMz2VzCpPAlX6eq14uKJCt8LIJlUN_ckvjmy3O2Hfdz73h8JcgrEp3ONIYBSKdXWn66_kMYws0nUYub_IxVedtk30oFf3_KIu17oSc4upKKnvfsSsiARA073X-Bj7aoM8rN-k9SigNQxZXd2U0mZXAB9QnWvvhf0M2uPwJ6XQbfh4isggk7ElBQV7qW6Hgm6WRZss1Y4Yb7rXg_"/></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow Orbs -->
+<div class="relative w-full px-6 py-6 max-w-7xl mx-auto space-y-6">
+<div class="absolute -top-12 right-24 w-96 h-96 rounded-full bg-primary-container/20 blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-80 -left-12 w-80 h-80 rounded-full bg-secondary-container/25 blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute bottom-16 right-1/4 w-96 h-96 rounded-full bg-tertiary-container/20 blur-3xl pointer-events-none -z-10"></div>
+<!-- Header & Action Ribbon -->
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[11px] font-bold tracking-wider text-primary uppercase bg-primary-fixed/60 px-2.5 py-0.5 rounded-full">Shift Closure Engine</span>
+<span class="text-outline text-xs">•</span>
+<span class="text-xs text-on-surface-variant font-medium">Sec. 7.3 Audit Ledger</span>
+</div>
+<h1 class="font-headline text-2xl lg:text-3xl font-bold tracking-tight text-on-surface">Store Reports &amp; Shift Reconciliation</h1>
+<p class="text-xs text-on-surface-variant mt-1 font-normal max-w-3xl">
+          End-of-shift physical stock audit, floor variance analysis, shrinkage tracking, and cashier reconciliation scorecards for Store #09.
+        </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-wrap items-center gap-2.5">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-primary text-on-primary text-xs font-semibold shadow-sm hover:opacity-95 active:scale-[0.98] transition-all" id="btnRunAudit">
+<span class="material-symbols-outlined text-[17px]">inventory</span>
+<span>+ Run Shift Audit</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-xs font-semibold shadow-sm hover:bg-surface-container transition-colors" id="btnExport">
+<span class="material-symbols-outlined text-[17px] text-tertiary">file_download</span>
+<span>Export Report</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest text-on-surface text-xs font-medium shadow-sm hover:bg-surface-container transition-colors" id="btnPrint">
+<span class="material-symbols-outlined text-[17px] text-outline">receipt</span>
+<span>Print Slip</span>
+</button>
+</div>
+</div>
+<!-- Shift Controls Strip & Time Anchors -->
+<div class="bg-surface-container-lowest rounded-2xl p-2.5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+<!-- Shift Selector Tabs -->
+<div class="inline-flex p-1 bg-surface-container-low rounded-xl gap-1" role="tablist">
+<button aria-selected="false" class="px-3 py-1.5 rounded-lg text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors" role="tab">
+          Morning (06:00 – 14:00)
+        </button>
+<button aria-selected="true" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-primary-container text-on-primary-container shadow-xs transition-all flex items-center gap-1.5" role="tab">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          Evening Shift (14:00 – 22:00)
+        </button>
+<button aria-selected="false" class="px-3 py-1.5 rounded-lg text-xs font-medium text-on-surface-variant hover:text-on-surface transition-colors" role="tab">
+          Night Restock (22:00 – 06:00)
+        </button>
+</div>
+<!-- Calendar & Live Indicator -->
+<div class="flex items-center gap-3 px-2">
+<div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-xl text-xs font-medium text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+<span>Today: May 24, 2025</span>
+<span class="material-symbols-outlined text-[15px] text-outline cursor-pointer hover:text-on-surface">expand_more</span>
+</div>
+<div class="h-4 w-px bg-surface-container-high hidden sm:block"></div>
+<div class="flex items-center gap-1.5 text-[11px] font-medium text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+<span>Session: <strong class="text-on-surface font-semibold">07h 42m elapsed</strong></span>
+</div>
+</div>
+</div>
+<!-- 4 Executive KPI Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1: Mint highlight banner -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-primary-container via-secondary-container to-tertiary-container"></div>
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold text-outline uppercase tracking-wider">Physical Volume</span>
+<h2 class="text-xs font-semibold text-on-surface mt-0.5">Total Physical Scans</h2>
+</div>
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-primary-fixed text-on-primary-fixed">99.2% Acc.</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline text-3xl font-extrabold text-on-surface tabular-nums tracking-tight">12,480</span>
+<span class="text-xs font-semibold text-primary flex items-center">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>3.8%
+          </span>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between text-[11px] text-on-surface-variant bg-surface-container-low/70 -mx-5 -mb-5 px-5 py-2.5">
+<span>6 POS &amp; 4 Handheld units</span>
+<span class="font-bold text-on-surface">Active Flow</span>
+</div>
+</div>
+<!-- KPI 2: Net Ledger Discrepancy -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold text-outline uppercase tracking-wider">Floor Tolerance</span>
+<h2 class="text-xs font-semibold text-on-surface mt-0.5">Net Ledger Discrepancy</h2>
+</div>
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-surface-container-high text-on-surface-variant">Acceptable Drift</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline text-3xl font-extrabold text-secondary tabular-nums tracking-tight">-18</span>
+<span class="text-xs font-medium text-secondary">Units (₹6,420)</span>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between text-[11px] text-on-surface-variant bg-surface-container-low/70 -mx-5 -mb-5 px-5 py-2.5">
+<span>ERP Target: 12,498 units</span>
+<span class="font-medium text-primary">0.14% delta</span>
+</div>
+</div>
+<!-- KPI 3: Resolved Discrepancies -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold text-outline uppercase tracking-wider">Automated Mesh Sync</span>
+<h2 class="text-xs font-semibold text-on-surface mt-0.5">Resolved Discrepancies</h2>
+</div>
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-tertiary-container text-on-tertiary-container">LWW Engine</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline text-3xl font-extrabold text-tertiary tabular-nums tracking-tight">14</span>
+<span class="text-xs font-medium text-on-surface-variant">Auto-Balanced</span>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between text-[11px] text-on-surface-variant bg-surface-container-low/70 -mx-5 -mb-5 px-5 py-2.5">
+<span>9 LWW time, 5 recount</span>
+<span class="font-semibold text-primary">0 pending signs</span>
+</div>
+</div>
+<!-- KPI 4: Shrinkage & Damage Flagged -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-5 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-[11px] font-semibold text-outline uppercase tracking-wider">Floor Incident Log</span>
+<h2 class="text-xs font-semibold text-on-surface mt-0.5">Shrinkage &amp; Damaged</h2>
+</div>
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-secondary-fixed text-on-secondary-fixed-variant">Action Req.</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="font-headline text-3xl font-extrabold text-on-surface tabular-nums tracking-tight">4</span>
+<span class="text-xs font-medium text-secondary">Items (₹2,180)</span>
+</div>
+<div class="mt-3 pt-3 flex items-center justify-between text-[11px] text-on-surface-variant bg-surface-container-low/70 -mx-5 -mb-5 px-5 py-2.5">
+<span>3 damaged, 1 mismatch</span>
+<span class="font-bold text-secondary">Awaiting sign-off</span>
+</div>
+</div>
+</div>
+<!-- Mid Section: 60% / 40% Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+<!-- Left (7/12): Aisle & Zone Variance Analytics -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3">
+<div>
+<h2 class="font-headline text-base font-bold text-on-surface">Aisle &amp; Zone Variance Analytics</h2>
+<p class="text-xs text-on-surface-variant">Live audit verification across Store #09 floor sectors</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 text-[11px] text-outline font-medium">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Target &gt;98%
+              </span>
+</div>
+</div>
+<!-- Zone Breakdown Rows -->
+<div class="space-y-4 mt-3">
+<!-- Zone A -->
+<div class="p-3.5 bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<div class="flex items-center gap-2 font-medium text-on-surface">
+<span class="w-6 h-6 rounded-lg bg-surface-container-lowest flex items-center justify-center font-bold text-[11px] text-primary">A</span>
+<div>
+<span class="font-semibold text-on-surface">Zone A - High Value Electronics</span>
+<span class="text-[11px] text-on-surface-variant ml-1.5">Aisles 01–04</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-right">
+<span class="font-bold text-xs text-primary tabular-nums">99.8% match</span>
+<span class="text-[11px] font-medium text-on-surface-variant tabular-nums">-1 unit</span>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 99.8%"></div>
+</div>
+<div class="mt-2 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Audited: 2,410 / ERP: 2,411 units</span>
+<span class="text-[10px] font-semibold text-primary px-1.5 py-0.5 rounded bg-primary-fixed/50">Low Shrink Risk</span>
+</div>
+</div>
+<!-- Zone B -->
+<div class="p-3.5 bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<div class="flex items-center gap-2 font-medium text-on-surface">
+<span class="w-6 h-6 rounded-lg bg-surface-container-lowest flex items-center justify-center font-bold text-[11px] text-secondary">B</span>
+<div>
+<span class="font-semibold text-on-surface">Zone B - Heavy Hardware &amp; Tools</span>
+<span class="text-[11px] text-on-surface-variant ml-1.5">Aisles 05–09</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-right">
+<span class="font-bold text-xs text-secondary tabular-nums">98.6% match</span>
+<span class="text-[11px] font-medium text-secondary tabular-nums">-11 units</span>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full transition-all duration-500" style="width: 98.6%"></div>
+</div>
+<div class="mt-2 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Audited: 4,120 / ERP: 4,131 units</span>
+<span class="text-[10px] font-semibold text-secondary px-1.5 py-0.5 rounded bg-secondary-fixed">Recount Advised</span>
+</div>
+</div>
+<!-- Zone C -->
+<div class="p-3.5 bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<div class="flex items-center gap-2 font-medium text-on-surface">
+<span class="w-6 h-6 rounded-lg bg-surface-container-lowest flex items-center justify-center font-bold text-[11px] text-primary">C</span>
+<div>
+<span class="font-semibold text-on-surface">Zone C - Packaging &amp; Fast FMCG</span>
+<span class="text-[11px] text-on-surface-variant ml-1.5">Aisles 10–14</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-right">
+<span class="font-bold text-xs text-primary tabular-nums">100.0% match</span>
+<span class="text-[11px] font-medium text-primary tabular-nums">0 delta</span>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-500" style="width: 100%"></div>
+</div>
+<div class="mt-2 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Audited: 3,850 / ERP: 3,850 units</span>
+<span class="text-[10px] font-semibold text-on-primary-container px-1.5 py-0.5 rounded bg-primary-fixed">Perfect Balance</span>
+</div>
+</div>
+<!-- Zone D -->
+<div class="p-3.5 bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between text-xs mb-1.5">
+<div class="flex items-center gap-2 font-medium text-on-surface">
+<span class="w-6 h-6 rounded-lg bg-surface-container-lowest flex items-center justify-center font-bold text-[11px] text-tertiary">D</span>
+<div>
+<span class="font-semibold text-on-surface">Zone D - Cold Bay &amp; Perishables</span>
+<span class="text-[11px] text-on-surface-variant ml-1.5">Vault Bays 01–03</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-right">
+<span class="font-bold text-xs text-tertiary tabular-nums">99.1% match</span>
+<span class="text-[11px] font-medium text-on-surface-variant tabular-nums">-6 units</span>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full transition-all duration-500" style="width: 99.1%"></div>
+</div>
+<div class="mt-2 flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Audited: 2,100 / ERP: 2,106 units</span>
+<span class="text-[10px] font-semibold text-on-tertiary-container px-1.5 py-0.5 rounded bg-tertiary-fixed">Logged Spoilage</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-xs text-on-surface-variant">
+<span class="inline-flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary">verified_user</span>
+            Cycle count confidence: 99.6%
+          </span>
+<a class="text-xs font-semibold text-primary hover:underline flex items-center gap-1" href="#">
+            Deep dive aisles <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Right (5/12): Donut Progress & Supervisor Verification -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="font-headline text-base font-bold text-on-surface">Reconciliation Ledger</h2>
+<p class="text-xs text-on-surface-variant">Overall reconciliation rate &amp; lock state</p>
+</div>
+<span class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-primary-fixed text-on-primary-fixed">Shift Finalizing</span>
+</div>
+<!-- Circular Chart Visualization (SVG) -->
+<div class="flex items-center justify-center my-3 relative">
+<svg class="w-48 h-48 transform -rotate-90" viewbox="0 0 160 160">
+<!-- Background ring -->
+<circle class="text-surface-container-high" cx="80" cy="80" fill="transparent" r="62" stroke="currentColor" stroke-width="12"></circle>
+<!-- Flagged Segment (18 items = ~0.2%) -->
+<circle class="text-secondary-fixed-dim" cx="80" cy="80" fill="transparent" r="62" stroke="currentColor" stroke-dasharray="389.5" stroke-dashoffset="6" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Reconciled by Mgr (182 items = ~1.5%) -->
+<circle class="text-tertiary-container" cx="80" cy="80" fill="transparent" r="62" stroke="currentColor" stroke-dasharray="389.5" stroke-dashoffset="18" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Primary Verified Ring (~98.3%) -->
+<circle class="text-primary" cx="80" cy="80" fill="transparent" r="62" stroke="currentColor" stroke-dasharray="389.5" stroke-dashoffset="24" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="text-[11px] font-semibold tracking-wider text-outline uppercase">Match Rate</span>
+<span class="font-headline text-3xl font-extrabold text-on-surface tabular-nums">98.5%</span>
+<span class="text-[10px] font-medium text-primary">Mesh Reconciled</span>
+</div>
+</div>
+<!-- Breakdown Ledger Legend -->
+<div class="space-y-2 mt-4 text-xs">
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="font-medium text-on-surface">Verified Synchronized</span>
+</div>
+<span class="font-bold tabular-nums text-on-surface">12,280 units</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+<span class="font-medium text-on-surface">Reconciled via Supervisor</span>
+</div>
+<span class="font-bold tabular-nums text-tertiary">182 units</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-medium text-on-surface">Flagged for Night Restock</span>
+</div>
+<span class="font-bold tabular-nums text-secondary">18 units</span>
+</div>
+</div>
+</div>
+<!-- Supervisor Verification Pill Card -->
+<div class="mt-5 p-3 rounded-xl bg-surface-container-high/60 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Portrait photo of Sarah Jenkins, Store General Manager wearing operational apron with digital tablet in modern clean fulfillment hub" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIcQcu0VqK3gqIsQs1WXu9QPcxLzMNJJ4TK22Pbvpi9GUoTPhjWUhffROM6fzaaQnotoVvn-7rm-E5io7I4RKPjwCZDFzwM7-61Pjj5LDlNqUkZzvLuwLQF0FhB-rramYZay9RCalWnJkJbWpKDUllqc2hmy-avEYjinGKmvO55gXKSZI18BIGJCvsdm7YZje-S_u7JjzkW-YaNW7_88hL0xTNOYkbaZaAaOO5GI7z98mFW8llH4KGBQ"/>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="text-xs font-bold text-on-surface truncate">Sarah Jenkins</span>
+<span class="material-symbols-outlined text-[14px] text-primary">check_circle</span>
+</div>
+<span class="text-[10px] text-on-surface-variant font-mono truncate block">SHA-256: 9f2c...881a</span>
+</div>
+</div>
+<span class="px-2.5 py-1 text-[10px] font-bold rounded-full bg-primary-container text-on-primary-container whitespace-nowrap">
+            Signed &amp; Sealed
+          </span>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Cashier & Floor Auditor Shift Scorecard -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 sm:p-6 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline text-base font-bold text-on-surface">Cashier &amp; Floor Auditor Scorecard</h2>
+<span class="px-2 py-0.5 text-[10px] font-bold rounded-full bg-surface-container-high text-on-surface-variant">5 Active Terminals</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">Station-level throughput, unit discrepancies, and handoff audit log sign-offs</p>
+</div>
+<!-- Filter & Search Inside Card -->
+<div class="flex items-center gap-2">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-outline text-[16px]">search</span>
+<input class="w-56 h-8 pl-8 pr-3 text-xs bg-surface-container-low rounded-lg text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container transition-all" id="scorecardSearch" placeholder="Filter terminal or auditor..." type="text"/>
+</div>
+<button class="h-8 px-2.5 rounded-lg bg-surface-container-low text-xs font-medium text-on-surface-variant hover:text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">filter_list</span>
+<span>All Stations</span>
+</button>
+</div>
+</div>
+<!-- Dense High-Contrast Data Table -->
+<div class="overflow-x-auto -mx-5 sm:-mx-6">
+<table class="w-full text-left text-xs min-w-[760px]">
+<thead>
+<tr class="bg-surface-container-low text-outline text-[11px] font-semibold uppercase tracking-wider">
+<th class="py-3 px-6">Auditor / Terminal Station</th>
+<th class="py-3 px-4 text-right">Units Processed</th>
+<th class="py-3 px-4 text-right">Physical vs ERP</th>
+<th class="py-3 px-4 text-right">Discrepancy (Delta)</th>
+<th class="py-3 px-4 text-center">Accuracy</th>
+<th class="py-3 px-4 text-center">Status</th>
+<th class="py-3 px-6 text-right">Handoff Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low text-on-surface font-normal" id="scorecardTableBody">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary-container/40 text-on-primary-container font-bold text-xs flex items-center justify-center">PM</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Priya Mehta</span>
+<span class="text-[11px] text-on-surface-variant">Register #01 • Lane A</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium tabular-nums">3,120 units</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface-variant">3,120 / 3,120</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-primary">0 units</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary-fixed text-on-primary-fixed tabular-nums">100.0%</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container-high text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Reconciled &amp; Signed
+                </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2 py-1 rounded-md text-[11px] font-medium bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors" title="View WAL logs">Logs</button>
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container transition-colors" title="Print handover slip">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group bg-secondary-container/10">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-on-secondary-container font-bold text-xs flex items-center justify-center">TR</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Tyler Ross</span>
+<span class="text-[11px] text-on-surface-variant">Handheld Scanner #02 • Zone B</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium tabular-nums">2,480 units</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface-variant">2,476 / 2,480</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-secondary">-4 units (₹1,200)</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-secondary-fixed text-on-secondary-fixed tabular-nums">98.4%</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                  Recount Underway
+                </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-secondary text-on-secondary shadow-xs hover:opacity-90 transition-opacity">Re-Audit</button>
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface font-bold text-xs flex items-center justify-center">SJ</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Sarah Jenkins</span>
+<span class="text-[11px] text-on-surface-variant">Lead Terminal Station</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium tabular-nums">1,890 units</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface-variant">1,890 / 1,890</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-primary">0 units</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary-fixed text-on-primary-fixed tabular-nums">100.0%</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container-high text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Reconciled &amp; Signed
+                </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2 py-1 rounded-md text-[11px] font-medium bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors">Logs</button>
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-tertiary-container text-on-tertiary-container font-bold text-xs flex items-center justify-center">KN</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Kavita Nair</span>
+<span class="text-[11px] text-on-surface-variant">Returns &amp; Defect Intake</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium tabular-nums">640 units</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface-variant">642 / 640</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-tertiary">+2 units (₹450)</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-tertiary-fixed text-on-tertiary-fixed tabular-nums">99.7%</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                  Variance Approved
+                </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2 py-1 rounded-md text-[11px] font-medium bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors">Logs</button>
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors group">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-primary-container/50 text-on-primary-container font-bold text-xs flex items-center justify-center">AK</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Amit Kumar</span>
+<span class="text-[11px] text-on-surface-variant">Dock Terminal #04 • Inbound</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right font-medium tabular-nums">4,350 units</td>
+<td class="py-3.5 px-4 text-right tabular-nums text-on-surface-variant">4,350 / 4,350</td>
+<td class="py-3.5 px-4 text-right tabular-nums font-semibold text-primary">0 units</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-primary-fixed text-on-primary-fixed tabular-nums">100.0%</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container-high text-on-surface">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  Reconciled &amp; Signed
+                </span>
+</td>
+<td class="py-3.5 px-6 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="px-2 py-1 rounded-md text-[11px] font-medium bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors">Logs</button>
+<button class="p-1 rounded-md text-outline hover:text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer Status -->
+<div class="mt-4 pt-3 flex flex-col sm:flex-row items-center justify-between text-xs text-on-surface-variant gap-2">
+<div class="flex items-center gap-2">
+<span>Showing 5 of 5 operational stations</span>
+<span class="text-outline">•</span>
+<span class="text-primary font-medium">All local nodes synchronized with store mesh</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container transition-colors text-xs font-medium" id="btnHandoffSlip">
+            Download Combined Shift Handoff (.PDF)
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive filtering for the cashier scorecard table
+  const searchInput = document.getElementById('scorecardSearch');
+  const tableBody = document.getElementById('scorecardTableBody');
+
+  if (searchInput && tableBody) {
+    searchInput.addEventListener('input', function (e) {
+      const term = e.target.value.toLowerCase().trim();
+      const rows = tableBody.querySelectorAll('tr');
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        if (text.includes(term)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // Interactive feedback for buttons
+  const btnRunAudit = document.getElementById('btnRunAudit');
+  if (btnRunAudit) {
+    btnRunAudit.addEventListener('click', () => {
+      const originalText = btnRunAudit.innerHTML;
+      btnRunAudit.innerHTML = '<span class="material-symbols-outlined text-[17px] animate-spin">sync</span><span>Auditing Mesh...</span>';
+      setTimeout(() => {
+        btnRunAudit.innerHTML = '<span class="material-symbols-outlined text-[17px]">check</span><span>Audit Synced</span>';
+        setTimeout(() => {
+          btnRunAudit.innerHTML = originalText;
+        }, 2000);
+      }, 900);
+    });
+  }
+</script></main></div></body></html>

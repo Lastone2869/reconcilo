@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reconcilo - Sign Up & Invite Acceptance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              mint: '#b6deb1',
+              mintSoft: '#eaf7e8',
+              mintDark: '#4e9b4a',
+              pink: '#ffd1e0',
+              pinkSoft: '#fff1f5',
+              pinkDark: '#b23a63',
+              lavender: '#dfbaff',
+              lavenderSoft: '#f5ecff',
+              lavenderDark: '#7948b3',
+              dark: '#1e2922',
+              slate: '#231f1b',
+              subtle: '#5a5650',
+              muted: '#8c877e',
+              border: '#efebe6',
+              bgSoft: '#fafaf8'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(35, 31, 27, 0.05), 0 2px 6px -1px rgba(35, 31, 27, 0.03)',
+            'card': '0 12px 36px -4px rgba(30, 41, 34, 0.08), 0 4px 12px -2px rgba(30, 41, 34, 0.04)',
+            'glass': '0 20px 40px -8px rgba(30, 41, 34, 0.07)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 10% 20%, #eaf7e8 0%, #ffffff 40%, #fff1f5 75%, #f5ecff 100%);
+      min-height: 100vh;
+    }
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+    }
+    .pulse-dot {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.15); }
+    }
+  </style>
+</head>
+<body class="text-brand-slate antialiased flex flex-col justify-between p-4 md:p-8 min-h-screen relative overflow-x-hidden selection:bg-brand-mint selection:text-brand-dark">
+
+  <!-- Ambient decorative soft gradient blurs in background -->
+  <div class="fixed -top-40 -left-40 w-96 h-96 bg-[#b6deb1]/35 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="fixed -bottom-40 -right-40 w-96 h-96 bg-[#ffd1e0]/35 rounded-full blur-3xl pointer-events-none -z-10"></div>
+  <div class="fixed top-1/2 left-1/3 w-80 h-80 bg-[#dfbaff]/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+  <!-- Top Navigation / Branding Header -->
+  <header class="w-full max-w-7xl mx-auto flex items-center justify-between py-2 mb-6">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCICD2PwQ033Qew12E6ussGtYnoMHSQKSd8rsn3J-86h43JpxHBIKMH7uGOUo9uc5FsoFvJ0aaqkloXaIg70G6YlaNcmY8289F51urh_w0N3zmaUb3R5QXMO50f8oiZlrqnWMTGIs7mC6FWimWp8DYmUCQ1Z0AhD2lu5IAdqsEsOl6pzc8Y-H3322ZG_o5lJI1kUdTwx8bcVS52jO0Hk29MMrUW1JQOKdrVRflGvKJdks142OkJ6rho4wGYl_YgoVC8j50" alt="Reconcilo Logo" class="h-10 w-auto object-contain">
+        <div class="h-5 w-px bg-brand-border hidden sm:block"></div>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-brand-mintSoft text-brand-mintDark border border-brand-mint/40 hidden sm:flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-mintDark pulse-dot"></span>
+          Air-Gapped TLS 1.3 Key Exchange
+        </span>
+      </div>
+    </div>
+
+    <!-- Security Metadata & Help -->
+    <div class="flex items-center gap-3 text-xs font-medium text-brand-subtle">
+      <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/70 border border-brand-border shadow-sm">
+        <i class="fa-solid fa-shield-halved text-brand-mintDark text-sm"></i>
+        <span>Invite Token: <code class="font-mono font-semibold text-brand-slate">REC-9942-B88-XF</code></span>
+        <span class="px-1.5 py-0.5 text-[10px] font-bold bg-emerald-100 text-emerald-800 rounded">VALID</span>
+      </div>
+      <a href="#" class="px-3 py-1.5 rounded-xl hover:bg-white/80 border border-transparent hover:border-brand-border transition-all flex items-center gap-1.5 text-brand-slate">
+        <i class="fa-regular fa-circle-question text-brand-muted"></i>
+        <span>Setup Guide</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="w-full max-w-6xl mx-auto flex-1 flex flex-col justify-center py-4">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Left Column: Invite Context & Verification Summary (5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+        
+        <!-- Welcome Card -->
+        <div class="glass-panel p-6 sm:p-8 rounded-3xl shadow-soft flex-1 flex flex-col justify-between border border-white/80">
+          <div>
+            <!-- Status pill -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-mintSoft border border-brand-mint/40 text-brand-mintDark text-xs font-bold mb-4 tracking-wide uppercase">
+              <i class="fa-solid fa-envelope-open-text text-[11px]"></i>
+              Verified Enterprise Invitation
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-brand-dark tracking-tight leading-tight mb-2">
+              Accept Node Access & Provision Security Key
+            </h1>
+            <p class="text-sm text-brand-subtle leading-relaxed mb-6">
+              You were provisioned by <strong class="text-brand-slate font-semibold">HQ Administrator (Sarah Jenkins)</strong> to manage local offline cycle audits and ledger conflict resolution at:
+            </p>
+
+            <!-- Store Node Card -->
+            <div class="p-4 rounded-2xl bg-white border border-brand-border shadow-sm mb-6 flex items-start gap-3.5">
+              <div class="w-11 h-11 rounded-xl bg-brand-mintSoft text-brand-mintDark flex items-center justify-center shrink-0 text-lg border border-brand-mint/30">
+                <i class="fa-solid fa-warehouse"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-brand-mintDark uppercase tracking-wider">Assigned Node #09</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-brand-bgSoft text-brand-subtle font-medium border border-brand-border">Zone B-04</span>
+                </div>
+                <h2 class="text-sm font-bold text-brand-dark truncate mt-0.5">Mumbai Central Fulfillment Hub</h2>
+                <p class="text-xs text-brand-subtle mt-0.5 flex items-center gap-2">
+                  <span><i class="fa-solid fa-network-wired text-brand-mintDark mr-1"></i>P2P Mesh Cluster</span>
+                  <span>•</span>
+                  <span>IP: 192.168.4.1</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Assigned Role Card -->
+            <div class="p-4 rounded-2xl bg-brand-lavenderSoft/60 border border-brand-lavender/40 mb-6">
+              <div class="flex items-center justify-between mb-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg bg-brand-lavender text-brand-lavenderDark flex items-center justify-center text-xs font-bold">
+                    <i class="fa-solid fa-user-shield"></i>
+                  </span>
+                  <span class="text-xs font-bold text-brand-slate uppercase tracking-wider">Role & Authority Tier</span>
+                </div>
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-brand-lavender text-brand-lavenderDark">Tier 2 Manager</span>
+              </div>
+              <div class="text-sm font-bold text-brand-dark mb-2">Store Operations & Reconciliation Lead</div>
+              <ul class="text-xs text-brand-subtle space-y-1.5 pl-1">
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-brand-mintDark text-xs"></i>
+                  <span>Floor variance ledger sign-offs up to ₹50,000 threshold</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-brand-mintDark text-xs"></i>
+                  <span>DLQ quarantine release & ASN receipt verification</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <i class="fa-solid fa-check text-brand-mintDark text-xs"></i>
+                  <span>IndexedDB local-first offline write buffer authorization</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Cryptographic Token Stamp Footer -->
+          <div class="pt-4 border-t border-brand-border/80 flex items-center justify-between text-xs text-brand-muted">
+            <span class="flex items-center gap-1.5 font-mono text-[11px]">
+              <i class="fa-solid fa-fingerprint text-brand-subtle"></i>
+              SHA256: 9f2c...88192-ok
+            </span>
+            <span class="flex items-center gap-1 text-emerald-700 font-medium">
+              <i class="fa-solid fa-circle-check"></i>
+              Expires in 47h 12m
+            </span>
+          </div>
+        </div>
+
+        <!-- Trust & Security Badges -->
+        <div class="p-4 rounded-2xl bg-white/70 border border-brand-border flex items-center justify-around text-xs text-brand-subtle">
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-lock text-brand-dark"></i>
+            <span class="font-semibold text-brand-slate">Zero-Knowledge Proof</span>
+          </div>
+          <div class="h-3.5 w-px bg-brand-border"></div>
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-microchip text-brand-dark"></i>
+            <span class="font-semibold text-brand-slate">TPM 2.0 Binding</span>
+          </div>
+          <div class="h-3.5 w-px bg-brand-border"></div>
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-wifi-slash text-brand-dark"></i>
+            <span class="font-semibold text-brand-slate">Offline-First Local DB</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Setup Form & Key Enrollment (7 Cols) -->
+      <div class="lg:col-span-7 flex flex-col">
+        <div class="glass-panel p-6 sm:p-10 rounded-3xl shadow-card border border-white/90 flex-1 flex flex-col justify-between">
+          
+          <!-- Stepper Indicator -->
+          <div>
+            <div class="flex items-center justify-between pb-6 border-b border-brand-border mb-8">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center font-bold text-xs">1</div>
+                <div>
+                  <div class="text-xs font-bold text-brand-dark">Operator Identity</div>
+                  <div class="text-[11px] text-brand-subtle">Name & Sign-In PIN</div>
+                </div>
+              </div>
+
+              <div class="w-12 h-px bg-brand-mint"></div>
+
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-brand-mint text-brand-dark font-bold text-xs flex items-center justify-center">2</div>
+                <div>
+                  <div class="text-xs font-bold text-brand-dark">Terminal Binding</div>
+                  <div class="text-[11px] text-brand-mintDark font-semibold">Active Step</div>
+                </div>
+              </div>
+
+              <div class="w-12 h-px bg-brand-border hidden sm:block"></div>
+
+              <div class="hidden sm:flex items-center gap-3 opacity-50">
+                <div class="w-8 h-8 rounded-full bg-brand-bgSoft border border-brand-border text-brand-muted font-bold text-xs flex items-center justify-center">3</div>
+                <div>
+                  <div class="text-xs font-bold text-brand-subtle">Audit Quorum</div>
+                  <div class="text-[11px] text-brand-muted">Consensus Sync</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Section -->
+            <form class="space-y-6" onsubmit="event.preventDefault();">
+              
+              <!-- Pre-filled Verified Email & Employee ID -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2">
+                    Verified Work Email
+                  </label>
+                  <div class="relative">
+                    <input type="email" value="alex.chen@reconcilo.corp" readonly class="w-full px-3.5 py-2.5 rounded-xl bg-brand-bgSoft border border-brand-border text-brand-slate text-xs font-medium focus:outline-none cursor-not-allowed pr-10 font-mono">
+                    <span class="absolute right-3 top-2.5 text-emerald-600 text-xs">
+                      <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                  </div>
+                  <span class="text-[11px] text-brand-muted mt-1 block">Locked to enterprise identity token</span>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2">
+                    Assigned Operator ID
+                  </label>
+                  <div class="relative">
+                    <input type="text" value="EMP-WH-9942" readonly class="w-full px-3.5 py-2.5 rounded-xl bg-brand-bgSoft border border-brand-border text-brand-slate text-xs font-medium focus:outline-none cursor-not-allowed pr-10 font-mono">
+                    <span class="absolute right-3 top-2.5 text-emerald-600 text-xs">
+                      <i class="fa-solid fa-id-badge"></i>
+                    </span>
+                  </div>
+                  <span class="text-[11px] text-brand-muted mt-1 block">Registered in Mumbai Central Node DB</span>
+                </div>
+              </div>
+
+              <!-- Full Name & Phone for SMS Heartbeats -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2">
+                    Full Legal Name <span class="text-brand-pinkDark">*</span>
+                  </label>
+                  <input type="text" value="Alexander Chen" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-brand-border text-brand-slate text-xs font-medium focus:outline-none focus:border-brand-mint focus:ring-2 focus:ring-brand-mintSoft transition-all">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-brand-slate uppercase tracking-wider mb-2">
+                    Mobile for Alert Fanout <span class="text-brand-pinkDark">*</span>
+                  </label>
+                  <input type="tel" value="+91 98450 19283" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-brand-border text-brand-slate text-xs font-medium focus:outline-none focus:border-brand-mint focus:ring-2 focus:ring-brand-mintSoft transition-all">
+                </div>
+              </div>
+
+              <!-- Terminal Hardware Security Pairing Option -->
+              <div class="pt-2">
+                <div class="flex items-center justify-between mb-3">
+                  <label class="text-xs font-bold text-brand-slate uppercase tracking-wider">
+                    Select Workstation Binding Method
+                  </label>
+                  <span class="text-[11px] font-semibold text-brand-mintDark flex items-center gap-1">
+                    <i class="fa-solid fa-lock text-[10px]"></i> Zero-Trust Enforced
+                  </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <!-- Option 1: Hardware TPM / FIDO2 (Selected) -->
+                  <label class="relative flex flex-col p-4 rounded-2xl border-2 border-brand-mint bg-brand-mintSoft/40 cursor-pointer shadow-sm transition-all">
+                    <input type="radio" name="auth_method" checked class="sr-only">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="w-8 h-8 rounded-xl bg-brand-mint text-brand-dark flex items-center justify-center text-sm font-bold">
+                        <i class="fa-solid fa-key"></i>
+                      </div>
+                      <i class="fa-solid fa-circle-check text-brand-mintDark text-sm"></i>
+                    </div>
+                    <div class="text-xs font-bold text-brand-dark">FIDO2 / YubiKey</div>
+                    <div class="text-[11px] text-brand-subtle mt-1 leading-snug">Physical USB NFC hardware token (Recommended)</div>
+                  </label>
+
+                  <!-- Option 2: Workstation TPM 2.0 Chip -->
+                  <label class="relative flex flex-col p-4 rounded-2xl border border-brand-border bg-white hover:border-brand-mint/60 cursor-pointer transition-all">
+                    <input type="radio" name="auth_method" class="sr-only">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="w-8 h-8 rounded-xl bg-brand-bgSoft text-brand-subtle flex items-center justify-center text-sm font-bold">
+                        <i class="fa-solid fa-laptop-code"></i>
+                      </div>
+                      <div class="w-4 h-4 rounded-full border border-brand-border"></div>
+                    </div>
+                    <div class="text-xs font-bold text-brand-dark">Local TPM 2.0</div>
+                    <div class="text-[11px] text-brand-subtle mt-1 leading-snug">Bind directly to this Mac/PC motherboard</div>
+                  </label>
+
+                  <!-- Option 3: Terminal Passcode + App -->
+                  <label class="relative flex flex-col p-4 rounded-2xl border border-brand-border bg-white hover:border-brand-mint/60 cursor-pointer transition-all">
+                    <input type="radio" name="auth_method" class="sr-only">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="w-8 h-8 rounded-xl bg-brand-bgSoft text-brand-subtle flex items-center justify-center text-sm font-bold">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                      </div>
+                      <div class="w-4 h-4 rounded-full border border-brand-border"></div>
+                    </div>
+                    <div class="text-xs font-bold text-brand-dark">Handheld PWA</div>
+                    <div class="text-[11px] text-brand-subtle mt-1 leading-snug">Zebra scanner cryptographic lease pair</div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Supervisor Quick Override PIN Creation -->
+              <div class="p-4 rounded-2xl bg-white border border-brand-border">
+                <div class="flex items-center justify-between mb-2">
+                  <div>
+                    <label class="text-xs font-bold text-brand-dark flex items-center gap-1.5">
+                      <i class="fa-solid fa-asterisk text-[10px] text-brand-pinkDark"></i>
+                      Create 6-Digit Store Floor Override PIN
+                    </label>
+                    <p class="text-[11px] text-brand-subtle mt-0.5">Used for fast emergency physical recount sign-offs on POS floor terminals</p>
+                  </div>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-pinkSoft text-brand-pinkDark font-bold">SHA-256 SALTED</span>
+                </div>
+
+                <div class="grid grid-cols-6 gap-2 max-w-xs mt-3">
+                  <input type="password" maxlength="1" value="8" class="h-11 text-center font-mono font-bold text-base rounded-xl border border-brand-border bg-brand-bgSoft focus:bg-white focus:border-brand-mint focus:ring-2 focus:ring-brand-mintSoft focus:outline-none">
+                  <input type="password" maxlength="1" value="4" class="h-11 text-center font-mono font-bold text-base rounded-xl border border-brand-border bg-brand-bgSoft focus:bg-white focus:border-brand-mint focus:ring-2 focus:ring-brand-mintSoft focus:outline-none">
+                  <input type="password" maxlength="1" value="9" class="h-11 text-center font-mono font-bold text-base rounded-xl border border-brand-border bg-brand-bgSoft focus:bg-white focus:border-brand-mint focus:ring-2 focus:ring-brand-mintSoft focus:outline-none">
+                  <input type="password" maxlength="1" value="2" class="h-11 text-center font-mono font-bold text-base rounded-xl border border-brand-border bg-brand-bgSoft focus:bg-white focus:border-brand-mint focus:ring-2 focus:ring-brand-mintSoft focus:outline-none">
+                  <input type="password" maxlength="1" placeholder="•" class="h-11 text-center font-mono font-bold text-base rounded-xl border-2 border-brand-mint bg-white focus:border-brand-mint focus:ring-2 focus:ring-brand-mintSoft focus:outline-none">
+                  <input type="password" maxlength="1" placeholder="•" class="h-11 text-center font-mono font-bold text-base rounded-xl border border-brand-border bg-brand-bgSoft focus:bg-white focus:border-brand-mint focus:ring-2 focus:ring-brand-mintSoft focus:outline-none">
+                </div>
+              </div>
+
+              <!-- Terms & Offline Cryptographic Agreement -->
+              <div class="flex items-start gap-3 pt-1">
+                <input type="checkbox" checked id="terms" class="mt-1 h-4 w-4 rounded border-brand-border text-brand-dark focus:ring-brand-mint">
+                <label for="terms" class="text-xs text-brand-subtle leading-relaxed cursor-pointer">
+                  I accept the 14-day cryptographic lease obligations, agree to keep the local SQLite write-ahead-log (WAL) synchronized, and understand supervisor sign-offs are immutably written to local P2P consensus ledger.
+                </label>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-4 flex flex-col sm:flex-row items-center gap-3">
+                <button type="button" class="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-brand-dark text-white font-bold text-xs tracking-wide hover:bg-black transition-all flex items-center justify-center gap-2 shadow-sm active:scale-[0.99]">
+                  <i class="fa-solid fa-fingerprint text-brand-mint text-sm"></i>
+                  <span>Bind Hardware Key & Complete Activation</span>
+                </button>
+                <a href="#" class="w-full sm:w-auto py-3.5 px-5 rounded-2xl bg-white border border-brand-border text-brand-slate hover:bg-brand-bgSoft font-bold text-xs text-center transition-all">
+                  Decline Invite
+                </a>
+              </div>
+            </form>
+          </div>
+
+          <!-- Bottom Security Status Micro-Bar -->
+          <div class="mt-8 pt-4 border-t border-brand-border flex items-center justify-between text-[11px] text-brand-muted">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>Encrypted via Curve25519 • Multi-Store Consensus v3.8.4</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <a href="#" class="hover:underline">Hardware FAQs</a>
+              <span>•</span>
+              <a href="#" class="hover:underline">Contact Sarah Jenkins (HQ)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Clean Footer with System Continuity Links -->
+  <footer class="w-full max-w-7xl mx-auto py-4 mt-6 border-t border-brand-border/60 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-muted gap-2">
+    <div>
+      © 2025 Reconcilo Inc. High-Reliability Offline-First Inventory Reconciliation Engine.
+    </div>
+    <div class="flex items-center gap-4 text-[11px]">
+      <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-emerald-500 text-[8px]"></i> Engine v2.4.1</span>
+      <span>•</span>
+      <span>SOC-2 Air-Gapped Compliant</span>
+      <span>•</span>
+      <a href="#" class="text-brand-subtle hover:text-brand-dark">P2P Network Topology</a>
+    </div>
+  </footer>
+
+</body>
+</html>

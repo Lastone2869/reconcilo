@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  .dark body {
+    @apply bg-surface-dark text-on-surface-dark;
+  }
+}
+
+/* Brand Gradient per design.md §3.8 */
+.brand-gradient {
+  background: linear-gradient(135deg, #B6DEB1 0%, #FFD1E0 50%, #DFBAFF 100%);
+}
+
+.brand-gradient-subtle {
+  background: linear-gradient(135deg, rgba(182, 222, 177, 0.25) 0%, rgba(255, 209, 224, 0.25) 50%, rgba(223, 186, 255, 0.25) 100%);
+}
+
+/* Glassmorphism per design.md §5.1 */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(194, 200, 190, 0.4);
+}
+
+.dark .glass-panel {
+  background: rgba(24, 34, 28, 0.85);
+  backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(65, 85, 72, 0.4);
+}
+
+/* Tabular numbers for currency, quantities, deltas per design.md §4 */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
