@@ -44,3 +44,10 @@ samconfig.toml
 # Local scratch & test profiles
 scratch/
 
+# Agent skills & design mockups
+.agents/
+agentic-awesome-skills/
+superpowers/
+stitch_inventory_reconciliation_saas_dashboard/
+
+
