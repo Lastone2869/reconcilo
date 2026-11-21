@@ -16,62 +16,45 @@ import { Card } from '../components/ui/Card.js';
 import { StatusPill } from '../components/ui/StatusPill.js';
 import { Button } from '../components/ui/Button.js';
 import { useConnectivity } from '../hooks/useConnectivity.js';
+import { useEffect, useState } from 'react';
+import { DataSyncService, TransactionRow } from '../services/data-sync.service.js';
 
 export const StoreDashboardPage: React.FC = () => {
   const navigate = useNavigate();
   const { pendingCount, isOnline, triggerSync, isSyncing } = useConnectivity();
 
-  const mockRecentActivity = [
-    {
-      id: 'tx-1092',
-      type: 'Sale',
-      product: 'Espresso Roast Beans 1kg',
-      qty: -2,
-      time: '3 mins ago',
-      status: 'synced',
-    },
-    {
-      id: 'tx-1091',
-      type: 'Sale',
-      product: 'Single Origin Filter 250g',
-      qty: -1,
-      time: '12 mins ago',
-      status: 'synced',
-    },
-    {
-      id: 'tx-1090',
-      type: 'Offline Sale',
-      product: 'Barista Oat Milk 1L',
-      qty: -4,
-      time: '25 mins ago',
-      status: 'pending',
-    },
-    {
-      id: 'tx-1089',
-      type: 'Restock ASN',
-      product: 'Compostable Cups 12oz',
-      qty: +100,
-      time: '1 hour ago',
-      status: 'synced',
-    },
-  ];
+  const [openConflicts, setOpenConflicts] = useState(() => DataSyncService.getOpenConflictsCount());
+  const [suspiciousCount, setSuspiciousCount] = useState(() => DataSyncService.getSuspiciousCount());
+  const [globalInventory, setGlobalInventory] = useState(() => DataSyncService.getGlobalInventory());
+  const [totalInventory, setTotalInventory] = useState(() =>
+    DataSyncService.getGlobalInventory().reduce((acc, item) => acc + item.downtownStock, 0)
+  );
+  const [recentTransactions, setRecentTransactions] = useState<TransactionRow[]>([]);
 
-  const mockLowStockItems = [
-    {
-      productId: 'prod-005',
-      name: 'Compostable Cups 12oz (Pack 50)',
-      sku: 'CUP-COM-12',
-      current: 8,
+  useEffect(() => {
+    const sync = async () => {
+      setOpenConflicts(DataSyncService.getOpenConflictsCount());
+      setSuspiciousCount(DataSyncService.getSuspiciousCount());
+      const inv = DataSyncService.getGlobalInventory();
+      setGlobalInventory(inv);
+      setTotalInventory(inv.reduce((acc, item) => acc + item.downtownStock, 0));
+      const txs = await DataSyncService.getAllTransactions();
+      setRecentTransactions(txs.slice(0, 5));
+    };
+    sync();
+    const unsub = DataSyncService.subscribe(sync);
+    return () => unsub();
+  }, []);
+
+  const lowStockItems = globalInventory
+    .filter((i) => i.downtownStock <= 15)
+    .map((i) => ({
+      productId: i.sku,
+      name: i.name,
+      sku: i.sku,
+      current: i.downtownStock,
       threshold: 15,
-    },
-    {
-      productId: 'prod-004',
-      name: 'Organic Vanilla Syrup 750ml',
-      sku: 'SYR-VAN-750',
-      current: 4,
-      threshold: 10,
-    },
-  ];
+    }));
 
   return (
     <div className="space-y-6">
@@ -111,10 +94,10 @@ export const StoreDashboardPage: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricCard
           title="Total Inventory"
-          value="1,428"
-          delta="+12 today"
+          value={totalInventory.toLocaleString()}
+          delta="Downtown Node #001"
           deltaType="positive"
-          subtitle="Across 18 Active SKUs"
+          subtitle="Across 5 Active SKUs"
           icon={<Boxes className="w-5 h-5" />}
           iconBg="bg-primary-container text-primary-on-container"
         />
@@ -128,18 +111,18 @@ export const StoreDashboardPage: React.FC = () => {
         />
         <MetricCard
           title="Stock Discrepancies"
-          value="2"
-          delta="Requires review"
-          deltaType="negative"
+          value={openConflicts}
+          delta={openConflicts > 0 ? "Requires review" : "All clear"}
+          deltaType={openConflicts > 0 ? "negative" : "positive"}
           subtitle="Oversell / Stale version"
           icon={<AlertOctagon className="w-5 h-5" />}
           iconBg="bg-error-container text-error"
         />
         <MetricCard
           title="Suspicious Flags"
-          value="1"
+          value={suspiciousCount}
           subtitle="Quantity rule alert"
-          deltaType="neutral"
+          deltaType={suspiciousCount > 0 ? "neutral" : "positive"}
           icon={<ShieldAlert className="w-5 h-5" />}
           iconBg="bg-secondary-container text-secondary-on-container"
         />
@@ -185,31 +168,31 @@ export const StoreDashboardPage: React.FC = () => {
               {/* Breakdown stats */}
               <div className="sm:col-span-2 space-y-4">
                 <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-medium">
+                  <div className="flex justify-between text-xs font-medium text-on-surface dark:text-on-surface-dark">
                     <span>Reconciled Transactions</span>
                     <span className="tabular-nums font-bold">1,084 / 1,104</span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+                  <div className="w-full h-2 rounded-full bg-surface-container dark:bg-surface-container-high-dark overflow-hidden">
                     <div className="h-full bg-primary rounded-full w-[98%]" />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-medium">
+                  <div className="flex justify-between text-xs font-medium text-on-surface dark:text-on-surface-dark">
                     <span>IndexedDB Cache Integrity</span>
                     <span className="tabular-nums font-bold">100% Consistent</span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+                  <div className="w-full h-2 rounded-full bg-surface-container dark:bg-surface-container-high-dark overflow-hidden">
                     <div className="h-full brand-gradient rounded-full w-[100%]" />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <div className="flex justify-between text-xs font-medium">
+                  <div className="flex justify-between text-xs font-medium text-on-surface dark:text-on-surface-dark">
                     <span>Conflict Resolution SLA</span>
                     <span className="tabular-nums font-bold">&lt; 15 mins avg</span>
                   </div>
-                  <div className="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+                  <div className="w-full h-2 rounded-full bg-surface-container dark:bg-surface-container-high-dark overflow-hidden">
                     <div className="h-full bg-secondary rounded-full w-[85%]" />
                   </div>
                 </div>
@@ -224,30 +207,30 @@ export const StoreDashboardPage: React.FC = () => {
             title="Low-Stock Alerts"
             subtitle="Triggered per RULE-024"
             action={
-              <span className="text-xs font-bold text-error bg-error-container/50 px-2 py-0.5 rounded-full">
-                {mockLowStockItems.length} SKUs
+              <span className="text-xs font-bold text-error dark:text-error-dark bg-error-container/50 dark:bg-error-container-dark/50 px-2 py-0.5 rounded-full">
+                {lowStockItems.length} SKUs
               </span>
             }
           >
             <div className="space-y-3">
-              {mockLowStockItems.map((item) => (
+              {lowStockItems.map((item) => (
                 <div
                   key={item.productId}
-                  className="p-3 rounded-lg bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant/40 flex items-center justify-between"
+                  className="p-3 rounded-lg bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant/40 dark:border-outline-variant-dark/40 flex items-center justify-between"
                 >
                   <div>
                     <p className="text-xs font-semibold text-on-surface dark:text-on-surface-dark truncate max-w-[180px]">
                       {item.name}
                     </p>
-                    <p className="text-[11px] font-mono text-on-surface-variant">
+                    <p className="text-[11px] font-mono text-on-surface-variant dark:text-on-surface-variant-dark">
                       SKU: {item.sku}
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs font-bold text-error font-display tabular-nums">
+                    <span className="text-xs font-bold text-error dark:text-error-dark font-display tabular-nums">
                       {item.current} / {item.threshold}
                     </span>
-                    <p className="text-[10px] text-on-surface-variant">Stock / Thresh</p>
+                    <p className="text-[10px] text-on-surface-variant dark:text-on-surface-variant-dark">Stock / Thresh</p>
                   </div>
                 </div>
               ))}
@@ -279,28 +262,28 @@ export const StoreDashboardPage: React.FC = () => {
           </Button>
         }
       >
-        <div className="divide-y divide-outline-variant/30">
-          {mockRecentActivity.map((tx) => (
-            <div key={tx.id} className="py-3 flex items-center justify-between gap-4">
+        <div className="divide-y divide-outline-variant/30 dark:divide-outline-variant-dark/30">
+          {recentTransactions.map((tx) => (
+            <div key={tx.transaction_id} className="py-3 flex items-center justify-between gap-4">
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center font-bold text-xs">
-                  {tx.type === 'Restock ASN' ? '+' : '-'}
+                <div className="w-8 h-8 rounded-lg bg-surface-container dark:bg-surface-container-high-dark text-on-surface dark:text-on-surface-dark flex items-center justify-center font-bold text-xs">
+                  {tx.type === 'SALE' ? '-' : '+'}
                 </div>
                 <div className="min-w-0">
                   <p className="text-xs font-semibold text-on-surface dark:text-on-surface-dark truncate">
-                    {tx.product}
+                    {tx.product_name}
                   </p>
-                  <p className="text-[11px] text-on-surface-variant font-mono">
-                    {tx.id} &bull; {tx.time}
+                  <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark font-mono">
+                    #{tx.device_sequence} &bull; {tx.transaction_id.slice(0, 14)}... &bull; {new Date(tx.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-4 flex-shrink-0">
-                <span className="text-xs font-bold font-display tabular-nums">
-                  {tx.qty > 0 ? `+${tx.qty}` : tx.qty} units
+                <span className="text-xs font-bold font-display tabular-nums text-on-surface dark:text-on-surface-dark">
+                  {tx.type === 'SALE' ? `-${tx.quantity}` : `+${tx.quantity}`} units
                 </span>
-                <StatusPill status={tx.status} />
+                <StatusPill status={tx.lifecycle_state.toLowerCase()} label={tx.lifecycle_state} />
               </div>
             </div>
           ))}

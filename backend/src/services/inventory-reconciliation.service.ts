@@ -133,8 +133,8 @@ export class InventoryReconciliationService {
         };
       }
 
-      // If version mismatch occurred and we have remaining retries, loop again
-      console.warn(`Version mismatch on attempt ${attempt} for product ${tx.product_id}, retrying...`);
+      // If version mismatch occurred and we have remaining retries, loop again with jittered backoff
+      await new Promise((r) => setTimeout(r, Math.floor(Math.random() * 10 * attempt)));
     }
 
     // Retries exhausted -> Record STALE_VERSION conflict

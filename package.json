@@ -7,7 +7,6 @@
     "backend",
     "frontend"
   ],
-
   "scripts": {
     "dev": "npm run dev --workspace=frontend",
     "build": "npm run build --workspace=shared && npm run build --workspace=backend && npm run build --workspace=frontend",
@@ -19,5 +18,14 @@
     "@types/node": "^20.12.7",
     "typescript": "^5.4.5",
     "vitest": "^1.6.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.1131.0",
+    "@aws-sdk/client-dynamodb": "^3.1153.0",
+    "@aws-sdk/client-lambda": "^3.1131.0",
+    "@aws-sdk/client-s3": "^3.1131.0",
+    "@aws-sdk/client-ses": "^3.1131.0",
+    "@aws-sdk/client-sns": "^3.1131.0",
+    "@aws-sdk/client-sqs": "^3.1153.0"
   }
 }

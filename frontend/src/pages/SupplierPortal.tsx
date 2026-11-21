@@ -80,31 +80,31 @@ export const SupplierPortalPage: React.FC = () => {
 
       {showNewASNModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-surface-container-lowest dark:bg-surface-container-dark p-6 rounded-2xl max-w-md w-full border border-outline-variant shadow-xl">
-            <h2 className="text-lg font-bold font-display text-on-surface mb-1">
+          <div className="bg-surface-container-lowest dark:bg-surface-container-dark p-6 rounded-2xl max-w-md w-full border border-outline-variant dark:border-outline-variant-dark shadow-xl">
+            <h2 className="text-lg font-bold font-display text-on-surface dark:text-on-surface-dark mb-1">
               Create Restock Shipment (ASN)
             </h2>
-            <p className="text-xs text-on-surface-variant mb-4">
+            <p className="text-xs text-on-surface-variant dark:text-on-surface-variant-dark mb-4">
               Direct inventory replenishment dispatch to store terminal
             </p>
 
             <form onSubmit={handleCreateASN} className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold mb-1">Target Store</label>
+                <label className="block font-semibold mb-1 text-on-surface dark:text-on-surface-dark">Target Store</label>
                 <input
                   type="text"
                   disabled
                   value="Downtown Flagship #001"
-                  className="w-full p-2.5 bg-surface-container rounded-lg border border-outline-variant font-medium"
+                  className="w-full p-2.5 bg-surface-container dark:bg-surface-container-dark rounded-lg border border-outline-variant dark:border-outline-variant-dark font-medium text-on-surface dark:text-on-surface-dark"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold mb-1">Select Catalog Product</label>
+                <label className="block font-semibold mb-1 text-on-surface dark:text-on-surface-dark">Select Catalog Product</label>
                 <select
                   value={selectedProduct}
                   onChange={(e) => setSelectedProduct(e.target.value)}
-                  className="w-full p-2.5 bg-surface-container-low dark:bg-surface-container-dark rounded-lg border border-outline-variant font-medium"
+                  className="w-full p-2.5 bg-surface-container-low dark:bg-surface-container-dark rounded-lg border border-outline-variant dark:border-outline-variant-dark font-medium text-on-surface dark:text-on-surface-dark"
                 >
                   <option value="prod-001">Espresso Roast Beans 1kg (CF-ESP-1KG)</option>
                   <option value="prod-002">Single Origin Filter 250g (CF-FLT-250G)</option>
@@ -115,13 +115,13 @@ export const SupplierPortalPage: React.FC = () => {
               </div>
 
               <div>
-                <label className="block font-semibold mb-1">Restock Units Quantity</label>
+                <label className="block font-semibold mb-1 text-on-surface dark:text-on-surface-dark">Restock Units Quantity</label>
                 <input
                   type="number"
                   min={1}
                   value={quantity}
                   onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
-                  className="w-full p-2.5 bg-surface-container-low dark:bg-surface-container-dark rounded-lg border border-outline-variant font-medium tabular-nums"
+                  className="w-full p-2.5 bg-surface-container-low dark:bg-surface-container-dark rounded-lg border border-outline-variant dark:border-outline-variant-dark font-medium tabular-nums text-on-surface dark:text-on-surface-dark"
                 />
               </div>
 
@@ -150,8 +150,8 @@ export const SupplierPortalPage: React.FC = () => {
                   <h3 className="text-sm font-bold font-display text-on-surface dark:text-on-surface-dark">
                     {ship.asn_id} &bull; {ship.destination}
                   </h3>
-                  <p className="text-xs text-on-surface mt-0.5">{ship.items}</p>
-                  <p className="text-[11px] text-on-surface-variant font-mono mt-0.5">
+                  <p className="text-xs text-on-surface dark:text-on-surface-dark mt-0.5">{ship.items}</p>
+                  <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark font-mono mt-0.5">
                     Carrier: {ship.carrier} &bull; Tracking: {ship.tracking_num}
                   </p>
                 </div>
@@ -162,7 +162,7 @@ export const SupplierPortalPage: React.FC = () => {
                   status={ship.status === 'Delivered' ? 'synced' : 'pending'}
                   label={ship.status}
                 />
-                <p className="text-[11px] text-on-surface-variant mt-1 font-medium">{ship.eta}</p>
+                <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark mt-1 font-medium">{ship.eta}</p>
               </div>
             </div>
           ))}

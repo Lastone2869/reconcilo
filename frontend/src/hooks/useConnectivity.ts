@@ -91,6 +91,7 @@ export function useConnectivity() {
   const toggleOfflineSimulation = () => {
     const nextState = !manualOffline;
     setManualOffline(nextState);
+    manualOfflineRef.current = nextState;
     if (nextState) {
       setConnectivityState(StoreConnectivityState.OFFLINE);
     } else {

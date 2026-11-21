@@ -349,6 +349,30 @@ Resources:
       CodeUri: ../backend/
       Handler: dist/handlers/websocket.handler.handler
 
+  EODRollupFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: reconcilo-eod-rollup
+      CodeUri: ../backend/
+      Handler: dist/handlers/eod-rollup.handler.handler
+      Events:
+        MidnightSchedule:
+          Type: Schedule
+          Properties:
+            Schedule: cron(0 0 * * ? *)
+            Description: Midnight fleetwide retail store EOD rollup settlement
+            Enabled: true
+        HttpRollupPost:
+          Type: HttpApi
+          Properties:
+            Path: /reports/eod-rollup
+            Method: post
+        HttpRollupGet:
+          Type: HttpApi
+          Properties:
+            Path: /reports/eod-rollups
+            Method: get
+
 Outputs:
   UserPoolId:
     Value: !Ref UserPool

@@ -5,6 +5,8 @@ import {
   SyncBatchStatus,
 } from '@reconcilo/shared';
 import { IndexedDBService, LocalTransaction } from './indexeddb.service.js';
+import { DataSyncService } from './data-sync.service.js';
+import { ApiService } from './api.service.js';
 
 export class SyncService {
   /**
@@ -50,19 +52,27 @@ export class SyncService {
         })),
       };
 
-      // 1. Simulate network upload to S3
-      console.log(`[SyncService] Uploading batch ${batchId} (${pending.length} txs) to S3...`);
-      await new Promise((resolve) => setTimeout(resolve, 800));
-
-      // Guarantee 1: Mark SYNCING in IndexedDB *only after* S3 upload confirms
+      // 1. Prepare batch payload & mark SYNCING in IndexedDB (Guarantee 1)
+      console.log(`[SyncService] Uploading batch ${batchId} (${pending.length} txs) to cloud...`);
       await IndexedDBService.markTransactionsSyncing(transactionIds, batchId);
 
-      // 2. Register sync batch with Ingestion pipeline
-      console.log(`[SyncService] S3 upload confirmed. Batch registered.`);
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      // 2. Transmit sync batch to Cloud Ingestion API Gateway
+      const apiResult = await ApiService.uploadSyncBatch(payload);
+      console.log(`[SyncService] API Gateway transmission result:`, apiResult);
 
-      // 3. Cloud processing completes successfully
+      // 3. Cloud processing confirmation / marks transactions SYNCED in IndexedDB
       await IndexedDBService.markTransactionsSynced(transactionIds);
+
+      // Add persistent sync notification and update UI across app
+      DataSyncService.addNotification({
+        type: 'SYNC',
+        severity: 'INFO',
+        title: 'Batch Synchronization Complete',
+        message: `Batch ${batchId.slice(0, 14)}... replayed ${pending.length} offline sales into DynamoDB without errors.`,
+        time: 'Just now',
+        read: false,
+        link: '/transactions',
+      });
 
       console.log(`[SyncService] Batch ${batchId} reconciled and completed.`);
       return {

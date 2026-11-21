@@ -1,0 +1,58 @@
+flowchart TD
+    subgraph Store_POS [Store Edge & POS Register]
+        Cashier[Cashier / Virtual Scanner]
+        IDB[(Browser IndexedDB)]
+        SyncEngine[Sync & Offline Manager]
+        Cashier -->|1. Record Sale| IDB
+        IDB -->|2. Create Sync Batch| SyncEngine
+    end
+
+    subgraph AWS_Ingestion [Ingestion & Buffer Tier]
+        S3Bucket[(Amazon S3 Sync Batches)]
+        IngestLambda[Ingestion Lambda]
+        SQSFIFO[Amazon SQS FIFO Queue]
+        DLQ[Dead Letter Queue DLQ]
+        SyncEngine -->|3. Upload Batch JSON| S3Bucket
+        S3Bucket -->|4. ObjectCreated Event| IngestLambda
+        IngestLambda -->|5. Enqueue Message Group| SQSFIFO
+        SQSFIFO -->|Failed 3x| DLQ
+    end
+
+    subgraph AWS_Reconciliation [Reconciliation & Processing Tier]
+        StepFunc[AWS Step Functions Workflow]
+        ReconService[Inventory Reconciliation Service]
+        SuspiciousRules[Rule Heuristics Engine]
+        SQSFIFO -->|6. Trigger Workflow| StepFunc
+        StepFunc --> ReconService
+        StepFunc --> SuspiciousRules
+    end
+
+    subgraph AWS_Persistence [Authoritative Storage Tier]
+        DDB[(Amazon DynamoDB 10 Tables)]
+        Streams[DynamoDB Streams]
+        ReconService -->|7. Versioned Write| DDB
+        SuspiciousRules -->|8. Flag Suspicious Tx| DDB
+        DDB -->|9. Change Data Capture| Streams
+    end
+
+    subgraph AWS_Operations [Observability & Notifications]
+        WSBroadcaster[WebSocket Lambda]
+        APIGW[API Gateway WebSockets & HTTP]
+        SNS[Amazon SNS Operational Alerts]
+        SES[Amazon SES Email Reports]
+        CloudWatchCron[CloudWatch Events Midnight Schedule]
+        Streams --> WSBroadcaster
+        WSBroadcaster --> APIGW
+        APIGW -->|10. Live Push Updates| Cashier
+        StepFunc -->|Alert| SNS
+        StepFunc -->|Daily Summary| SES
+        CloudWatchCron -->|Trigger Midnight Rollup| StepFunc
+    end
+
+    subgraph AWS_IaC [Infrastructure as Code & Deployment Orchestration]
+        SAM[AWS SAM Serverless Framework / template.yaml]
+        SAM -.->|Provisions & Deploys| AWS_Ingestion
+        SAM -.->|Orchestrates Functions & State Machine| AWS_Reconciliation
+        SAM -.->|Configures Tables & GSIs| AWS_Persistence
+        SAM -.->|Sets Routes & Metric Alarms| AWS_Operations
+    end

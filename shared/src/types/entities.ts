@@ -169,3 +169,35 @@ export interface AuditRecord {
   new_state?: Record<string, unknown> | null;
   metadata?: Record<string, unknown>;
 }
+
+/**
+ * End-of-Day (EOD) Rollup Entity — Stores end-of-day register settlement & inventory balance audit
+ */
+export interface EODRollupReport {
+  rollup_id: string; // e.g. eod-store-001-2026-10-19
+  store_id: string;
+  date: string; // YYYY-MM-DD
+  opening_cash: number;
+  cash_sales: number;
+  digital_sales: number;
+  total_gross_sales: number;
+  total_tax: number;
+  total_units_sold: number;
+  returns_count: number;
+  returns_total: number;
+  register_expected: number;
+  register_actual: number;
+  register_discrepancy: number; // actual - expected
+  reconciled_transactions_count: number;
+  conflicts_count: number;
+  unresolved_conflicts_count: number;
+  suspicious_alerts_count: number;
+  generated_at: string; // ISO 8601
+  generated_by: string; // user_id or 'SYSTEM_CRON'
+  manager_signoff?: {
+    signed_by: string;
+    signed_at: string;
+    notes?: string;
+  };
+}
+

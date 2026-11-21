@@ -7,16 +7,48 @@ import { StoreConnectivityState, UserRole } from '@reconcilo/shared';
 import { useConnectivity } from '../../hooks/useConnectivity.js';
 import { useAuthStore } from '../../stores/auth.store.js';
 
+import { useEffect } from 'react';
+import { DataSyncService } from '../../services/data-sync.service.js';
+
 export const AppLayout: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('reconcilo_theme');
+    if (saved) {
+      const isDark = saved === 'dark';
+      document.documentElement.classList.toggle('dark', isDark);
+      return isDark;
+    }
+    return document.documentElement.classList.contains('dark');
+  });
   const navigate = useNavigate();
 
   const { user, logout } = useAuthStore();
   const { connectivityState, pendingCount, isSyncing, triggerSync } = useConnectivity();
 
+  const [openConflictsCount, setOpenConflictsCount] = useState(() =>
+    DataSyncService.getOpenConflictsCount()
+  );
+  const [suspiciousCount, setSuspiciousCount] = useState(() =>
+    DataSyncService.getSuspiciousCount()
+  );
+
+  useEffect(() => {
+    const update = () => {
+      setOpenConflictsCount(DataSyncService.getOpenConflictsCount());
+      setSuspiciousCount(DataSyncService.getSuspiciousCount());
+    };
+    update();
+    const unsub = DataSyncService.subscribe(update);
+    return () => unsub();
+  }, []);
+
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark', !darkMode);
+    setDarkMode((prev) => {
+      const next = !prev;
+      document.documentElement.classList.toggle('dark', next);
+      localStorage.setItem('reconcilo_theme', next ? 'dark' : 'light');
+      return next;
+    });
   };
 
   const handleLogout = () => {
@@ -32,8 +64,8 @@ export const AppLayout: React.FC = () => {
       <Sidebar
         role={userRole}
         pendingSyncCount={pendingCount}
-        openConflictsCount={2}
-        suspiciousCount={1}
+        openConflictsCount={openConflictsCount}
+        suspiciousCount={suspiciousCount}
       />
 
       {/* Main content column */}
@@ -46,7 +78,6 @@ export const AppLayout: React.FC = () => {
           darkMode={darkMode}
           onToggleDarkMode={toggleDarkMode}
           onLogout={handleLogout}
-          unreadCount={3}
         />
 
         <OfflineBanner

@@ -4,66 +4,21 @@ import { SearchInput } from '../components/ui/SearchInput.js';
 import { Button } from '../components/ui/Button.js';
 import { Download, Plus } from 'lucide-react';
 
+import { DataSyncService, GlobalInventoryItem } from '../services/data-sync.service.js';
+
 export const GlobalInventoryPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [inventoryItems, setInventoryItems] = useState<GlobalInventoryItem[]>(() =>
+    DataSyncService.getGlobalInventory()
+  );
 
-  const inventoryItems = [
-    {
-      sku: 'CF-ESP-1KG',
-      name: 'Espresso Roast Beans 1kg',
-      category: 'Coffee',
-      downtownStock: 45,
-      uptownStock: 60,
-      seattleStock: 25,
-      austinStock: 40,
-      total: 170,
-      unitPrice: 24.5,
-    },
-    {
-      sku: 'CF-FLT-250G',
-      name: 'Single Origin Filter 250g',
-      category: 'Coffee',
-      downtownStock: 30,
-      uptownStock: 45,
-      seattleStock: 20,
-      austinStock: 35,
-      total: 130,
-      unitPrice: 14.0,
-    },
-    {
-      sku: 'MLK-OAT-1L',
-      name: 'Barista Oat Milk 1L',
-      category: 'Dairy & Plant Milk',
-      downtownStock: 80,
-      uptownStock: 120,
-      seattleStock: 45,
-      austinStock: 90,
-      total: 335,
-      unitPrice: 4.25,
-    },
-    {
-      sku: 'SYR-VAN-750',
-      name: 'Organic Vanilla Syrup 750ml',
-      category: 'Syrups',
-      downtownStock: 15,
-      uptownStock: 18,
-      seattleStock: 6,
-      austinStock: 14,
-      total: 53,
-      unitPrice: 11.5,
-    },
-    {
-      sku: 'CUP-COM-12',
-      name: 'Compostable Cups 12oz (Pack 50)',
-      category: 'Packaging',
-      downtownStock: 8,
-      uptownStock: 40,
-      seattleStock: 12,
-      austinStock: 25,
-      total: 85,
-      unitPrice: 18.0,
-    },
-  ];
+  React.useEffect(() => {
+    const sync = () => {
+      setInventoryItems(DataSyncService.getGlobalInventory());
+    };
+    const unsub = DataSyncService.subscribe(sync);
+    return () => unsub();
+  }, []);
 
   const filtered = inventoryItems.filter(
     (i) =>
@@ -106,34 +61,34 @@ export const GlobalInventoryPage: React.FC = () => {
 
         <div className="overflow-x-auto border border-outline-variant/40 dark:border-outline-variant-dark/40 rounded-lg">
           <table className="w-full text-left text-xs border-collapse">
-            <thead className="bg-surface-container-low dark:bg-surface-container-low-dark border-b border-outline-variant/60">
+            <thead className="bg-surface-container-low dark:bg-surface-container-low-dark border-b border-outline-variant/60 dark:border-outline-variant-dark/60">
               <tr>
-                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant">SKU / Item</th>
-                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant">Category</th>
-                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Downtown</th>
-                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Uptown</th>
-                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Seattle</th>
-                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Austin</th>
-                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Total Fleet</th>
-                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Unit Price</th>
+                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark">SKU / Item</th>
+                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark">Category</th>
+                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Downtown</th>
+                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Uptown</th>
+                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Seattle</th>
+                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Austin</th>
+                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Total Fleet</th>
+                <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Unit Price</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-outline-variant/30 bg-surface-container-lowest dark:bg-surface-container-dark">
+            <tbody className="divide-y divide-outline-variant/30 dark:divide-outline-variant-dark/30 bg-surface-container-lowest dark:bg-surface-container-dark">
               {filtered.map((item) => (
-                <tr key={item.sku} className="hover:bg-surface-container-low/60 transition-colors">
+                <tr key={item.sku} className="hover:bg-surface-container-low/60 dark:hover:bg-surface-container-high-dark/60 transition-colors">
                   <td className="py-3.5 px-4">
                     <p className="font-semibold text-on-surface dark:text-on-surface-dark">{item.name}</p>
-                    <p className="font-mono text-[10px] text-on-surface-variant">{item.sku}</p>
+                    <p className="font-mono text-[10px] text-on-surface-variant dark:text-on-surface-variant-dark">{item.sku}</p>
                   </td>
-                  <td className="py-3.5 px-4 text-on-surface-variant">{item.category}</td>
-                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium">{item.downtownStock}</td>
-                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium">{item.uptownStock}</td>
-                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium">{item.seattleStock}</td>
-                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium">{item.austinStock}</td>
-                  <td className="py-3.5 px-4 text-right font-display font-bold tabular-nums text-primary text-sm">
+                  <td className="py-3.5 px-4 text-on-surface-variant dark:text-on-surface-variant-dark">{item.category}</td>
+                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium text-on-surface dark:text-on-surface-dark">{item.downtownStock}</td>
+                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium text-on-surface dark:text-on-surface-dark">{item.uptownStock}</td>
+                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium text-on-surface dark:text-on-surface-dark">{item.seattleStock}</td>
+                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium text-on-surface dark:text-on-surface-dark">{item.austinStock}</td>
+                  <td className="py-3.5 px-4 text-right font-display font-bold tabular-nums text-primary dark:text-primary-dark text-sm">
                     {item.total}
                   </td>
-                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium">
+                  <td className="py-3.5 px-4 text-right font-display tabular-nums font-medium text-on-surface dark:text-on-surface-dark">
                     ${item.unitPrice.toFixed(2)}
                   </td>
                 </tr>

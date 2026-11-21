@@ -1,4 +1,5 @@
 import React from 'react';
+import { Inbox } from 'lucide-react';
 
 export interface Column<T> {
   header: string;
@@ -39,18 +40,28 @@ export function DataTable<T extends Record<string, any>>({
         </thead>
         <tbody className="divide-y divide-outline-variant/30 dark:divide-outline-variant-dark/30 bg-surface-container-lowest dark:bg-surface-container-dark">
           {loading ? (
-            <tr>
-              <td colSpan={columns.length} className="py-8 text-center text-on-surface-variant">
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                  <span>Loading records...</span>
-                </div>
-              </td>
-            </tr>
+            Array.from({ length: 4 }).map((_, rIdx) => (
+              <tr key={`skeleton-${rIdx}`} className="animate-pulse">
+                {columns.map((col, cIdx) => (
+                  <td key={`skeleton-col-${cIdx}`} className={`py-3.5 px-4 ${col.className || ''}`}>
+                    <div
+                      className={`h-4 bg-surface-container dark:bg-surface-container-high-dark/60 rounded ${
+                        cIdx === 0 ? 'w-24' : cIdx === columns.length - 1 ? 'w-16 ml-auto' : 'w-32'
+                      }`}
+                    />
+                  </td>
+                ))}
+              </tr>
+            ))
           ) : data.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} className="py-8 text-center text-on-surface-variant">
-                {emptyMessage}
+              <td colSpan={columns.length} className="py-12 text-center text-on-surface-variant dark:text-on-surface-variant-dark">
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <Inbox className="w-8 h-8 stroke-[1.2] text-outline/40 dark:text-outline-dark/40" aria-hidden="true" />
+                  <p className="text-xs text-on-surface-variant dark:text-on-surface-variant-dark font-medium">
+                    {emptyMessage}
+                  </p>
+                </div>
               </td>
             </tr>
           ) : (

@@ -86,19 +86,19 @@ export const TeamAccessPage: React.FC = () => {
       <Card headerWash title="Team Directory" subtitle="Cognito User Pool group assignments and access levels">
         <div className="overflow-x-auto border border-outline-variant/40 dark:border-outline-variant-dark/40 rounded-lg">
           <table className="w-full text-left text-xs border-collapse">
-            <thead className="bg-surface-container-low dark:bg-surface-container-low-dark border-b border-outline-variant/60">
+            <thead className="bg-surface-container-low dark:bg-surface-container-low-dark border-b border-outline-variant/60 dark:border-outline-variant-dark/60">
               <tr>
-                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant">User</th>
-                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant">Role</th>
-                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant">Store Assignment</th>
-                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant text-center">Status</th>
-                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant text-right">Last Active</th>
-                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant text-center">Actions</th>
+                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant dark:text-on-surface-variant-dark">User</th>
+                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant dark:text-on-surface-variant-dark">Role</th>
+                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant dark:text-on-surface-variant-dark">Store Assignment</th>
+                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant dark:text-on-surface-variant-dark text-center">Status</th>
+                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant dark:text-on-surface-variant-dark text-right">Last Active</th>
+                <th className="py-3 px-4 font-semibold uppercase tracking-wider text-on-surface-variant dark:text-on-surface-variant-dark text-center">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-outline-variant/30 bg-surface-container-lowest dark:bg-surface-container-dark">
+            <tbody className="divide-y divide-outline-variant/30 dark:divide-outline-variant-dark/30 bg-surface-container-lowest dark:bg-surface-container-dark">
               {members.map((m) => (
-                <tr key={m.user_id} className="hover:bg-surface-container-low/60 transition-colors">
+                <tr key={m.user_id} className="hover:bg-surface-container-low/60 dark:hover:bg-surface-container-high-dark/60 transition-colors">
                   <td className="py-3.5 px-4">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-primary-container text-primary-on-container flex items-center justify-center font-bold text-xs">
@@ -106,7 +106,7 @@ export const TeamAccessPage: React.FC = () => {
                       </div>
                       <div>
                         <p className="font-semibold text-on-surface dark:text-on-surface-dark">{m.name}</p>
-                        <p className="text-[10px] text-on-surface-variant font-mono">{m.email}</p>
+                        <p className="text-[10px] text-on-surface-variant dark:text-on-surface-variant-dark font-mono">{m.email}</p>
                       </div>
                     </div>
                   </td>
@@ -116,18 +116,18 @@ export const TeamAccessPage: React.FC = () => {
                       {m.role.replace(/_/g, ' ')}
                     </span>
                   </td>
-                  <td className="py-3.5 px-4 text-on-surface-variant">{m.store}</td>
+                  <td className="py-3.5 px-4 text-on-surface-variant dark:text-on-surface-variant-dark">{m.store}</td>
                   <td className="py-3.5 px-4 text-center">
                     <StatusPill
                       status={m.status === 'ACTIVE' ? 'synced' : 'conflict'}
                       label={m.status}
                     />
                   </td>
-                  <td className="py-3.5 px-4 text-right text-on-surface-variant font-mono text-[11px]">
+                  <td className="py-3.5 px-4 text-right text-on-surface-variant dark:text-on-surface-variant-dark font-mono text-[11px]">
                     {m.last_active}
                   </td>
                   <td className="py-3.5 px-4 text-center">
-                    <button className="p-1.5 rounded-md text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Edit role assignment">
+                    <button className="p-1.5 rounded-md text-on-surface-variant dark:text-on-surface-variant-dark hover:bg-surface-container-high dark:hover:bg-surface-container-high-dark transition-colors" title="Edit role assignment">
                       <Pencil className="w-3.5 h-3.5" />
                     </button>
                   </td>

@@ -13,16 +13,9 @@ import {
   X,
 } from 'lucide-react';
 
-export interface NotificationItem {
-  id: string;
-  type: 'CONFLICT' | 'LOW_STOCK' | 'SUSPICIOUS' | 'SYNC' | 'RESTOCK';
-  severity: 'HIGH' | 'MEDIUM' | 'INFO';
-  title: string;
-  message: string;
-  time: string;
-  read: boolean;
-  link?: string;
-}
+import { DataSyncService, NotificationItem } from '../../services/data-sync.service.js';
+
+export type { NotificationItem };
 
 interface NotificationDropdownProps {
   isOpen: boolean;
@@ -30,68 +23,26 @@ interface NotificationDropdownProps {
   onUnreadCountChange?: (count: number) => void;
 }
 
-const INITIAL_NOTIFICATIONS: NotificationItem[] = [
-  {
-    id: 'notif-1',
-    type: 'CONFLICT',
-    severity: 'HIGH',
-    title: 'Oversell Conflict Detected',
-    message: '2 units oversold on Compostable Cups 12oz during offline sync replay.',
-    time: '4m ago',
-    read: false,
-    link: '/conflicts',
-  },
-  {
-    id: 'notif-2',
-    type: 'LOW_STOCK',
-    severity: 'MEDIUM',
-    title: 'Low Stock Warning',
-    message: 'Organic Oat Milk 1L dropped to 6 units (reorder threshold: 10).',
-    time: '18m ago',
-    read: false,
-    link: '/global-inventory',
-  },
-  {
-    id: 'notif-3',
-    type: 'SUSPICIOUS',
-    severity: 'HIGH',
-    title: 'Suspicious Activity Flagged',
-    message: 'POS Terminal 02 recorded 3 rapid consecutive void operations.',
-    time: '45m ago',
-    read: false,
-    link: '/suspicious-activity',
-  },
-  {
-    id: 'notif-4',
-    type: 'SYNC',
-    severity: 'INFO',
-    title: 'Batch Synchronization Complete',
-    message: 'Batch sync-001 replayed 14 offline sales into DynamoDB without errors.',
-    time: '1h ago',
-    read: true,
-    link: '/transactions',
-  },
-  {
-    id: 'notif-5',
-    type: 'RESTOCK',
-    severity: 'INFO',
-    title: 'Supplier ASN Dispatched',
-    message: 'EcoPackaging Ltd has dispatched shipment for Restock PO-2026-003.',
-    time: '2h ago',
-    read: true,
-    link: '/supplier',
-  },
-];
-
 export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
   isOpen,
   onClose,
   onUnreadCountChange,
 }) => {
-  const [notifications, setNotifications] = useState<NotificationItem[]>(INITIAL_NOTIFICATIONS);
+  const [notifications, setNotifications] = useState<NotificationItem[]>(() =>
+    DataSyncService.getNotifications()
+  );
   const [filter, setFilter] = useState<'all' | 'unread' | 'alerts'>('all');
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+
+  // Listen for data changes across tabs or other components
+  useEffect(() => {
+    const sync = () => {
+      setNotifications(DataSyncService.getNotifications());
+    };
+    const unsubscribe = DataSyncService.subscribe(sync);
+    return () => unsubscribe();
+  }, []);
 
   const unreadCount = notifications.filter((n) => !n.read).length;
 
@@ -129,22 +80,20 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
   if (!isOpen) return null;
 
   const markAllAsRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
+    DataSyncService.markAllNotificationsAsRead();
   };
 
   const clearAll = () => {
-    setNotifications([]);
+    DataSyncService.clearAllNotifications();
   };
 
   const markAsRead = (id: string) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
-    );
+    DataSyncService.markNotificationAsRead(id);
   };
 
   const dismissNotification = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    setNotifications((prev) => prev.filter((n) => n.id !== id));
+    DataSyncService.dismissNotification(id);
   };
 
   const handleNotificationClick = (item: NotificationItem) => {
@@ -174,7 +123,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
       case 'RESTOCK':
         return <Truck className="w-4 h-4 text-primary" />;
       default:
-        return <Bell className="w-4 h-4 text-on-surface-variant" />;
+        return <Bell className="w-4 h-4 text-on-surface-variant dark:text-on-surface-variant-dark" />;
     }
   };
 
@@ -198,13 +147,15 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
   return (
     <div
       ref={dropdownRef}
+      role="dialog"
+      aria-label="Operational notifications"
       className="absolute right-0 top-full mt-2 w-96 max-w-[calc(100vw-2rem)] rounded-2xl bg-surface dark:bg-surface-container-low-dark border border-outline-variant/60 dark:border-outline-variant-dark/60 shadow-2xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-150"
     >
       {/* Header */}
       <div className="p-4 border-b border-outline-variant/40 dark:border-outline-variant-dark/40 flex items-center justify-between bg-surface-container-lowest/50 dark:bg-surface-container-lowest-dark/30 backdrop-blur-sm">
         <div className="flex items-center gap-2.5">
           <div className="p-2 rounded-xl bg-primary-container text-primary-on-container">
-            <Bell className="w-4 h-4" />
+            <Bell className="w-4 h-4" aria-hidden="true" />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -227,27 +178,30 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
           {unreadCount > 0 && (
             <button
               onClick={markAllAsRead}
-              className="p-1.5 text-on-surface-variant hover:text-primary rounded-lg hover:bg-surface-container transition-colors text-xs flex items-center gap-1"
+              className="p-1.5 text-on-surface-variant dark:text-on-surface-variant-dark hover:text-primary dark:hover:text-primary-dark rounded-lg hover:bg-surface-container dark:hover:bg-surface-container-dark transition-colors text-xs flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
               title="Mark all as read"
+              aria-label="Mark all notifications as read"
             >
-              <CheckCheck className="w-3.5 h-3.5" />
+              <CheckCheck className="w-3.5 h-3.5" aria-hidden="true" />
             </button>
           )}
           {notifications.length > 0 && (
             <button
               onClick={clearAll}
-              className="p-1.5 text-on-surface-variant hover:text-error rounded-lg hover:bg-surface-container transition-colors text-xs"
+              className="p-1.5 text-on-surface-variant dark:text-on-surface-variant-dark hover:text-error dark:hover:text-error-dark rounded-lg hover:bg-surface-container dark:hover:bg-surface-container-dark transition-colors text-xs focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
               title="Clear all"
+              aria-label="Clear all notifications"
             >
-              <Trash2 className="w-3.5 h-3.5" />
+              <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
             </button>
           )}
           <button
             onClick={onClose}
-            className="p-1.5 text-on-surface-variant hover:text-on-surface rounded-lg hover:bg-surface-container transition-colors"
+            className="p-1.5 text-on-surface-variant dark:text-on-surface-variant-dark hover:text-on-surface dark:hover:text-on-surface-dark rounded-lg hover:bg-surface-container dark:hover:bg-surface-container-dark transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
             title="Close"
+            aria-label="Close notifications panel"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4" aria-hidden="true" />
           </button>
         </div>
       </div>
@@ -259,7 +213,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
           className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
             filter === 'all'
               ? 'bg-primary text-white font-semibold'
-              : 'text-on-surface-variant hover:bg-surface-container'
+              : 'text-on-surface-variant dark:text-on-surface-variant-dark hover:bg-surface-container dark:hover:bg-surface-container-dark'
           }`}
         >
           All ({notifications.length})
@@ -269,7 +223,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
           className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
             filter === 'unread'
               ? 'bg-primary text-white font-semibold'
-              : 'text-on-surface-variant hover:bg-surface-container'
+              : 'text-on-surface-variant dark:text-on-surface-variant-dark hover:bg-surface-container dark:hover:bg-surface-container-dark'
           }`}
         >
           Unread ({unreadCount})
@@ -279,7 +233,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
           className={`px-2.5 py-1 rounded-md font-medium transition-colors ${
             filter === 'alerts'
               ? 'bg-primary text-white font-semibold'
-              : 'text-on-surface-variant hover:bg-surface-container'
+              : 'text-on-surface-variant dark:text-on-surface-variant-dark hover:bg-surface-container dark:hover:bg-surface-container-dark'
           }`}
         >
           Alerts ({notifications.filter((n) => n.severity !== 'INFO').length})
@@ -304,15 +258,24 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
           filteredNotifications.map((item) => (
             <div
               key={item.id}
+              role="button"
+              tabIndex={0}
+              aria-label={`${item.read ? '' : 'Unread: '}${item.title}, ${item.message}`}
               onClick={() => handleNotificationClick(item)}
-              className={`p-3.5 flex items-start gap-3 cursor-pointer transition-colors relative group ${
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handleNotificationClick(item);
+                }
+              }}
+              className={`p-3.5 flex items-start gap-3 cursor-pointer transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary ${
                 !item.read
                   ? 'bg-primary-fixed/10 dark:bg-primary-container-dark/10 hover:bg-primary-fixed/20 dark:hover:bg-primary-container-dark/20'
                   : 'hover:bg-surface-container/60 dark:hover:bg-surface-container-high-dark/40'
               }`}
             >
               {/* Type Icon */}
-              <div className={`p-2 rounded-xl flex-shrink-0 ${getIconBg(item.type)}`}>
+              <div className={`p-2 rounded-xl flex-shrink-0 ${getIconBg(item.type)}`} aria-hidden="true">
                 {getIcon(item.type)}
               </div>
 
@@ -333,7 +296,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
                 {item.link && (
                   <div className="mt-1.5 flex items-center gap-1 text-[10px] font-semibold text-primary dark:text-primary-dark">
                     <span>Inspect details</span>
-                    <ExternalLink className="w-2.5 h-2.5" />
+                    <ExternalLink className="w-2.5 h-2.5" aria-hidden="true" />
                   </div>
                 )}
               </div>
@@ -341,14 +304,15 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
               {/* Unread indicator / dismiss */}
               <div className="flex flex-col items-center gap-2">
                 {!item.read && (
-                  <span className="w-2 h-2 rounded-full bg-secondary flex-shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-secondary flex-shrink-0" aria-hidden="true" />
                 )}
                 <button
                   onClick={(e) => dismissNotification(item.id, e)}
-                  className="opacity-0 group-hover:opacity-100 p-1 text-on-surface-variant hover:text-error rounded transition-opacity"
-                  title="Dismiss"
+                  className="opacity-0 group-hover:opacity-100 focus:opacity-100 p-1 text-on-surface-variant dark:text-on-surface-variant-dark hover:text-error dark:hover:text-error-dark rounded transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-error"
+                  title="Dismiss notification"
+                  aria-label={`Dismiss notification: ${item.title}`}
                 >
-                  <X className="w-3 h-3" />
+                  <X className="w-3 h-3" aria-hidden="true" />
                 </button>
               </div>
             </div>
@@ -357,8 +321,8 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
       </div>
 
       {/* Footer */}
-      <div className="p-2.5 bg-surface-container-lowest dark:bg-surface-container-lowest-dark border-t border-outline-variant/40 dark:border-outline-variant-dark/40 flex items-center justify-between text-[11px]">
-        <span className="text-on-surface-variant px-2">
+      <div className="p-2.5 bg-surface-container-lowest dark:bg-surface-container-dark border-t border-outline-variant/40 dark:border-outline-variant-dark/40 flex items-center justify-between text-[11px]">
+        <span className="text-on-surface-variant dark:text-on-surface-variant-dark px-2">
           Real-time WebSocket & SNS alerts
         </span>
         <button
@@ -366,7 +330,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
             navigate('/conflicts');
             onClose();
           }}
-          className="font-semibold text-primary dark:text-primary-dark hover:underline px-2"
+          className="font-semibold text-primary dark:text-primary-dark hover:underline px-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
         >
           View Conflicts &rarr;
         </button>

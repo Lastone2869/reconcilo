@@ -40,3 +40,7 @@ coverage/
 # AWS / SAM
 .aws-sam/
 samconfig.toml
+
+# Local scratch & test profiles
+scratch/
+

@@ -9,6 +9,8 @@
  * 4. Replace this stub implementation with `@aws-sdk/client-cloudwatch`
  */
 
+import { CloudWatchClient, PutMetricDataCommand } from '@aws-sdk/client-cloudwatch';
+
 export interface MetricDatum {
   namespace: string;
   metricName: string;
@@ -20,10 +22,24 @@ export interface MetricDatum {
 
 const mockMetrics: MetricDatum[] = [];
 
+let cwClient: CloudWatchClient | null = null;
+function getClient(): CloudWatchClient | null {
+  if (cwClient) return cwClient;
+  if (process.env.AWS_ACCESS_KEY_ID && process.env.NODE_ENV !== 'test') {
+    cwClient = new CloudWatchClient({
+      region: process.env.AWS_REGION || 'us-east-1',
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+      },
+    });
+  }
+  return cwClient;
+}
+
 export class CloudWatchAdapter {
   /**
-   * Logs a custom operational metric to CloudWatch.
-   * // TODO: Replace stub with real AWS SDK CloudWatch PutMetricDataCommand
+   * Logs an operational metric to AWS CloudWatch.
    */
   static async logMetric(
     namespace: string,
@@ -40,7 +56,32 @@ export class CloudWatchAdapter {
     };
 
     mockMetrics.push(datum);
-    console.log(`[CLOUDWATCH STUB] Metric logged [${namespace}] ${metricName}: ${value}`);
+
+    const client = getClient();
+    if (client) {
+      try {
+        const dimArray = dimensions
+          ? Object.entries(dimensions).map(([Name, Value]) => ({ Name, Value }))
+          : [];
+
+        await client.send(
+          new PutMetricDataCommand({
+            Namespace: namespace,
+            MetricData: [
+              {
+                MetricName: metricName,
+                Value: value,
+                Timestamp: new Date(),
+                Dimensions: dimArray,
+              },
+            ],
+          })
+        );
+      } catch (err: any) {
+        console.warn(`[CloudWatchAdapter] Warning pushing metric: ${err.message}`);
+      }
+    }
+
     return true;
   }
 

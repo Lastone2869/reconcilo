@@ -5,6 +5,7 @@ import {
   SuspiciousActivity,
   SyncBatch,
   Store,
+  EODRollupReport,
 } from './entities.js';
 import {
   TransactionType,
@@ -185,3 +186,26 @@ export interface RequeueDLQResponse {
   batch_id: string;
   status: string;
 }
+
+// POST /reports/eod-rollup
+export interface CreateEODRollupRequest {
+  store_id: string;
+  date?: string; // YYYY-MM-DD (defaults to today)
+  opening_cash?: number;
+  actual_physical_cash?: number;
+  notes?: string;
+}
+
+export type CreateEODRollupResponse = EODRollupReport;
+
+// GET /reports/eod-rollups
+export interface GetEODRollupsQuery {
+  storeId?: string;
+  date?: string;
+  limit?: number;
+}
+
+export interface GetEODRollupsResponse {
+  rollups: EODRollupReport[];
+}
+

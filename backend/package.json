@@ -7,6 +7,9 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@aws-sdk/client-apigatewayv2": "^3.1131.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.1131.0",
+    "@aws-sdk/client-sfn": "^3.1131.0",
     "@reconcilo/shared": "file:../shared"
   },
   "devDependencies": {

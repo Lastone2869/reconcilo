@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShieldCheck, UserCheck, KeyRound, ArrowRight } from 'lucide-react';
+import { ShieldCheck, UserCheck, KeyRound, ArrowRight, AlertCircle } from 'lucide-react';
 import { Button } from '../components/ui/Button.js';
 import { UserRole } from '@reconcilo/shared';
 import { useAuthStore } from '../stores/auth.store.js';
+import { loginWithCognito } from '../services/auth.service.js';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('staff@reconcilo.com');
-  const [password, setPassword] = useState('password123');
+  const [password, setPassword] = useState('Reconcilo2026!');
   const [selectedRole, setSelectedRole] = useState<UserRole>(UserRole.STORE_STAFF);
   const [loading, setLoading] = useState(false);
+  const [authError, setAuthError] = useState<string | null>(null);
 
   const { login } = useAuthStore();
   const navigate = useNavigate();
@@ -44,29 +46,30 @@ export const LoginPage: React.FC = () => {
   const handleRoleSelect = (preset: typeof rolePresets[0]) => {
     setSelectedRole(preset.role);
     setEmail(preset.email);
+    setPassword('Reconcilo2026!');
+    setAuthError(null);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setAuthError(null);
 
-    setTimeout(() => {
-      login(
-        {
-          user_id: `user-${selectedRole.toLowerCase()}-01`,
-          email,
-          name: email.split('@')[0].toUpperCase(),
-          role: selectedRole,
-          store_id: selectedRole === UserRole.ADMIN || selectedRole === UserRole.SUPPLIER ? null : 'store-001',
-        },
-        `stub-jwt-token-${selectedRole}`
-      );
+    // Try live AWS Cognito authentication
+    const result = await loginWithCognito(email, password);
 
+    if (result.success && result.user && result.token) {
+      login(result.user, result.token);
       setLoading(false);
-      if (selectedRole === UserRole.STORE_STAFF) navigate('/pos');
-      else if (selectedRole === UserRole.SUPPLIER) navigate('/supplier');
+
+      if (result.user.role === UserRole.STORE_STAFF) navigate('/pos');
+      else if (result.user.role === UserRole.SUPPLIER) navigate('/supplier');
       else navigate('/dashboard');
-    }, 600);
+    } else {
+      // Fallback or show error
+      setAuthError(result.error || 'Cognito authentication failed.');
+      setLoading(false);
+    }
   };
 
   return (
@@ -99,7 +102,7 @@ export const LoginPage: React.FC = () => {
 
         {/* Quick Role Selection Switcher */}
         <div className="mb-6">
-          <label className="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant mb-2">
+          <label className="block text-xs font-semibold uppercase tracking-wider text-on-surface-variant dark:text-on-surface-variant-dark mb-2">
             Select Demo Persona & Role
           </label>
           <div className="grid grid-cols-2 gap-2">
@@ -110,12 +113,12 @@ export const LoginPage: React.FC = () => {
                 onClick={() => handleRoleSelect(preset)}
                 className={`p-2.5 rounded-lg border text-left transition-all ${
                   selectedRole === preset.role
-                    ? 'border-primary bg-primary-fixed/20 text-primary dark:text-primary-dark font-semibold shadow-xs'
-                    : 'border-outline-variant/50 bg-surface-container/50 text-on-surface hover:bg-surface-container'
+                    ? 'border-primary bg-primary-fixed/20 dark:bg-primary-container-dark/50 text-primary dark:text-primary-dark font-semibold shadow-xs'
+                    : 'border-outline-variant/50 dark:border-outline-variant-dark/50 bg-surface-container/50 dark:bg-surface-container-dark/50 text-on-surface dark:text-on-surface-dark hover:bg-surface-container dark:hover:bg-surface-container-high-dark'
                 }`}
               >
                 <p className="text-xs font-semibold leading-tight">{preset.label}</p>
-                <p className="text-[10px] text-on-surface-variant line-clamp-1 mt-0.5">
+                <p className="text-[10px] text-on-surface-variant dark:text-on-surface-variant-dark line-clamp-1 mt-0.5">
                   {preset.desc}
                 </p>
               </button>
@@ -134,7 +137,7 @@ export const LoginPage: React.FC = () => {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant rounded-lg text-sm focus:ring-2 focus:ring-primary/50 focus:outline-none"
+              className="w-full px-3.5 py-2.5 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant dark:border-outline-variant-dark rounded-lg text-sm text-on-surface dark:text-on-surface-dark focus:ring-2 focus:ring-primary/50 focus:outline-none"
             />
           </div>
 
@@ -147,9 +150,39 @@ export const LoginPage: React.FC = () => {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant rounded-lg text-sm focus:ring-2 focus:ring-primary/50 focus:outline-none"
+              className="w-full px-3.5 py-2.5 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant dark:border-outline-variant-dark rounded-lg text-sm text-on-surface dark:text-on-surface-dark focus:ring-2 focus:ring-primary/50 focus:outline-none"
             />
           </div>
+
+          {authError && (
+            <div className="p-3 bg-error-container/20 dark:bg-error-container-dark/40 border border-error/30 dark:border-error-dark/40 rounded-lg flex items-start gap-2.5 text-xs text-error dark:text-error-dark">
+              <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <p className="font-semibold">{authError}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    login(
+                      {
+                        user_id: `offline-${selectedRole.toLowerCase()}-01`,
+                        email,
+                        name: email.split('@')[0].toUpperCase(),
+                        role: selectedRole,
+                        store_id: selectedRole === UserRole.ADMIN || selectedRole === UserRole.SUPPLIER ? null : 'store-001',
+                      },
+                      `offline-jwt-token-${selectedRole}`
+                    );
+                    if (selectedRole === UserRole.STORE_STAFF) navigate('/pos');
+                    else if (selectedRole === UserRole.SUPPLIER) navigate('/supplier');
+                    else navigate('/dashboard');
+                  }}
+                  className="mt-1.5 underline font-medium hover:text-error/80 dark:hover:text-error-dark/80 cursor-pointer block text-[11px] text-error dark:text-error-dark"
+                >
+                  Continue in Offline Cached Session &rarr;
+                </button>
+              </div>
+            </div>
+          )}
 
           <Button
             type="submit"
@@ -163,7 +196,7 @@ export const LoginPage: React.FC = () => {
           </Button>
         </form>
 
-        <p className="mt-6 text-[11px] text-center text-on-surface-variant">
+        <p className="mt-6 text-[11px] text-center text-on-surface-variant dark:text-on-surface-variant-dark">
           Cognito Identity Pool Authentication &bull; AES-256 Offline Storage
         </p>
       </div>

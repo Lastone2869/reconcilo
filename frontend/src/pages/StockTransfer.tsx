@@ -77,7 +77,7 @@ export const StockTransferPage: React.FC = () => {
       </div>
 
       <Card headerWash title="Transfer Manifest Log" subtitle="HQ-authorized inventory movements between store locations">
-        <div className="divide-y divide-outline-variant/30">
+        <div className="divide-y divide-outline-variant/30 dark:divide-outline-variant-dark/30">
           {transfers.map((tfr) => (
             <div key={tfr.id} className="py-4 flex items-center justify-between gap-4">
               <div className="flex items-start gap-3">
@@ -88,13 +88,13 @@ export const StockTransferPage: React.FC = () => {
                   <h3 className="text-sm font-bold font-display text-on-surface dark:text-on-surface-dark">
                     {tfr.id}
                   </h3>
-                  <p className="text-xs text-on-surface mt-0.5">
+                  <p className="text-xs text-on-surface dark:text-on-surface-dark mt-0.5">
                     {tfr.product} ({tfr.sku}) &bull; <strong>{tfr.quantity} units</strong>
                   </p>
-                  <p className="text-[11px] text-on-surface-variant font-mono mt-0.5">
+                  <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark font-mono mt-0.5">
                     From: {tfr.from} &rarr; To: {tfr.to}
                   </p>
-                  <p className="text-[10px] text-on-surface-variant mt-0.5">
+                  <p className="text-[10px] text-on-surface-variant dark:text-on-surface-variant-dark mt-0.5">
                     Authorized by: {tfr.initiated_by}
                   </p>
                 </div>
@@ -105,7 +105,7 @@ export const StockTransferPage: React.FC = () => {
                   status={tfr.status === 'Delivered' ? 'synced' : 'pending'}
                   label={tfr.status}
                 />
-                <p className="text-[11px] text-on-surface-variant mt-1 font-medium">{tfr.eta}</p>
+                <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark mt-1 font-medium">{tfr.eta}</p>
               </div>
             </div>
           ))}

@@ -3,15 +3,35 @@ import { Settings, Save, CheckCircle2, Sliders, Shield } from 'lucide-react';
 import { Card } from '../components/ui/Card.js';
 import { Button } from '../components/ui/Button.js';
 import { DEFAULT_SYSTEM_CONFIG } from '@reconcilo/shared';
+import { DataSyncService } from '../services/data-sync.service.js';
 
 export const SystemSettingsPage: React.FC = () => {
-  const [config, setConfig] = useState({ ...DEFAULT_SYSTEM_CONFIG });
+  const [config, setConfig] = useState(() => DataSyncService.getSystemConfig());
   const [saved, setSaved] = useState(false);
+  const [resetMsg, setResetMsg] = useState(false);
+
+  React.useEffect(() => {
+    const sync = () => {
+      setConfig(DataSyncService.getSystemConfig());
+    };
+    const unsub = DataSyncService.subscribe(sync);
+    return () => unsub();
+  }, []);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
+    DataSyncService.saveSystemConfig(config);
     setSaved(true);
     setTimeout(() => setSaved(false), 3000);
+  };
+
+  const handleResetDefaults = () => {
+    if (window.confirm('Reset all demo data (notifications, conflicts, inventory, thresholds) to initial demo state?')) {
+      DataSyncService.resetToDefaultData();
+      setConfig(DataSyncService.getSystemConfig());
+      setResetMsg(true);
+      setTimeout(() => setResetMsg(false), 3000);
+    }
   };
 
   return (
@@ -50,9 +70,9 @@ export const SystemSettingsPage: React.FC = () => {
                 onChange={(e) =>
                   setConfig({ ...config, low_stock_default_threshold: parseInt(e.target.value, 10) })
                 }
-                className="w-48 px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant rounded-lg text-sm font-semibold tabular-nums"
+                className="w-48 px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant dark:border-outline-variant-dark text-on-surface dark:text-on-surface-dark rounded-lg text-sm font-semibold tabular-nums"
               />
-              <p className="text-[11px] text-on-surface-variant mt-1">
+              <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark mt-1">
                 When inventory falls at or below this number, the LowStockService publishes an SNS alert.
               </p>
             </div>
@@ -75,9 +95,9 @@ export const SystemSettingsPage: React.FC = () => {
                 onChange={(e) =>
                   setConfig({ ...config, suspicious_quantity_threshold: parseInt(e.target.value, 10) })
                 }
-                className="w-full px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant rounded-lg text-sm font-semibold tabular-nums"
+                className="w-full px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant dark:border-outline-variant-dark text-on-surface dark:text-on-surface-dark rounded-lg text-sm font-semibold tabular-nums"
               />
-              <p className="text-[11px] text-on-surface-variant mt-1">
+              <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark mt-1">
                 Transactions with item quantity exceeding this limit are marked as FLAGGED.
               </p>
             </div>
@@ -93,9 +113,9 @@ export const SystemSettingsPage: React.FC = () => {
                 onChange={(e) =>
                   setConfig({ ...config, suspicious_repeat_count_threshold: parseInt(e.target.value, 10) })
                 }
-                className="w-full px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant rounded-lg text-sm font-semibold tabular-nums"
+                className="w-full px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant dark:border-outline-variant-dark text-on-surface dark:text-on-surface-dark rounded-lg text-sm font-semibold tabular-nums"
               />
-              <p className="text-[11px] text-on-surface-variant mt-1">
+              <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark mt-1">
                 Minimum frequency count on the same product within the time window.
               </p>
             </div>
@@ -111,9 +131,9 @@ export const SystemSettingsPage: React.FC = () => {
                 onChange={(e) =>
                   setConfig({ ...config, suspicious_time_window_minutes: parseInt(e.target.value, 10) })
                 }
-                className="w-full px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant rounded-lg text-sm font-semibold tabular-nums"
+                className="w-full px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant dark:border-outline-variant-dark text-on-surface dark:text-on-surface-dark rounded-lg text-sm font-semibold tabular-nums"
               />
-              <p className="text-[11px] text-on-surface-variant mt-1">
+              <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark mt-1">
                 Sliding window duration for checking repeated reversals or transactions.
               </p>
             </div>
@@ -129,16 +149,25 @@ export const SystemSettingsPage: React.FC = () => {
                 onChange={(e) =>
                   setConfig({ ...config, offline_alert_threshold_minutes: parseInt(e.target.value, 10) })
                 }
-                className="w-full px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant rounded-lg text-sm font-semibold tabular-nums"
+                className="w-full px-3 py-2 bg-surface-container-low dark:bg-surface-container-dark border border-outline-variant dark:border-outline-variant-dark text-on-surface dark:text-on-surface-dark rounded-lg text-sm font-semibold tabular-nums"
               />
-              <p className="text-[11px] text-on-surface-variant mt-1">
+              <p className="text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark mt-1">
                 Triggers attention state if store node has had no sync heartbeat for this duration.
               </p>
             </div>
           </div>
         </Card>
 
-        <div className="flex justify-end">
+        <div className="flex items-center justify-between">
+          <Button
+            type="button"
+            variant="outline"
+            size="md"
+            onClick={handleResetDefaults}
+          >
+            Reset Demo Data to Defaults
+          </Button>
+
           <Button type="submit" variant="primary" size="md" icon={<Save className="w-4 h-4" />}>
             Save Rule Configuration
           </Button>

@@ -27,15 +27,15 @@ export const Button: React.FC<ButtonProps> = ({
     primary:
       'bg-primary text-white hover:bg-opacity-90 active:scale-[0.98] shadow-sm transition-all focus:ring-2 focus:ring-primary focus:ring-offset-2',
     secondary:
-      'bg-secondary-container text-secondary-on-container hover:bg-opacity-80 active:scale-[0.98] transition-all',
+      'bg-secondary-container text-secondary-on-container dark:bg-secondary-container-dark dark:text-secondary-on-container-dark hover:bg-opacity-80 active:scale-[0.98] transition-all',
     tertiary:
-      'bg-tertiary-container text-tertiary-on-container hover:bg-opacity-80 active:scale-[0.98] transition-all',
+      'bg-tertiary-container text-tertiary-on-container dark:bg-tertiary-container-dark dark:text-tertiary-on-container-dark hover:bg-opacity-80 active:scale-[0.98] transition-all',
     outline:
-      'border border-outline-variant bg-transparent text-on-surface hover:bg-surface-container-low transition-all',
+      'border border-outline-variant dark:border-outline-variant-dark bg-transparent text-on-surface dark:text-on-surface-dark hover:bg-surface-container-low dark:hover:bg-surface-container-dark transition-all',
     destructive:
       'bg-error text-white hover:bg-opacity-90 active:scale-[0.98] transition-all focus:ring-2 focus:ring-error',
     ghost:
-      'bg-transparent text-on-surface hover:bg-surface-container transition-all',
+      'bg-transparent text-on-surface dark:text-on-surface-dark hover:bg-surface-container dark:hover:bg-surface-container-dark transition-all',
   };
 
   return (

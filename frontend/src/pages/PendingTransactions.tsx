@@ -60,7 +60,7 @@ export const PendingTransactionsPage: React.FC = () => {
         subtitle="Ordered by strict device_sequence ascending (RULE-017)"
       >
         {pendingTxs.length === 0 ? (
-          <div className="py-16 text-center text-on-surface-variant">
+          <div className="py-16 text-center text-on-surface-variant dark:text-on-surface-variant-dark">
             <CheckCircle2 className="w-12 h-12 mx-auto text-primary mb-3" />
             <p className="text-sm font-semibold">Queue is clear</p>
             <p className="text-xs text-outline mt-1">
@@ -78,40 +78,40 @@ export const PendingTransactionsPage: React.FC = () => {
         ) : (
           <div className="overflow-x-auto border border-outline-variant/40 dark:border-outline-variant-dark/40 rounded-lg">
             <table className="w-full text-left text-xs border-collapse">
-              <thead className="bg-surface-container-low dark:bg-surface-container-low-dark border-b border-outline-variant/60">
+              <thead className="bg-surface-container-low dark:bg-surface-container-low-dark border-b border-outline-variant/60 dark:border-outline-variant-dark/60">
                 <tr>
-                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant">Sequence</th>
-                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant">Transaction ID</th>
-                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant">Product ID</th>
-                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Quantity</th>
-                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Price</th>
-                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-center">Local Status</th>
-                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant text-right">Recorded At</th>
+                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark">Sequence</th>
+                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark">Transaction ID</th>
+                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark">Product ID</th>
+                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Quantity</th>
+                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Price</th>
+                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-center">Local Status</th>
+                  <th className="py-3 px-4 font-semibold uppercase text-on-surface-variant dark:text-on-surface-variant-dark text-right">Recorded At</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-outline-variant/30 bg-surface-container-lowest dark:bg-surface-container-dark">
+              <tbody className="divide-y divide-outline-variant/30 dark:divide-outline-variant-dark/30 bg-surface-container-lowest dark:bg-surface-container-dark">
                 {pendingTxs.map((tx) => (
-                  <tr key={tx.transaction_id} className="hover:bg-surface-container-low/60 transition-colors">
+                  <tr key={tx.transaction_id} className="hover:bg-surface-container-low/60 dark:hover:bg-surface-container-high-dark/40 transition-colors">
                     <td className="py-3.5 px-4 font-mono font-bold text-primary">
                       #{tx.device_sequence}
                     </td>
                     <td className="py-3.5 px-4 font-mono">
                       <p className="font-semibold text-on-surface dark:text-on-surface-dark">{tx.transaction_id}</p>
-                      <p className="text-[10px] text-on-surface-variant">{tx.device_id}</p>
+                      <p className="text-[10px] text-on-surface-variant dark:text-on-surface-variant-dark">{tx.device_id}</p>
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-on-surface-variant">
+                    <td className="py-3.5 px-4 font-mono text-on-surface-variant dark:text-on-surface-variant-dark">
                       {tx.product_id}
                     </td>
-                    <td className="py-3.5 px-4 text-right font-display font-bold tabular-nums text-sm">
+                    <td className="py-3.5 px-4 text-right font-display font-bold tabular-nums text-sm text-on-surface dark:text-on-surface-dark">
                       {tx.quantity}
                     </td>
-                    <td className="py-3.5 px-4 text-right font-display font-bold tabular-nums text-sm">
+                    <td className="py-3.5 px-4 text-right font-display font-bold tabular-nums text-sm text-on-surface dark:text-on-surface-dark">
                       ${(tx.unit_price * tx.quantity).toFixed(2)}
                     </td>
                     <td className="py-3.5 px-4 text-center">
                       <StatusPill status={tx.local_sync_status} label={tx.local_sync_status} />
                     </td>
-                    <td className="py-3.5 px-4 text-right font-mono text-[11px] text-on-surface-variant">
+                    <td className="py-3.5 px-4 text-right font-mono text-[11px] text-on-surface-variant dark:text-on-surface-variant-dark">
                       {new Date(tx.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                     </td>
                   </tr>

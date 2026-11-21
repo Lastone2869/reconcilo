@@ -8,17 +8,17 @@
 
 | # | Facility / Service | Why Needed At This Step | Status |
 |---|--------------------|-------------------------|--------|
-| 1 | **DynamoDB** (10 tables) | Foundation: All transactional data, inventory, and audit logs live here | ☐ |
-| 2 | **Amazon S3** (Sync bucket) | Ingestion storage: POS devices upload bulk transaction batches here | ☐ |
-| 3 | **Amazon Cognito** (User Pool) | Authentication: Issues JWTs and enforces RBAC roles (Staff, Manager, Admin, Supplier) | ☐ |
-| 4 | **Amazon SQS FIFO + DLQ** | Ordering & Quarantine: Serializes transaction ingestion per store node | ☐ |
-| 5 | **Amazon SNS** (Operational Alerts) | Monitoring: Immediate notifications for low-stock, oversells, and anomalies | ☐ |
-| 6 | **Amazon SES** (Email Service) | Compliance: Sends detailed end-of-shift reports and reconciliation summaries | ☐ |
-| 7 | **AWS Step Functions** | Workflow: Orchestrates deterministic replay, reconciliation, and conflict detection | ☐ |
-| 8 | **AWS Lambda** (12 functions) | Compute: Executes backend handlers triggered by S3, SQS, API Gateway, and Streams | ☐ |
-| 9 | **DynamoDB Streams** | Real-Time Sync: Captures CDC row mutations to feed live dashboard updates | ☐ |
-| 10 | **API Gateway** (HTTP + WS) | Connectivity: Front door for HTTP REST requests and live WebSocket dashboard pushes | ☐ |
-| 11 | **Amazon CloudWatch** | Observability: Collects Lambda execution logs and triggers high-error alarms | ☐ |
+| 1 | **DynamoDB** (10 tables) | Foundation: All transactional data, inventory, and audit logs live here | ☑️ **Done** |
+| 2 | **Amazon S3** (Sync bucket) | Ingestion storage: POS devices upload bulk transaction batches here | ☑️ **Done** |
+| 3 | **Amazon Cognito** (User Pool) | Authentication: Issues JWTs and enforces RBAC roles (Staff, Manager, Admin, Supplier) | ☑️ **Done** |
+| 4 | **Amazon SQS FIFO + DLQ** | Ordering & Quarantine: Serializes transaction ingestion per store node | ☑️ **Done** |
+| 5 | **Amazon SNS** (Operational Alerts) | Monitoring: Immediate notifications for low-stock, oversells, and anomalies | ☑️ **Done** |
+| 6 | **Amazon SES** (Email Service) | Compliance: Sends detailed end-of-shift reports and reconciliation summaries | ☑️ **Done** |
+| 7 | **AWS Step Functions** | Workflow: Orchestrates deterministic replay, reconciliation, and conflict detection | ☑️ **Done** |
+| 8 | **AWS Lambda** (Core Replay Engine) | Compute: Executes backend handlers triggered by S3, SQS, API Gateway, and Streams | ☑️ **Done** |
+| 9 | **DynamoDB Streams** | Real-Time Sync: Captures CDC row mutations to feed live dashboard updates | ☑️ **Done** |
+| 10 | **API Gateway** (HTTP + WS) | Connectivity: Front door for HTTP REST requests and live WebSocket dashboard pushes | ☑️ **HTTP Live** |
+| 11 | **Amazon CloudWatch** | Observability: Collects Lambda execution logs and triggers high-error alarms | ☑️ **Done** |
 
 ---
 

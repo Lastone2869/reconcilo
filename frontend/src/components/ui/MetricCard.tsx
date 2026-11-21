@@ -22,9 +22,9 @@ export const MetricCard: React.FC<MetricCardProps> = ({
   className = '',
 }) => {
   const deltaColors = {
-    positive: 'text-primary dark:text-primary-dark bg-primary-fixed/30',
-    negative: 'text-error bg-error-container/40',
-    neutral: 'text-on-surface-variant bg-surface-container',
+    positive: 'text-primary dark:text-primary-dark bg-primary-fixed/30 dark:bg-primary-container-dark/30',
+    negative: 'text-error bg-error-container/40 dark:bg-error-container-dark/40',
+    neutral: 'text-on-surface-variant dark:text-on-surface-variant-dark bg-surface-container dark:bg-surface-container-high-dark',
   };
 
   return (

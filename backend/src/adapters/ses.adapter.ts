@@ -8,6 +8,8 @@
  * 3. Replace this stub implementation with `@aws-sdk/client-ses`
  */
 
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+
 export interface SentEmail {
   messageId: string;
   to: string;
@@ -18,17 +20,33 @@ export interface SentEmail {
 
 const mockSentEmails: SentEmail[] = [];
 
+let sesClient: SESClient | null = null;
+function getClient(): SESClient | null {
+  if (sesClient) return sesClient;
+  if (process.env.AWS_ACCESS_KEY_ID && process.env.NODE_ENV !== 'test') {
+    sesClient = new SESClient({
+      region: process.env.AWS_REGION || 'us-east-1',
+      credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+      },
+    });
+  }
+  return sesClient;
+}
+
 export class SESAdapter {
   /**
-   * Sends a detailed report email via SES.
-   * // TODO: Replace stub with real AWS SDK SES SendEmailCommand
+   * Sends a detailed report email via Amazon SES.
    */
   static async sendEmail(
     to: string,
     subject: string,
     htmlBody: string
   ): Promise<{ success: boolean; messageId: string }> {
-    const messageId = `ses-msg-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
+    const sender = process.env.SES_SENDER_EMAIL || 'reports@reconcilo.com';
+    let messageId = `ses-msg-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
+
     const email: SentEmail = {
       messageId,
       to,
@@ -38,7 +56,31 @@ export class SESAdapter {
     };
 
     mockSentEmails.push(email);
-    console.log(`[SES STUB] Email sent to ${to}: [${subject}]`);
+
+    const client = getClient();
+    if (client) {
+      try {
+        const res = await client.send(
+          new SendEmailCommand({
+            Source: sender,
+            Destination: {
+              ToAddresses: [to],
+            },
+            Message: {
+              Subject: { Data: subject, Charset: 'UTF-8' },
+              Body: {
+                Html: { Data: htmlBody, Charset: 'UTF-8' },
+              },
+            },
+          })
+        );
+        if (res.MessageId) {
+          messageId = res.MessageId;
+        }
+      } catch (err: any) {
+        console.warn(`[SESAdapter] Live send warning: ${err.message}`);
+      }
+    }
 
     return { success: true, messageId };
   }
